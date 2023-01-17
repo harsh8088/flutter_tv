@@ -27,15 +27,51 @@ class OtpBody extends StatelessWidget {
         });
       }
     }, builder: (context, state) {
-      if (state.status == OtpStatus.loading) {
-        return const CircularProgressIndicator(
-          color: ColorConstants.appRed,
-        );
-      }
-      return Container(
-        child: Center(
-          child: Text(state.otp),
-        ),
+      // if (state.status == OtpStatus.loading) {
+      //   return const CircularProgressIndicator(
+      //     color: ColorConstants.appRed,
+      //   );
+      // }
+      return Column(
+        children: [
+          const SizedBox(
+            height: 30,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Image.asset('assets/images/ic_sps_logo.png',
+                height: 65, fit: BoxFit.cover),
+          ),
+          const Spacer(),
+          state.status == OtpStatus.loading
+              ? const CircularProgressIndicator(
+                  color: ColorConstants.appRed,
+                )
+              : Text(state.otp,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 36,
+                      color: ColorConstants.brownishGrey)),
+          const SizedBox(
+            height: 6,
+          ),
+          const Text(
+              "Login into dashboard. From “Devices” option add this code to pair the devices.",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 23,
+                  color: ColorConstants.brownishGrey)),
+          const Spacer(),
+          Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Image.asset('assets/images/ic_mhc_logo.png',
+                height: 50, fit: BoxFit.cover),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+        ],
       );
     });
   }

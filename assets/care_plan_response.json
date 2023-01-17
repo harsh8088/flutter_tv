@@ -1,0 +1,335 @@
+{
+  "message": "Record found",
+  "status": true,
+  "data": {
+    "booking_assigned_resource": {
+      "id": 1,
+      "booking_id": 28,
+      "services_id": 1,
+      "test_id": 3,
+      "type": 2,
+      "homecare_booking_inclusion_id": 1,
+      "patient_id": 188,
+      "patient_name": "Shankari",
+      "dob": "1990-10-30",
+      "gender": 1,
+      "mrn_no": "1121212122",
+      "mobile_no": 6395553932,
+      "pin_code": 110090,
+      "vip": 1,
+      "hwc": "1",
+      "doctor_name": "Sankar Singh",
+      "doctor_email_id": "drx@gmail.com",
+      "comments": "Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.",
+      "address": "B B03,The Palm city Gurugram",
+      "state": 1877,
+      "city": 1290,
+      "category_id": 1,
+      "sub_category_id": 1,
+      "service_id": 1,
+      "package_name": "TEst current_location",
+      "route_id": 1,
+      "assigned_id": 1,
+      "calling_day_category_id": null,
+      "calling_days": "5,6,7",
+      "age": 31,
+      "state_name": "Sardegna",
+      "city_name": "Yevlax"
+    },
+    "test_bookings": {
+      "id": 28,
+      "test_booking_code": "BASDNP1DB0",
+      "test_id": 3,
+      "type": 2,
+      "homecare_request_id": 30,
+      "test_hospital_mapping_id": 1,
+      "team_id": null,
+      "duration": null,
+      "duration_type": null,
+      "patient_id": 188,
+      "hospital_id": 1,
+      "booking_status": 0,
+      "canceled_at": null,
+      "status_booking": null,
+      "other_reason": null,
+      "cancellation_reason": null,
+      "is_billed": null,
+      "is_synced": 0,
+      "is_revisit": null,
+      "is_patient_arrived": 0,
+      "is_marked_completed": null,
+      "mark_arrival_at": null,
+      "mark_arrival_done_by": 0,
+      "case_summary": null,
+      "advice": null,
+      "remarks": null,
+      "is_walk_in": null,
+      "discount_amount": null,
+      "coupon_code_id": null,
+      "coupon_employee_code": null,
+      "employee_code_value": null,
+      "total_amount": 500,
+      "health_checkup_details": null,
+      "booking_time": null,
+      "checkup_date": "2022-10-12",
+      "checkup_start_date": null,
+      "checkup_end_date": null,
+      "call_days": null,
+      "extend_pkg_start_date": null,
+      "extend_pkg_days": null,
+      "extend_pkg_amount": null,
+      "extend_pkg_booking_status": "0",
+      "extend_pkg_done_by": null,
+      "extend_pkg_at": null,
+      "booking_source": null,
+      "amount": 500,
+      "registration_fees": 0,
+      "convenience_fees": 0,
+      "start_time": null,
+      "end_time": null,
+      "patient_type": 1,
+      "corporate_discount": 0,
+      "is_parent_corporate_discount": 0,
+      "prescription_path": null,
+      "comment": null,
+      "vonage_patient_status": null,
+      "vonage_doctor_status": null,
+      "caller_id": null,
+      "caller_type": null,
+      "status": 1,
+      "wallet_discount": 0,
+      "wallet_id": 0,
+      "booking_app_source": null,
+      "is_ce_done": 0
+    },
+    "case_history": [
+
+    ],
+    "care_plan": {
+      "id": 2,
+      "name": "plan five six new",
+      "test_category_id": 2,
+      "test_subcategory_id": 2,
+      "service_provider": 9,
+      "service_id": 1,
+      "created_by": 1,
+      "updated_by": 1
+    },
+    "madication_mapping": [
+      {
+        "id": 3,
+        "homecare_plan_id": 2,
+        "medicine": "medicine one",
+        "frequency": 1,
+        "instruction": "instruction one",
+        "dosage": "1 tab"
+      },
+      {
+        "id": 4,
+        "homecare_plan_id": 2,
+        "medicine": "medicine two",
+        "frequency": 2,
+        "instruction": "instruction two",
+        "dosage": "1 tab"
+      }
+    ],
+    "vital_mapping": [
+      {
+        "id": 7,
+        "homecare_plan_id": 2,
+        "vital_id": 1,
+        "vital_code": "V003",
+        "vital_name": "BMI",
+        "frequency": 1,
+        "order": 1,
+        "min_value": "10",
+        "max_value": "25",
+        "measurement_unit": "kg/m2"
+      },
+      {
+        "id": 8,
+        "homecare_plan_id": 2,
+        "vital_id": 2,
+        "vital_code": "V004",
+        "vital_name": "Temperature",
+        "frequency": 2,
+        "order": 2,
+        "min_value": "90",
+        "max_value": "104",
+        "measurement_unit": "F"
+      },
+      {
+        "id": 9,
+        "homecare_plan_id": 2,
+        "vital_id": 3,
+        "vital_code": "V006",
+        "vital_name": "Blood Pressure Systolic",
+        "frequency": 3,
+        "order": 3,
+        "min_value": "88",
+        "max_value": "150",
+        "measurement_unit": "mmHg"
+      },
+      {
+        "id": 10,
+        "homecare_plan_id": 2,
+        "vital_id": 4,
+        "vital_code": "V008",
+        "vital_name": "Heart Rate",
+        "frequency": 4,
+        "order": 4,
+        "min_value": "48",
+        "max_value": "90",
+        "measurement_unit": "bpm"
+      },
+      {
+        "id": 11,
+        "homecare_plan_id": 2,
+        "vital_id": 5,
+        "vital_code": "V010",
+        "vital_name": "Blood Sugar Fasting",
+        "frequency": 6,
+        "order": 6,
+        "min_value": "79",
+        "max_value": "151",
+        "measurement_unit": "mg/dL"
+      },
+      {
+        "id": 12,
+        "homecare_plan_id": 2,
+        "vital_id": 6,
+        "vital_code": "V013",
+        "vital_name": "Random Blood Sugar",
+        "frequency": 5,
+        "order": 5,
+        "min_value": "90",
+        "max_value": "200",
+        "measurement_unit": "mg/dL"
+      }
+    ],
+    "task_mapping": [
+      {
+        "id": 3,
+        "homecare_plan_id": 2,
+        "task": "task one",
+        "is_frequency": 1,
+        "frequency": 2,
+        "subtask_mapping": [
+          {
+            "id": 5,
+            "homecare_plan_id": 2,
+            "homecare_task_id": 3,
+            "subtask": "task one",
+            "is_frequency": 1,
+            "frequency": 2
+          },
+          {
+            "id": 6,
+            "homecare_plan_id": 2,
+            "homecare_task_id": 3,
+            "subtask": "task two",
+            "is_frequency": 1,
+            "frequency": 2
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "homecare_plan_id": 2,
+        "task": "task two",
+        "is_frequency": 1,
+        "frequency": 2,
+        "subtask_mapping": [
+          {
+            "id": 7,
+            "homecare_plan_id": 2,
+            "homecare_task_id": 4,
+            "subtask": "task three",
+            "is_frequency": 1,
+            "frequency": 2
+          },
+          {
+            "id": 8,
+            "homecare_plan_id": 2,
+            "homecare_task_id": 4,
+            "subtask": "task four",
+            "is_frequency": 1,
+            "frequency": 2
+          }
+        ]
+      }
+    ],
+    "homecare_documents": [
+      {
+        "id": 3,
+        "booking_assiged_resources_mapping_id": 9,
+        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/document/2022/10/15/7aca8e23-aaf3-43e2-8b2a-ba9928989177.pdf",
+        "document_type": 0,
+        "document_type_for": "1"
+      },
+      {
+        "id": 4,
+        "booking_assiged_resources_mapping_id": 9,
+        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/document/2022/10/16/dda7d5d7-7af2-423d-9628-edcf3f9081da.pdf",
+        "document_type": 0,
+        "document_type_for": "1"
+      },
+      {
+        "id": 8,
+        "booking_assiged_resources_mapping_id": 9,
+        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/document/2022/10/17/9cb3bd9d-d5f5-4a1b-af52-76aabfeeae18.pdf",
+        "document_type": 0,
+        "document_type_for": "1"
+      },
+      {
+        "id": 9,
+        "booking_assiged_resources_mapping_id": 9,
+        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/document/2022/10/17/5c60c90a-3f3e-42e0-9b11-2f07fb034dc4.pdf",
+        "document_type": 0,
+        "document_type_for": "1"
+      },
+      {
+        "id": 10,
+        "booking_assiged_resources_mapping_id": 9,
+        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/document/2022/10/17/f2ca4468-1384-4380-94fe-7ff8209d138e.pdf",
+        "document_type": 0,
+        "document_type_for": "1"
+      },
+      {
+        "id": 18,
+        "booking_assiged_resources_mapping_id": 9,
+        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/booking/document/2022/10/17/664c7637-21ae-4376-8cd9-1162db6b7821.png",
+        "document_type": 1,
+        "document_type_for": "2"
+      },
+      {
+        "id": 20,
+        "booking_assiged_resources_mapping_id": 9,
+        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/booking/document/2022/10/17/78a86427-112b-499b-b09a-2c79f6d15cbf.png",
+        "document_type": 1,
+        "document_type_for": "2"
+      },
+      {
+        "id": 21,
+        "booking_assiged_resources_mapping_id": 9,
+        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/booking/document/2022/10/17/2474c2a7-1dc6-4d6f-9e76-581490a69d0c.png",
+        "document_type": 1,
+        "document_type_for": "2"
+      },
+      {
+        "id": 22,
+        "booking_assiged_resources_mapping_id": 9,
+        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/booking/document/2022/10/17/27540810-5dd8-4734-8a92-c57810fd6722.png",
+        "document_type": 1,
+        "document_type_for": "2"
+      },
+      {
+        "id": 23,
+        "booking_assiged_resources_mapping_id": 9,
+        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/document/2022/10/17/6767419d-3277-441a-a447-3b57fec71c03.pdf",
+        "document_type": 0,
+        "document_type_for": "1"
+      }
+    ]
+  }
+}

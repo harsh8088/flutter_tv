@@ -1,0 +1,78 @@
+{
+  "id": "1032",
+  "title": "in Progress",
+  "user_details": {
+    "name": "Priyanka Mishra",
+    "uuid": "UHID MH001234",
+    "address": "A-123 Sarai Khan, New Delhi"
+  },
+  "test_scheduled": {
+    "is_scheduled": false,
+    "test": [
+      {
+        "title": "Blood Sample",
+        "is_rescheduled": false,
+        "items": [
+          {
+            "name": "Complete Blood Count, CBC",
+            "color": "green",
+            "is_collected": false
+          },
+          {
+            "name": "Folic Acid FC",
+            "color": "",
+            "is_collected": false
+          },
+          {
+            "name": "",
+            "color": "",
+            "is_collected": false
+          }
+        ]
+      },
+      {
+        "title": "Urine Sample",
+        "is_rescheduled": false,
+        "items": [
+          {
+            "name": "Lipid Blood Count, CBC",
+            "color": "green",
+            "is_collected": false
+          },
+          {
+            "name": "Folic Acid FC",
+            "color": "green",
+            "is_collected": false
+          },
+          {
+            "name": "Lipid Profile",
+            "color": "green",
+            "is_collected": false
+          }
+        ]
+      }
+    ],
+    "payment": {
+      "status": "",
+      "amount": ""
+    }
+  },
+  "test_added": {
+    "booking_id": "",
+    "user_details": {
+      "name": "",
+      "uuid": "",
+      "address": ""
+    },
+    "test": [
+      {
+        "name": "",
+        "color": ""
+      }
+    ],
+    "payment": {
+      "status": "",
+      "amount": ""
+    }
+  }
+}

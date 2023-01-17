@@ -27,9 +27,23 @@ class ColorConstants {
 
   static const whiteSeven = Color(0xFFfafafa);
   static const whiteEight = Color(0xFFededed);
-  static const brownishGrey=Color(0xFF666666);
+  static const brownishGrey = Color(0xFF666666);
 
-  static const greyishThree=Color(0xFFb5b5b5);
+  static const greyishThree = Color(0xFFb5b5b5);
 
-  static const pinkishGrey=Color(0xFFc1c1c1);
+  static const pinkishGrey = Color(0xFFc1c1c1);
+
+  static const titleHeaderYellow = Color(0xFFffcd4b);
+  static const brownishGrey2 = Color(0xFF606060);
+  static const bottomScroll = Color(0xFF67717d);
+  static const bottomHeader = Color(0xFFe47a49);
+  static const darkishPink = Color(0xFFe15b61);
+  static const boringGreen = Color(0xFF64b763);
+  static const slateTwo = Color(0xFF3c4a5c);
+
+  static const bottomMhcColor = Color(0xFFf0efef);
+  static const greyishBrown2 = Color(0xFF444444);
+
+
+  static const battleshipGrey=Color(0xFF67717d);
 }

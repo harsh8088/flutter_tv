@@ -15,7 +15,11 @@ class OtpBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<OtpBloc, OtpState>(listener: (context, state) {
       if (state.status == OtpStatus.isTrue) {
-        Navigator.pushNamed(context, "/token");
+        // Navigator.pushNamedAndRemoveUntil(context, "/token", (Route route) => false);
+        // Navigator.pushNamedAndRemoveUntil(
+        //     context, "/doctor", (Route route) => false);
+        Navigator.pushNamedAndRemoveUntil(
+            context, "/nurse", (Route route) => false);
       }
       if (state.status == OtpStatus.isFalse) {
         Timer(const Duration(seconds: 6), () {

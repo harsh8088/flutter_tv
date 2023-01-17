@@ -12,7 +12,6 @@ class OtpBloc extends Bloc<OtpEvent, OtpState> {
   final MyRequestRepository repository;
   int page = 1;
   bool isFetching = false;
-  late Timer timer;
 
   OtpBloc({
     required this.repository,
@@ -25,7 +24,7 @@ class OtpBloc extends Bloc<OtpEvent, OtpState> {
       emit(state.copyWith(
         status: OtpStatus.loading,
       ));
-      Constants.deviceID="6b84c1654ddf8b53";
+      Constants.deviceID = "6b84c1654ddf8b53";
       final response = await repository.getOtp(deviceId: Constants.deviceID);
       print(response);
       final otpResponse = OtpResponse.fromJson(response);
@@ -50,7 +49,6 @@ class OtpBloc extends Bloc<OtpEvent, OtpState> {
 
   @override
   Future<void> close() {
-    timer.cancel();
     return super.close();
   }
 }

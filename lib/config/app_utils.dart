@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class AppUtils {
@@ -34,6 +35,16 @@ class AppUtils {
     } catch (_) {
       print(_.toString());
       return dateString;
+    }
+  }
+
+  // output: dd MMM yyyy
+  static String? getCurrentTime() {
+    try {
+      return DateFormat('E, h:mm a').format(DateTime.now());
+    } catch (_) {
+      print(_.toString());
+      return "";
     }
   }
 }

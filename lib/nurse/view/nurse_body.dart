@@ -7,16 +7,16 @@ import 'package:flutter_tv/config/color_constants.dart';
 import 'package:formz/formz.dart';
 import 'package:marquee/marquee.dart';
 
-import '../bloc/token_bloc.dart';
-import '../bloc/token_event.dart';
-import '../bloc/token_state.dart';
+import '../bloc/nurse_bloc.dart';
+import '../bloc/nurse_event.dart';
+import '../bloc/nurse_state.dart';
 
-class TokenBody extends StatelessWidget {
-  const TokenBody({super.key});
+class NurseBody extends StatelessWidget {
+  const NurseBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<TokenBloc, TokenState>(listener: (context, state) {
+    return BlocConsumer<NurseBloc, NurseState>(listener: (context, state) {
       // if (state is SuccessState) {
       //   if (state.isPinAvailable)
       //     Navigator.pushNamed(context, "/login-pin").then((value) => _refreshState());
@@ -33,7 +33,7 @@ class TokenBody extends StatelessWidget {
       }
       if (state.data.isNotEmpty && state.status == FormzStatus.pure) {
         Timer(const Duration(seconds: 6), () {
-          BlocProvider.of<TokenBloc>(context).add(const TokenFetchEvent());
+          BlocProvider.of<NurseBloc>(context).add(const NurseFetchEvent());
         });
         return;
       }
@@ -127,7 +127,7 @@ class TokenBody extends StatelessWidget {
     });
   }
 
-  _buildHeader(TokenState state) {
+  _buildHeader(NurseState state) {
     return Row(
       children: [
         SizedBox(
@@ -137,7 +137,7 @@ class TokenBody extends StatelessWidget {
               height: 40, fit: BoxFit.cover),
         )),
         const Spacer(),
-        const Text("Floor One",
+        const Text("Nurse One",
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24,

@@ -9,6 +9,8 @@ import 'package:flutter_tv/token/token.dart';
 import 'package:http/http.dart' as http;
 
 import 'config/constants.dart';
+import 'doctor/doctor.dart';
+import 'nurse/nurse.dart';
 import 'otp/otp.dart';
 
 Future<void> main() async {
@@ -74,8 +76,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/token': (context) => const TokenScreen(),
         '/otp': (context) => const OtpScreen(),
-        // '/doctor': (context) => DoctorScreen(),
-        // '/nurse': (context) => NurseScreen(),
+        '/doctor': (context) => const DoctorScreen(),
+        '/nurse': (context) => const NurseScreen(),
       },
     );
   }

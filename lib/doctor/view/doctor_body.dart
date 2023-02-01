@@ -38,11 +38,6 @@ class DoctorBody extends StatelessWidget {
         return;
       }
     }, builder: (context, state) {
-      // if (state.status.isSubmissionInProgress) {
-      //   return const CircularProgressIndicator(
-      //     color: ColorConstants.appRed,
-      //   );
-      // }
       return Column(
         children: [
           Container(
@@ -93,7 +88,7 @@ class DoctorBody extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                             const Text("9 AM - 11 AM",
+                                            const Text("9 AM - 11 AM",
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,

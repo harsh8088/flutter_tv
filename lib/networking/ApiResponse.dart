@@ -3,10 +3,7 @@ class ApiResponse<T> {
   T? data;
   String? message;
 
-  ApiResponse(
-      { this.statusCode,
-        this.data,
-        this.message});
+  ApiResponse({this.statusCode, this.data, this.message});
 
   // Response.loading(this.message) : status = Status.LOADING;
   //

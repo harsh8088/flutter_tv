@@ -31,7 +31,6 @@ class NurseBloc extends Bloc<NurseEvent, NurseState> {
 
       //perform actions on response
 
-
       emit(state.copyWith(status: FormzStatus.pure, data: [otpResponse]));
     } catch (_) {
       print(_.toString());

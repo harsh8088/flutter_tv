@@ -38,11 +38,6 @@ class TokenBody extends StatelessWidget {
         return;
       }
     }, builder: (context, state) {
-      // if (state.status.isSubmissionInProgress) {
-      //   return const CircularProgressIndicator(
-      //     color: ColorConstants.appRed,
-      //   );
-      // }
       return Column(
         children: [
           Container(

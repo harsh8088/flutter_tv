@@ -59,10 +59,9 @@ class ApiProvider {
       print('-->. body: $mBody');
       print('<--. res.body:${response.statusCode} , ${response.body}');
       print('<--. res.header:${response.headers.toString()}}');
-      if(response.headers.containsKey("authorization"))
-        {
-          Constants.authToken=response.headers["authorization"]!;
-        }
+      if (response.headers.containsKey("authorization")) {
+        Constants.authToken = response.headers["authorization"]!;
+      }
       return json.decode(response.body.toString());
     } on SocketException {
       print("Socket Exception");

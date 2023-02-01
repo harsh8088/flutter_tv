@@ -20,7 +20,6 @@ class OtpState extends Equatable {
 
   @override
   List<Object> get props => [status, message, otp];
-
-
 }
-enum OtpStatus{ pure,loading,isTrue,isFalse}
+
+enum OtpStatus { pure, loading, isTrue, isFalse }

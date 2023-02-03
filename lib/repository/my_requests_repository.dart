@@ -1,7 +1,7 @@
 // import 'package:http/http.dart' as http;
 
 import '../config/constants.dart';
-import '../networking/ApiProvider.dart';
+import '../networking/api_provider.dart';
 
 class MyRequestRepository {
   final ApiProvider _provider = ApiProvider();

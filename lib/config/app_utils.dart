@@ -3,10 +3,14 @@ import 'package:intl/intl.dart';
 class AppUtils {
   //gender 1:F, 2:M
   static String getGender(int? gender) {
-    if (gender == 1)
-      return "F";
-    else if (gender == 2) return "M";
-    return "";
+    switch (gender) {
+      case 1:
+        return "F";
+      case 2:
+        return "M";
+      default:
+        return "";
+    }
   }
 
   //input: yyyy-MM-dd , output: dd-MM-yyyy

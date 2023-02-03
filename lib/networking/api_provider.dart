@@ -6,8 +6,8 @@ import 'package:http/http.dart' as http;
 
 import '../config/constants.dart';
 import '../config/session_manager.dart';
-import 'ApiResponse.dart';
-import 'CustomException.dart';
+import 'custom_exception.dart';
+import 'api_response.dart';
 
 class ApiProvider {
   //FOR DEV

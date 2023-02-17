@@ -126,11 +126,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<dynamic> fetchData(int? bookingID) async {
     try {
       final uri = Uri.parse(
-          'https://sandboxapiportal.mhea.myhealthcare.co/api/qms/android/v1/display-tv');
+          '/display-tv');
       var mHeaders = {
         'Content-Type': 'application/json',
       };
-      var body = {"device_id": "4337723cdb9f13f9"};
+      var body = {"device_id": "433712723cdb9f13f9"};
       var mbody = json.encode(body);
       // await Future.delayed(Duration(seconds: 2));
       final response = await http.post(uri, headers: mHeaders, body: mbody);

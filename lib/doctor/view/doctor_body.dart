@@ -359,7 +359,7 @@ class DoctorBody extends StatelessWidget {
                         color: ColorConstants.brownishGrey)),
                 Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: Image.asset('assets/images/ic_mhc_logo.png',
+                  child: Image.asset('assets/images/ic_app_logo.png',
                       height: 40, fit: BoxFit.cover),
                 ),
               ],

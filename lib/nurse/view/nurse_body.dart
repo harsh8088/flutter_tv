@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tv/config/app_utils.dart';
@@ -7,16 +8,20 @@ import 'package:flutter_tv/config/color_constants.dart';
 import 'package:formz/formz.dart';
 import 'package:marquee/marquee.dart';
 
+import '../../config/constants.dart';
 import '../bloc/nurse_bloc.dart';
 import '../bloc/nurse_event.dart';
 import '../bloc/nurse_state.dart';
 
 class NurseBody extends StatelessWidget {
-  const NurseBody({super.key});
+  NurseBody({super.key});
+
+  final audioPlayer = AudioPlayer();
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<NurseBloc, NurseState>(listener: (context, state) {
+    return BlocConsumer<NurseBloc, NurseState>(
+        listener: (context, state) async {
       // if (state is SuccessState) {
       //   if (state.isPinAvailable)
       //     Navigator.pushNamed(context, "/login-pin").then((value) => _refreshState());
@@ -37,12 +42,20 @@ class NurseBody extends StatelessWidget {
         });
         return;
       }
+      if (state.isPlay) {
+        // audioPlayer.play(UrlSource(Constants.soundUrl));
+        print('audioPlayStart');
+        await audioPlayer.play(UrlSource(Constants.soundUrl));
+        print('audioPlayStart');
+        return;
+      }
     }, builder: (context, state) {
       // if (state.status.isSubmissionInProgress) {
       //   return const CircularProgressIndicator(
       //     color: ColorConstants.appRed,
       //   );
       // }
+      // audioPlayer.play(UrlSource(Constants.soundUrl));
       return Column(
         children: [
           Container(
@@ -56,25 +69,30 @@ class NurseBody extends StatelessWidget {
                     Container(
                       height: 40,
                       color: ColorConstants.titleHeaderYellow,
-                      child: Row(children: const [
-                        Expanded(
-                          flex: 2,
-                          child: SizedBox(),
-                        ),
-                        Text('Counter No',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 24,
-                                color: ColorConstants.greyishBrown2)),
+                      child: Row(children:  const [
                         Expanded(
                           flex: 3,
                           child: SizedBox(),
                         ),
-                        Text('Calling Token',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 24,
-                                color: ColorConstants.greyishBrown2)),
+                        Expanded(
+                            flex: 4,
+                            child: Text('Counter No',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 24,
+                                    color: ColorConstants.greyishBrown2))),
+                        Expanded(
+                          flex: 3,
+                          child: SizedBox(),
+                        ),
+                        Expanded(
+                          flex: 4,
+                          child: Text('Calling Token',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 24,
+                                  color: ColorConstants.greyishBrown2)),
+                        ),
                         Expanded(
                           flex: 2,
                           child: SizedBox(),
@@ -86,27 +104,33 @@ class NurseBody extends StatelessWidget {
                       padding: const EdgeInsets.all(0),
                       itemCount: 7,
                       itemBuilder: (BuildContext context, int index) {
-                        return Container(
+                        return SizedBox(
                           height: 40,
                           child: Row(children: [
-                            const Expanded(
-                              flex: 2,
-                              child: SizedBox(),
-                            ),
-                            Text('Counter $index',
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 24,
-                                    color: ColorConstants.brownishGrey2)),
                             const Expanded(
                               flex: 3,
                               child: SizedBox(),
                             ),
-                            Text('Token $index',
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 24,
-                                    color: ColorConstants.brownishGrey2)),
+                            Expanded(
+                              flex: 4,
+                              child: Text('Counter $index',
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 24,
+                                      color: ColorConstants.brownishGrey2)),
+                            ),
+                            const Expanded(
+                              flex: 3,
+                              child: SizedBox(),
+                            ),
+                            Expanded(
+                              flex: 4,
+                              child: Text('Token $index',
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 24,
+                                      color: ColorConstants.brownishGrey2)),
+                            ),
                             const Expanded(
                               flex: 2,
                               child: SizedBox(),

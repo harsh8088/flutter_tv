@@ -7,6 +7,21 @@ class SessionManager {
   /// UserInfo
   static const String KEY_LOGIN_USER = "LoginUser";
 
+  Future<void> setNurseToken(String key, int value) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt(key, value);
+  }
+
+  Future<dynamic> getNurseToken(String key) async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    return pref.getInt(key);
+  }
+
+  Future<void> removeNurseToken(String key) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove(key);
+  }
+
   Future<void> setToken(String value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString("TOKEN", value);

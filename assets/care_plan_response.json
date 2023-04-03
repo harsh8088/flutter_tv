@@ -263,70 +263,70 @@
       {
         "id": 3,
         "booking_assiged_resources_mapping_id": 9,
-        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/document/2022/10/15/7aca8e23-aaf3-43e2-8b2a-ba9928989177.pdf",
+        "document_path": "",
         "document_type": 0,
         "document_type_for": "1"
       },
       {
         "id": 4,
         "booking_assiged_resources_mapping_id": 9,
-        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/document/2022/10/16/dda7d5d7-7af2-423d-9628-edcf3f9081da.pdf",
+        "document_path": "",
         "document_type": 0,
         "document_type_for": "1"
       },
       {
         "id": 8,
         "booking_assiged_resources_mapping_id": 9,
-        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/document/2022/10/17/9cb3bd9d-d5f5-4a1b-af52-76aabfeeae18.pdf",
+        "document_path": "",
         "document_type": 0,
         "document_type_for": "1"
       },
       {
         "id": 9,
         "booking_assiged_resources_mapping_id": 9,
-        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/document/2022/10/17/5c60c90a-3f3e-42e0-9b11-2f07fb034dc4.pdf",
+        "document_path": "",
         "document_type": 0,
         "document_type_for": "1"
       },
       {
         "id": 10,
         "booking_assiged_resources_mapping_id": 9,
-        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/document/2022/10/17/f2ca4468-1384-4380-94fe-7ff8209d138e.pdf",
+        "document_path": "",
         "document_type": 0,
         "document_type_for": "1"
       },
       {
         "id": 18,
         "booking_assiged_resources_mapping_id": 9,
-        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/booking/document/2022/10/17/664c7637-21ae-4376-8cd9-1162db6b7821.png",
+        "document_path": "",
         "document_type": 1,
         "document_type_for": "2"
       },
       {
         "id": 20,
         "booking_assiged_resources_mapping_id": 9,
-        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/booking/document/2022/10/17/78a86427-112b-499b-b09a-2c79f6d15cbf.png",
+        "document_path": "",
         "document_type": 1,
         "document_type_for": "2"
       },
       {
         "id": 21,
         "booking_assiged_resources_mapping_id": 9,
-        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/booking/document/2022/10/17/2474c2a7-1dc6-4d6f-9e76-581490a69d0c.png",
+        "document_path": "",
         "document_type": 1,
         "document_type_for": "2"
       },
       {
         "id": 22,
         "booking_assiged_resources_mapping_id": 9,
-        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/booking/document/2022/10/17/27540810-5dd8-4734-8a92-c57810fd6722.png",
+        "document_path": "",
         "document_type": 1,
         "document_type_for": "2"
       },
       {
         "id": 23,
         "booking_assiged_resources_mapping_id": 9,
-        "document_path": "https://qb-innocirc-backups.s3.ap-south-1.amazonaws.com/dev/92/document/2022/10/17/6767419d-3277-441a-a447-3b57fec71c03.pdf",
+        "document_path": "",
         "document_type": 0,
         "document_type_for": "1"
       }

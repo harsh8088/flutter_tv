@@ -14,7 +14,7 @@ class ApiProvider {
   // final String _baseUrl = Constants.baseUrl;
 
   //FOR UAT
-  // final String _baseUrl = "https://uat.rfh.spapi.myhealthcare.co/api/v1/spa/";
+  // final String _baseUrl = "https://";
 
   Future<dynamic> get(String url) async {
     try {

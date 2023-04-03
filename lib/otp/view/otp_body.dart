@@ -39,7 +39,7 @@ class OtpBody extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(4.0),
-            child: Image.asset('assets/images/ic_sps_logo.png',
+            child: Image.asset('assets/images/ic_app_logo.png',
                 height: 65, fit: BoxFit.cover),
           ),
           const Spacer(),
@@ -65,7 +65,7 @@ class OtpBody extends StatelessWidget {
           const Spacer(),
           Padding(
             padding: const EdgeInsets.all(4.0),
-            child: Image.asset('assets/images/ic_mhc_logo.png',
+            child: Image.asset('assets/images/ic_app_logo.png',
                 height: 50, fit: BoxFit.cover),
           ),
           const SizedBox(

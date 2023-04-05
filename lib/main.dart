@@ -1,12 +1,10 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tv/token/token.dart';
-import 'package:http/http.dart' as http;
 
 import 'config/constants.dart';
 import 'doctor/doctor.dart';
@@ -71,86 +69,5 @@ class MyApp extends StatelessWidget {
         '/nurse': (context) => const NurseScreen(),
       },
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  bool isRunning = false;
-
-  @override
-  void initState() {
-    super.initState();
-    startObservers();
-  }
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Future<void> startObservers() async {
-    Timer.periodic(const Duration(seconds: 6), (Timer t) => fetchData(123));
-  }
-
-  Future<dynamic> fetchData(int? bookingID) async {
-    try {
-      final uri = Uri.parse(
-          '/display-tv');
-      var mHeaders = {
-        'Content-Type': 'application/json',
-      };
-      var body = {"device_id": "433712723cdb9f13f9"};
-      var mbody = json.encode(body);
-      // await Future.delayed(Duration(seconds: 2));
-      final response = await http.post(uri, headers: mHeaders, body: mbody);
-      print('>req.url:$uri');
-      print('headers: ${mHeaders.toString()}');
-      print('>req.body:${mbody.toString()}');
-      print('<-- body: ${response.statusCode} , ${response.body}');
-      var resDecode = json.decode(response.body);
-      if (response.statusCode >= 200 && response.statusCode < 300) {
-        if (resDecode['status'] == true) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    } catch (_) {
-      print(_.toString());
-      return false;
-    }
   }
 }

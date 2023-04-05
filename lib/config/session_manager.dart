@@ -2,11 +2,8 @@ import 'dart:async';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+/// Instantiation of the SharedPreferences library
 class SessionManager {
-  /// Instantiation of the SharedPreferences library
-  /// UserInfo
-  static const String KEY_LOGIN_USER = "LoginUser";
-
   Future<void> setNurseToken(String key, int value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt(key, value);

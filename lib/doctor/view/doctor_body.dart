@@ -16,6 +16,12 @@ class DoctorBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("width");
+    print(MediaQuery.of(context).size.width);
+    print("updatedWidth");
+    print(MediaQuery.of(context).size.width * 0.33 * 2);
+    var sWidth = MediaQuery.of(context).size.width;
+
     return BlocConsumer<DoctorBloc, DoctorState>(listener: (context, state) {
       // if (state is SuccessState) {
       //   if (state.isPinAvailable)
@@ -58,7 +64,7 @@ class DoctorBody extends StatelessWidget {
                               child: Container(
                                 width: double.infinity,
                                 color: ColorConstants.battleshipGrey,
-                                child: ListView(
+                                child: state.data.isNotEmpty?ListView(
                                   children: [
                                     Column(
                                       children: [
@@ -68,16 +74,17 @@ class DoctorBody extends StatelessWidget {
                                             height: 70,
                                             fit: BoxFit.cover),
                                         const SizedBox(height: 10),
-                                        const Text("Dr. Test Doctor",
+                                        Text(
+                                            state.data[0].doctors![0].firstName!,
                                             textAlign: TextAlign.center,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 24,
                                                 color: Colors.white)),
-                                        const Text(
-                                            "Urology & Renal Transplant Surgery",
+                                        Text(
+                                            '${state.data[0].doctors![0].specialities?.join(', ')}',
                                             textAlign: TextAlign.center,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: 22,
                                                 color: Colors.white)),
@@ -88,9 +95,10 @@ class DoctorBody extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            const Text("9 AM - 11 AM",
+                                            Text(
+                                                '${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.startTime)} - ${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.endTime)}',
                                                 textAlign: TextAlign.center,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 21,
                                                     color: Colors.white)),
@@ -131,24 +139,24 @@ class DoctorBody extends StatelessWidget {
                                       ],
                                     )
                                   ],
-                                ),
+                                ):SizedBox(),
                               ),
                             ),
                             Expanded(
                               flex: 3,
                               child: ListView(
-                                children: const [
-                                  SizedBox(
+                                children: [
+                                  const SizedBox(
                                     height: 10,
                                   ),
-                                  Text("In Progress",
+                                  const Text("In Progress",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 24,
                                           color: ColorConstants
                                               .titleHeaderYellow)),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   Text("A 0034",
@@ -160,14 +168,18 @@ class DoctorBody extends StatelessWidget {
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  Expanded(
-                                    child: Text(
-                                        "Patient Name Patient Name Patient Name",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 23,
-                                            color: Colors.white)),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                            "Patient Name Patient Name Patient Name",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 23,
+                                                color: Colors.white)),
+                                      ),
+                                    ],
                                   )
                                 ],
                               ),
@@ -178,89 +190,75 @@ class DoctorBody extends StatelessWidget {
                       flex: 4,
                       child: Column(
                         children: [
-                          Container(
-                            height: 40,
-                            color: ColorConstants.battleshipGrey,
-                            child: Row(children: const [
-                              Expanded(
-                                flex: 2,
-                                child: SizedBox(),
-                              ),
-                              Text('Token',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 24,
-                                      color: Colors.white)),
-                              Expanded(
-                                flex: 3,
-                                child: SizedBox(),
-                              ),
-                              Text('Patient Name',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 24,
-                                      color: Colors.white)),
-                              Expanded(
-                                flex: 2,
-                                child: SizedBox(),
-                              ),
-                              Text('Status',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 24,
-                                      color: Colors.white)),
-                              Expanded(
-                                flex: 2,
-                                child: SizedBox(),
-                              ),
-                            ]),
-                          ),
-                          Expanded(
-                              child: ListView.separated(
-                            padding: const EdgeInsets.all(0),
-                            itemCount: 7,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Container(
-                                height: 40,
-                                child: Row(children: [
-                                  const Expanded(
-                                    flex: 2,
-                                    child: SizedBox(),
-                                  ),
-                                  Text('Token $index',
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 24,
-                                          color: ColorConstants.brownishGrey2)),
-                                  const Expanded(
-                                    flex: 3,
-                                    child: SizedBox(),
-                                  ),
-                                  Text('Patient Name $index',
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 24,
-                                          color: ColorConstants.brownishGrey2)),
-                                  const Expanded(
-                                    flex: 2,
-                                    child: SizedBox(),
-                                  ),
-                                  Text('Status $index',
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 24,
-                                          color: ColorConstants.brownishGrey2)),
-                                  const Expanded(
-                                    flex: 2,
-                                    child: SizedBox(),
-                                  ),
-                                ]),
-                              );
-                            },
-                            separatorBuilder:
-                                (BuildContext context, int index) =>
-                                    const Divider(),
-                          ))
+                          _buildTokensHeader(sWidth),
+                          state.data.isNotEmpty
+                              ? Expanded(
+                                  child: ListView.separated(
+                                  padding: const EdgeInsets.all(0),
+                                  itemCount: state.data[0].doctors![0].tokens
+                                              ?.length !=
+                                          null
+                                      ? state.data[0].doctors![0].tokens!.length
+                                      : 0,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return SizedBox(
+                                      height: 40,
+                                      child: Row(children: [
+                                        Container(
+                                          width: sWidth * 0.66 * 0.03,
+                                        ),
+                                        SizedBox(
+                                          width: sWidth * 0.66 * 0.30,
+                                          child: Text(
+                                              '${state.data[0].doctors![0].tokens![index].token}',
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 24,
+                                                  color: ColorConstants
+                                                      .brownishGrey2)),
+                                        ),
+                                        SizedBox(
+                                          width: sWidth * 0.66 * 0.42,
+                                          child: Text(
+                                              '${state.data[0].doctors![0].tokens![index].patientName}',
+                                              style: const TextStyle(
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 24,
+                                                  color: ColorConstants
+                                                      .brownishGrey2)),
+                                        ),
+                                        SizedBox(
+                                          width: sWidth * 0.66 * 0.25,
+                                          child: Text(
+                                              state
+                                                          .data[0]
+                                                          .doctors![0]
+                                                          .tokens![index]
+                                                          .calledFlag ==
+                                                      0
+                                                  ? 'InQueue'
+                                                  : 'InProgress',
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 24,
+                                                  color: ColorConstants
+                                                      .brownishGrey2)),
+                                        ),
+                                        // const Expanded(
+                                        //   flex: 2,
+                                        //   child: SizedBox(),
+                                        // ),
+                                      ]),
+                                    );
+                                  },
+                                  separatorBuilder:
+                                      (BuildContext context, int index) =>
+                                          const Divider(),
+                                ))
+                              : const SizedBox()
                         ],
                       ),
                     ),
@@ -367,6 +365,42 @@ class DoctorBody extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  _buildTokensHeader(double sWidth) {
+    return Container(
+      height: 40,
+      color: ColorConstants.battleshipGrey,
+      child: Row(children: [
+        Container(
+          width: sWidth * 0.66 * 0.03,
+        ),
+        SizedBox(
+          width: sWidth * 0.66 * 0.30,
+          child: const Text('Token',
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 24,
+                  color: Colors.white)),
+        ),
+        SizedBox(
+          width: sWidth * 0.66 * 0.42,
+          child: const Text('Patient Name',
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 24,
+                  color: Colors.white)),
+        ),
+        SizedBox(
+          width: sWidth * 0.66 * 0.25,
+          child: const Text('Status',
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 24,
+                  color: Colors.white)),
+        ),
+      ]),
     );
   }
 }

@@ -19,7 +19,7 @@ class OtpBody extends StatelessWidget {
         // Navigator.pushNamedAndRemoveUntil(
         //     context, "/doctor", (Route route) => false);
         Navigator.pushNamedAndRemoveUntil(
-            context, "/nurse", (Route route) => false);
+            context, "/doctor", (Route route) => false);
       }
       if (state.status == OtpStatus.isFalse) {
         Timer(const Duration(seconds: 6), () {

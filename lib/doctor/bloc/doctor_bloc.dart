@@ -1,3 +1,8 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tv/doctor/bloc/doctor_state.dart';
 import 'package:formz/formz.dart';
@@ -27,10 +32,18 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
       final response = await repository.getDisplayServices(
           deviceId: Constants.deviceID, deviceModel: Constants.deviceModel);
       print(response);
-      final otpResponse = DoctorResponse.fromJson(response);
+      // final otpResponse = DoctorResponse.fromJson(response);
+      final otpResponse = await getDummyData();
+
       emit(state.copyWith(status: FormzStatus.pure, data: [otpResponse]));
     } catch (_) {
       print(_.toString());
     }
+  }
+
+  Future<DoctorResponse> getDummyData() async {
+    String data = await rootBundle.loadString("assets/doctor_list_new.json");
+    var map = jsonDecode(data);
+    return DoctorResponse.fromJson(map);
   }
 }

@@ -50,4 +50,19 @@ class AppUtils {
       return "";
     }
   }
+
+
+
+  //input: 09:00:00 HH:mm:ss
+  static String? getDoctorTimeDate(String? dateString) {
+    try {
+      var inputFormat = DateFormat('HH:mm:ss');
+      var date1 = inputFormat.parse('$dateString');
+      var outputFormat = DateFormat('h:mm a');
+      return outputFormat.format(date1);
+    } catch (_) {
+      print(_.toString());
+      return dateString;
+    }
+  }
 }

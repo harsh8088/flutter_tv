@@ -16,6 +16,6 @@ class DoctorScreen extends StatelessWidget {
             create: (context) => DoctorBloc(
                   repository: MyRequestRepository(),
                 )..add(const DoctorFetchEvent()),
-            child: DoctorBody()));
+            child: const DoctorBody()));
   }
 }

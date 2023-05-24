@@ -36,13 +36,13 @@ class NurseBloc extends Bloc<NurseEvent, NurseState> {
       for (var token in services) {
         if (token.calledFlag == 1) {
           var sharedIdValue =
-          await SessionManager().getNurseToken(token.id.toString());
+              await SessionManager().getNurseToken(token.id.toString());
           if (sharedIdValue == null) {
             //add token in ls
-            await SessionManager().setNurseToken(
-                token.id.toString(), token.id!);
             await SessionManager()
-                .setNurseToken("${token.id}_${token.calledTokenCount}",
+                .setNurseToken(token.id.toString(), token.id!);
+            await SessionManager().setNurseToken(
+                "${token.id}_${token.calledTokenCount}",
                 token.calledTokenCount!);
             blinkMap[token.id.toString()] = token.id!;
             play = true;
@@ -51,32 +51,32 @@ class NurseBloc extends Bloc<NurseEvent, NurseState> {
                 .getNurseToken("${token.id}_${token.calledTokenCount}");
             if (tokenCalledValue != null &&
                 tokenCalledValue != token.calledTokenCount) {
-              await SessionManager()
-                  .setNurseToken("${token.id}_${token.calledTokenCount}",
+              await SessionManager().setNurseToken(
+                  "${token.id}_${token.calledTokenCount}",
                   token.calledTokenCount!);
               blinkMap[token.id.toString()] = token.id!;
               play = true;
             }
           }
-        }
-        else
-          {
-            var sharedIdValue=await SessionManager().getNurseToken(token.id.toString());
-            if(sharedIdValue!=null)
-              {
-                await SessionManager().removeNurseToken(token.id.toString());
-              }
-
+        } else {
+          var sharedIdValue =
+              await SessionManager().getNurseToken(token.id.toString());
+          if (sharedIdValue != null) {
+            await SessionManager().removeNurseToken(token.id.toString());
           }
-      }
-      if(services.length>=14)
-        {
-         services.sublist(0,13);
         }
+      }
+      if (services.length >= 14) {
+        services.sublist(0, 13);
+      }
 
       // perform actions on response
 
-      emit(state.copyWith(status: FormzStatus.pure, data: [otpResponse],services:services,isPlay:play));
+      emit(state.copyWith(
+          status: FormzStatus.pure,
+          data: [otpResponse],
+          services: services,
+          isPlay: play));
     } catch (_) {
       print(_.toString());
       emit(state.copyWith(status: FormzStatus.pure));

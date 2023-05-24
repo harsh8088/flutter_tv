@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
+
 import '../model/nurse_response.dart';
 
 class NurseState extends Equatable {

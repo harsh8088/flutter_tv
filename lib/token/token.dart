@@ -16,6 +16,6 @@ class TokenScreen extends StatelessWidget {
             create: (context) => TokenBloc(
                   repository: MyRequestRepository(),
                 )..add(const TokenFetchEvent()),
-            child: TokenBody()));
+            child: const TokenBody()));
   }
 }

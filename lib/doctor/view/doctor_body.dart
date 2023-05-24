@@ -64,82 +64,94 @@ class DoctorBody extends StatelessWidget {
                               child: Container(
                                 width: double.infinity,
                                 color: ColorConstants.battleshipGrey,
-                                child: state.data.isNotEmpty?ListView(
-                                  children: [
-                                    Column(
-                                      children: [
-                                        const SizedBox(height: 10),
-                                        Image.asset(
-                                            'assets/images/ic_mhc_logo.png',
-                                            height: 70,
-                                            fit: BoxFit.cover),
-                                        const SizedBox(height: 10),
-                                        Text(
-                                            state.data[0].doctors![0].firstName!,
-                                            textAlign: TextAlign.center,
-                                            style: const TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 24,
-                                                color: Colors.white)),
-                                        Text(
-                                            '${state.data[0].doctors![0].specialities?.join(', ')}',
-                                            textAlign: TextAlign.center,
-                                            style: const TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 22,
-                                                color: Colors.white)),
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                                '${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.startTime)} - ${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.endTime)}',
-                                                textAlign: TextAlign.center,
-                                                style: const TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 21,
-                                                    color: Colors.white)),
-                                            const SizedBox(
-                                              width: 15,
-                                            ),
-                                            Container(
-                                              width: 70,
-                                              decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          25)),
-                                              child: const Center(
-                                                child: Padding(
-                                                  padding: EdgeInsets.only(
-                                                      top: 4.0, bottom: 4.0),
-                                                  child: Text("OUT",
-                                                      style: TextStyle(
+                                child: state.data.isNotEmpty
+                                    ? ListView(
+                                        children: [
+                                          Column(
+                                            children: [
+                                              const SizedBox(height: 10),
+                                              Image.asset(
+                                                  'assets/images/ic_mhc_logo.png',
+                                                  height: 70,
+                                                  fit: BoxFit.cover),
+                                              const SizedBox(height: 10),
+                                              Text(
+                                                  state.data[0].doctors![0]
+                                                      .firstName!,
+                                                  textAlign: TextAlign.center,
+                                                  style: const TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 24,
+                                                      color: Colors.white)),
+                                              Text(
+                                                  '${state.data[0].doctors![0].specialities?.join(', ')}',
+                                                  textAlign: TextAlign.center,
+                                                  style: const TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontSize: 22,
+                                                      color: Colors.white)),
+                                              const SizedBox(
+                                                height: 10,
+                                              ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                      '${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.startTime)} - ${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.endTime)}',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: const TextStyle(
                                                           fontWeight:
                                                               FontWeight.bold,
-                                                          fontSize: 20,
-                                                          color: Colors.green)),
-                                                ),
+                                                          fontSize: 21,
+                                                          color: Colors.white)),
+                                                  const SizedBox(
+                                                    width: 15,
+                                                  ),
+                                                  Container(
+                                                    width: 70,
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.white,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(25)),
+                                                    child: const Center(
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                top: 4.0,
+                                                                bottom: 4.0),
+                                                        child: Text("OUT",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 20,
+                                                                color: Colors
+                                                                    .green)),
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
                                               ),
-                                            )
-                                          ],
-                                        ),
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        const Text("Room 11",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 25,
-                                                color: Colors.white)),
-                                      ],
-                                    )
-                                  ],
-                                ):SizedBox(),
+                                              const SizedBox(
+                                                height: 10,
+                                              ),
+                                              const Text("Room 11",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 25,
+                                                      color: Colors.white)),
+                                            ],
+                                          )
+                                        ],
+                                      )
+                                    : SizedBox(),
                               ),
                             ),
                             Expanded(

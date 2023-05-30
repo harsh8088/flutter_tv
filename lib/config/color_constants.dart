@@ -44,6 +44,5 @@ class ColorConstants {
   static const bottomMhcColor = Color(0xFFf0efef);
   static const greyishBrown2 = Color(0xFF444444);
 
-
-  static const battleshipGrey=Color(0xFF67717d);
+  static const battleshipGrey = Color(0xFF67717d);
 }

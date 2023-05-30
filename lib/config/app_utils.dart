@@ -51,8 +51,6 @@ class AppUtils {
     }
   }
 
-
-
   //input: 09:00:00 HH:mm:ss
   static String? getDoctorTimeDate(String? dateString) {
     try {

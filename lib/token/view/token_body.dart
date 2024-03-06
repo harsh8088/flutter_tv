@@ -1,9 +1,12 @@
 import 'dart:async';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tv/config/app_utils.dart';
 import 'package:flutter_tv/config/color_constants.dart';
+import 'package:flutter_tv/token/view/token_drop_down.dart';
+import 'package:flutter_tv/token/view/token_item.dart';
 import 'package:formz/formz.dart';
 import 'package:marquee/marquee.dart';
 
@@ -12,11 +15,21 @@ import '../bloc/token_event.dart';
 import '../bloc/token_state.dart';
 
 class TokenBody extends StatelessWidget {
-  const TokenBody({super.key});
+  const TokenBody({super.key, required this.screen});
+
+  final String screen;
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<TokenBloc, TokenState>(listener: (context, state) {
+    print("width");
+    print(MediaQuery.of(context).size.width);
+    print("updatedWidth");
+    print(MediaQuery.of(context).size.width * 0.33 * 2);
+    var sWidth = MediaQuery.of(context).size.width;
+    AudioPlayer audioPlayer = AudioPlayer();
+
+    return BlocConsumer<TokenBloc, TokenState>(
+        listener: (context, state) async {
       // if (state is SuccessState) {
       //   if (state.isPinAvailable)
       //     Navigator.pushNamed(context, "/login-pin").then((value) => _refreshState());
@@ -31,9 +44,20 @@ class TokenBody extends StatelessWidget {
         //NurseTokens
         return;
       }
+      if (state.isPlay) {
+        // await audioPlayer.play(AssetSource('token_audio.mp3'),
+        //     mode: PlayerMode.lowLatency);
+        // audioPlayer.dispose();
+        print("isPlayAudio");
+      }
       if (state.data.isNotEmpty && state.status == FormzStatus.pure) {
         Timer(const Duration(seconds: 6), () {
-          BlocProvider.of<TokenBloc>(context).add(const TokenFetchEvent());
+          if (screen == 'token') {
+            BlocProvider.of<TokenBloc>(context).add(const TokenFetchEvent());
+          } else {
+            BlocProvider.of<TokenBloc>(context)
+                .add(const AllTokensFetchEvent());
+          }
         });
         return;
       }
@@ -50,68 +74,76 @@ class TokenBody extends StatelessWidget {
                   children: [
                     Container(
                       height: 40,
-                      color: ColorConstants.titleHeaderYellow,
-                      child: Row(children: const [
-                        Expanded(
-                          flex: 2,
-                          child: SizedBox(),
+                      color: ColorConstants.titleHeader,
+                      child: Row(children: [
+                        SizedBox(width: sWidth * 0.20),
+                        SizedBox(
+                          width: sWidth * .35,
+                          child: const Text('Counter No',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 24,
+                                  color: Colors.white)),
                         ),
-                        Text('Counter No',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 24,
-                                color: ColorConstants.greyishBrown2)),
-                        Expanded(
-                          flex: 3,
-                          child: SizedBox(),
+                        SizedBox(
+                          width: sWidth * 0.05,
                         ),
-                        Text('Calling Token',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 24,
-                                color: ColorConstants.greyishBrown2)),
-                        Expanded(
-                          flex: 2,
-                          child: SizedBox(),
+                        SizedBox(
+                          width: sWidth * .35,
+                          child: const Text('Calling Token',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 24,
+                                  color: Colors.white)),
                         ),
+                        SizedBox(width: sWidth * 0.05),
                       ]),
                     ),
-                    Expanded(
-                        child: ListView.separated(
-                      padding: const EdgeInsets.all(0),
-                      itemCount: 7,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          height: 40,
-                          child: Row(children: [
-                            const Expanded(
-                              flex: 2,
-                              child: SizedBox(),
-                            ),
-                            Text('Counter $index',
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 24,
-                                    color: ColorConstants.brownishGrey2)),
-                            const Expanded(
-                              flex: 3,
-                              child: SizedBox(),
-                            ),
-                            Text('Token $index',
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 24,
-                                    color: ColorConstants.brownishGrey2)),
-                            const Expanded(
-                              flex: 2,
-                              child: SizedBox(),
-                            ),
-                          ]),
-                        );
-                      },
-                      separatorBuilder: (BuildContext context, int index) =>
-                          const Divider(),
-                    ))
+                    TokenItem(),
+                    const Divider()
+                    // Expanded(
+                    //     child: ListView.separated(
+                    //   padding: const EdgeInsets.all(0),
+                    //   itemCount: state.tokens.length,
+                    //   itemBuilder: (BuildContext context, int index) {
+                    //     if (state.tokens[index].id == 5260 ||
+                    //         state.tokens[index].id == 5264) {
+                    //       return SizedBox(
+                    //           height: 40,
+                    //           child: BlinkToken(
+                    //               index: index,
+                    //               counter: '${state.tokens[index].counter}',
+                    //               token: '${state.tokens[index].token}'));
+                    //     } else {
+                    //       return SizedBox(
+                    //         height: 40,
+                    //         child: Row(children: [
+                    //           SizedBox(width: sWidth * 0.20),
+                    //           SizedBox(
+                    //             width: sWidth * .35,
+                    //             child: Text('${state.tokens[index].counter}',
+                    //                 style: const TextStyle(
+                    //                     fontWeight: FontWeight.w500,
+                    //                     fontSize: 24,
+                    //                     color: ColorConstants.brownishGrey2)),
+                    //           ),
+                    //           SizedBox(width: sWidth * 0.05),
+                    //           SizedBox(
+                    //               width: sWidth * .35,
+                    //               child: Text('${state.tokens[index].token}',
+                    //                   style: const TextStyle(
+                    //                       fontWeight: FontWeight.w500,
+                    //                       fontSize: 24,
+                    //                       color:
+                    //                           ColorConstants.brownishGrey2))),
+                    //           SizedBox(width: sWidth * 0.05),
+                    //         ]),
+                    //       );
+                    //     }
+                    //   },
+                    //   separatorBuilder: (BuildContext context, int index) =>
+                    //       const Divider(),
+                    // ))
                   ],
                 )),
           ),
@@ -138,6 +170,11 @@ class TokenBody extends StatelessWidget {
                 fontSize: 24,
                 color: ColorConstants.brownishGrey)),
         const Spacer(),
+        // const DropDownWidget(data: Constants.tokenType, screen: "token"),
+        const TokenDropDown(),
+        const SizedBox(
+          width: 10,
+        ),
         Text('${AppUtils.getCurrentTime()}',
             style: const TextStyle(
                 fontWeight: FontWeight.bold,
@@ -170,10 +207,10 @@ class TokenBody extends StatelessWidget {
         Expanded(
           child: Container(
               height: 60,
-              color: ColorConstants.slateTwo,
+              color: ColorConstants.titleHeader,
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: const EdgeInsets.only(left: 2.0, right: 2.0),
+                padding: const EdgeInsets.only(left: 6.0, right: 2.0),
                 child: Marquee(
                   text:
                       'For a missed token number, please inform at billing counter and wait, you will be called shortly.',
@@ -218,3 +255,92 @@ class TokenBody extends StatelessWidget {
     );
   }
 }
+
+// class BlinkToken extends StatefulWidget {
+//   const BlinkToken(
+//       {required this.index,
+//       required this.counter,
+//       required this.token,
+//       Key? key})
+//       : super(key: key);
+//
+//   final int index;
+//   final String counter;
+//   final String token;
+//
+//   @override
+//   State<BlinkToken> createState() => _BlinkTokenState();
+// }
+//
+// class _BlinkTokenState extends State<BlinkToken>
+//     with SingleTickerProviderStateMixin {
+//   late final AnimationController animationController;
+//   Timer? timer;
+//   AudioPlayer audioPlayer = AudioPlayer();
+//   bool isPlaying = false;
+//
+//   Future<void> startAnimation() async {
+//     // after the scroll animation finishes, start the blinking
+//     animationController.repeat(reverse: true);
+//     // the duration of the blinking
+//     timer = Timer(const Duration(seconds: 3), () {
+//       setState(() {
+//         animationController.stop();
+//         timer?.cancel();
+//       });
+//     });
+//
+//     await audioPlayer.play(AssetSource('token_audio.mp3'),
+//         mode: PlayerMode.lowLatency);
+//   }
+//
+//   @override
+//   void initState() {
+//     animationController = AnimationController(
+//       vsync: this,
+//       duration: const Duration(milliseconds: 600),
+//     );
+//     WidgetsBinding.instance!.addPostFrameCallback((_) => startAnimation());
+//     super.initState();
+//   }
+//
+//   @override
+//   void dispose() {
+//     timer?.cancel();
+//     animationController.dispose();
+//     audioPlayer.dispose();
+//     super.dispose();
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     var sWidth = MediaQuery.of(context).size.width;
+//     return FittedBox(
+//         child: FadeTransition(
+//       opacity: Tween<double>(
+//         begin: 0.3,
+//         end: 1.0,
+//       ).animate(animationController),
+//       child: Row(children: [
+//         SizedBox(width: sWidth * 0.20),
+//         SizedBox(
+//           width: sWidth * .35,
+//           child: Text(widget.counter,
+//               style: const TextStyle(
+//                   fontWeight: FontWeight.w500,
+//                   fontSize: 24,
+//                   color: ColorConstants.brownishGrey2)),
+//         ),
+//         SizedBox(width: sWidth * 0.05),
+//         SizedBox(
+//             width: sWidth * .35,
+//             child: Text(widget.token,
+//                 style: const TextStyle(
+//                     fontWeight: FontWeight.w500,
+//                     fontSize: 24,
+//                     color: ColorConstants.brownishGrey2))),
+//         SizedBox(width: sWidth * 0.05),
+//       ]),
+//     ));
+//   }
+// }

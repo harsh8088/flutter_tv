@@ -6,14 +6,13 @@ import 'package:flutter_tv/config/app_utils.dart';
 import 'package:flutter_tv/config/color_constants.dart';
 import 'package:flutter_tv/doctor/bloc/doctor_event.dart';
 import 'package:flutter_tv/doctor/bloc/doctor_state.dart';
-import 'package:flutter_tv/doctor/view/doctor_drop_down.dart';
 import 'package:formz/formz.dart';
 import 'package:marquee/marquee.dart';
 
 import '../bloc/doctor_bloc.dart';
 
-class DoctorBody extends StatelessWidget {
-  const DoctorBody({super.key});
+class DoctorThreeBody extends StatelessWidget {
+  const DoctorThreeBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -167,7 +166,8 @@ class DoctorBody extends StatelessWidget {
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 24,
-                                          color: ColorConstants.titleHeader)),
+                                          color: ColorConstants
+                                              .titleHeader)),
                                   const SizedBox(
                                     height: 10,
                                   ),
@@ -299,8 +299,6 @@ class DoctorBody extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 fontSize: 24,
                 color: ColorConstants.brownishGrey)),
-        const Spacer(),
-        const DoctorDropDown(),
         const Spacer(),
         Text('${AppUtils.getCurrentTime()}',
             style: const TextStyle(

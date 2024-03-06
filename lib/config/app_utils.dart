@@ -63,4 +63,17 @@ class AppUtils {
       return dateString;
     }
   }
+
+  static String getRouteName(int? displayType) {
+    switch (displayType) {
+      case 2:
+        return '/doctor';
+      case 3:
+        return '/token';
+      case 4:
+        return '/nurse';
+      default:
+        return '/token';
+    }
+  }
 }

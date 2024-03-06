@@ -37,4 +37,7 @@ class Constants {
   static String privacyPolicy = "";
 
   static String phone = "";
+
+  static String keyCounters = "counters";
+  static String keyTokens = "tokens";
 }

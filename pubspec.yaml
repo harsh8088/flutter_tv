@@ -20,7 +20,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.5 <3.0.0'
+  sdk: '>=3.3.0 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -41,7 +41,7 @@ dependencies:
   shared_preferences: ^2.0.15
   device_info_plus: ^8.0.0
   marquee: ^2.2.3
-  audioplayers: ^3.0.1
+  audioplayers: ^5.2.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -71,8 +71,13 @@ flutter:
 
   assets:
     - assets/images/ic_sps_logo.png
+    - assets/images/ic_app_logo.png
     - assets/images/ic_mhc_logo.png
     - assets/audios/
+    - assets/doctor_list_new.json
+    - assets/counter_list.json
+    - assets/token_audio.mp3
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:

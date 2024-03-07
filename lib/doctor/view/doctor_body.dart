@@ -100,15 +100,20 @@ class DoctorBody extends StatelessWidget {
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
                                                 children: [
-                                                  Text(
-                                                      '${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.startTime)} - ${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.endTime)}',
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: const TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 21,
-                                                          color: Colors.white)),
+                                                  Flexible(
+                                                    child: Text(
+                                                        '${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.startTime)} - ${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.endTime)}',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style: const TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 21,
+                                                            color:
+                                                                Colors.white)),
+                                                  ),
                                                   const SizedBox(
                                                     width: 15,
                                                   ),
@@ -152,23 +157,23 @@ class DoctorBody extends StatelessWidget {
                                           )
                                         ],
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
                               ),
                             ),
                             Expanded(
                               flex: 3,
                               child: ListView(
-                                children: [
-                                  const SizedBox(
+                                children: const [
+                                  SizedBox(
                                     height: 10,
                                   ),
-                                  const Text("In Progress",
+                                  Text("In Progress",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 24,
                                           color: ColorConstants.titleHeader)),
-                                  const SizedBox(
+                                  SizedBox(
                                     height: 10,
                                   ),
                                   Text("A 0034",
@@ -287,23 +292,28 @@ class DoctorBody extends StatelessWidget {
   _buildHeader(DoctorState state) {
     return Row(
       children: [
-        SizedBox(
-            child: Padding(
+        Padding(
           padding: const EdgeInsets.all(4.0),
           child: Image.asset('assets/images/ic_sps_logo.png',
               height: 40, fit: BoxFit.cover),
-        )),
+        ),
         const Spacer(),
-        const Text("Doctor One",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-                color: ColorConstants.brownishGrey)),
+        const Expanded(
+          child: Text("Doctor One",
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: ColorConstants.brownishGrey)),
+        ),
         const Spacer(),
         const DoctorDropDown(),
-        const Spacer(),
+        const SizedBox(
+          width: 10,
+        ),
         Text('${AppUtils.getCurrentTime()}',
             style: const TextStyle(
+                overflow: TextOverflow.ellipsis,
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
                 color: ColorConstants.brownishGrey)),

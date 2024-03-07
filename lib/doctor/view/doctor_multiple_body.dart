@@ -10,6 +10,7 @@ import 'package:formz/formz.dart';
 import 'package:marquee/marquee.dart';
 
 import '../bloc/doctor_bloc.dart';
+import 'doctor_drop_down.dart';
 
 class DoctorMultipleBody extends StatelessWidget {
   const DoctorMultipleBody({super.key});
@@ -55,151 +56,6 @@ class DoctorMultipleBody extends StatelessWidget {
                 child: Row(
                   children: [
                     Expanded(
-                        flex: 2,
-                        child: Container(
-                          color: ColorConstants.slateTwo,
-                          child: Column(children: [
-                            Expanded(
-                              flex: 5,
-                              child: Container(
-                                width: double.infinity,
-                                color: ColorConstants.battleshipGrey,
-                                child: state.data.isNotEmpty
-                                    ? ListView(
-                                        children: [
-                                          Column(
-                                            children: [
-                                              const SizedBox(height: 10),
-                                              Image.asset(
-                                                  'assets/images/ic_mhc_logo.png',
-                                                  height: 70,
-                                                  fit: BoxFit.cover),
-                                              const SizedBox(height: 10),
-                                              Text(
-                                                  state.data[0].doctors![0]
-                                                      .firstName!,
-                                                  textAlign: TextAlign.center,
-                                                  style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 24,
-                                                      color: Colors.white)),
-                                              Text(
-                                                  '${state.data[0].doctors![0].specialities?.join(', ')}',
-                                                  textAlign: TextAlign.center,
-                                                  style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontSize: 22,
-                                                      color: Colors.white)),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                      '${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.startTime)} - ${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.endTime)}',
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: const TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 21,
-                                                          color: Colors.white)),
-                                                  const SizedBox(
-                                                    width: 15,
-                                                  ),
-                                                  Container(
-                                                    width: 70,
-                                                    decoration: BoxDecoration(
-                                                        color: Colors.white,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(25)),
-                                                    child: const Center(
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                top: 4.0,
-                                                                bottom: 4.0),
-                                                        child: Text("OUT",
-                                                            style: TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                fontSize: 20,
-                                                                color: Colors
-                                                                    .green)),
-                                                      ),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              const Text("Room 11",
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 25,
-                                                      color: Colors.white)),
-                                            ],
-                                          )
-                                        ],
-                                      )
-                                    : SizedBox(),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 3,
-                              child: ListView(
-                                children: [
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  const Text("In Progress",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 24,
-                                          color: ColorConstants
-                                              .titleHeader)),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text("A 0034",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 26,
-                                          color: Colors.white)),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: Text(
-                                            "Patient Name Patient Name Patient Name",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 23,
-                                                color: Colors.white)),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ]),
-                        )),
-                    Expanded(
-                      flex: 4,
                       child: Column(
                         children: [
                           _buildTokensHeader(sWidth),
@@ -217,13 +73,13 @@ class DoctorMultipleBody extends StatelessWidget {
                                     return SizedBox(
                                       height: 40,
                                       child: Row(children: [
-                                        Container(
-                                          width: sWidth * 0.66 * 0.03,
+                                        SizedBox(
+                                          width: sWidth * 0.05,
                                         ),
                                         SizedBox(
-                                          width: sWidth * 0.66 * 0.30,
+                                          width: sWidth * 0.45,
                                           child: Text(
-                                              '${state.data[0].doctors![0].tokens![index].token}',
+                                              '${state.data[0].doctors![index].firstName} ${state.data[0].doctors![index].lastName}',
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.w500,
                                                   fontSize: 24,
@@ -231,38 +87,44 @@ class DoctorMultipleBody extends StatelessWidget {
                                                       .brownishGrey2)),
                                         ),
                                         SizedBox(
-                                          width: sWidth * 0.66 * 0.42,
-                                          child: Text(
-                                              '${state.data[0].doctors![0].tokens![index].patientName}',
-                                              style: const TextStyle(
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 24,
-                                                  color: ColorConstants
-                                                      .brownishGrey2)),
+                                          width: sWidth * 0.35,
+                                          child: RichText(
+                                            text: TextSpan(children: [
+                                              TextSpan(
+                                                  text:
+                                                      '${state.data[0].doctors![index].tokens![0].token} ',
+                                                  style: const TextStyle(
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontSize: 24,
+                                                      color: ColorConstants
+                                                          .brownishGrey2)),
+                                              TextSpan(
+                                                  text:
+                                                      ' ${state.data[0].doctors![0].tokens![index].calledFlag == 0 ? 'InQueue' : 'InProgress'}',
+                                                  style: const TextStyle(
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 24,
+                                                      color: ColorConstants
+                                                          .brownishGrey2))
+                                            ]),
+                                          ),
                                         ),
                                         SizedBox(
-                                          width: sWidth * 0.66 * 0.25,
+                                          width: sWidth * 0.15,
                                           child: Text(
-                                              state
-                                                          .data[0]
-                                                          .doctors![0]
-                                                          .tokens![index]
-                                                          .calledFlag ==
-                                                      0
-                                                  ? 'InQueue'
-                                                  : 'InProgress',
+                                              '${state.data[0].doctors![index].room?.name}',
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.w500,
                                                   fontSize: 24,
                                                   color: ColorConstants
                                                       .brownishGrey2)),
                                         ),
-                                        // const Expanded(
-                                        //   flex: 2,
-                                        //   child: SizedBox(),
-                                        // ),
                                       ]),
                                     );
                                   },
@@ -278,7 +140,6 @@ class DoctorMultipleBody extends StatelessWidget {
                 )),
           ),
           Container(child: _buildFooter())
-          // _buildFooter()
         ],
       );
     });
@@ -287,21 +148,28 @@ class DoctorMultipleBody extends StatelessWidget {
   _buildHeader(DoctorState state) {
     return Row(
       children: [
-        SizedBox(
-            child: Padding(
+        Padding(
           padding: const EdgeInsets.all(4.0),
           child: Image.asset('assets/images/ic_sps_logo.png',
               height: 40, fit: BoxFit.cover),
-        )),
+        ),
         const Spacer(),
-        const Text("Doctor One",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-                color: ColorConstants.brownishGrey)),
+        const Expanded(
+          child: Text("Doctor Multiple",
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: ColorConstants.brownishGrey)),
+        ),
         const Spacer(),
+        const DoctorDropDown(),
+        const SizedBox(
+          width: 10,
+        ),
         Text('${AppUtils.getCurrentTime()}',
             style: const TextStyle(
+                overflow: TextOverflow.ellipsis,
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
                 color: ColorConstants.brownishGrey)),
@@ -385,11 +253,19 @@ class DoctorMultipleBody extends StatelessWidget {
       height: 40,
       color: ColorConstants.battleshipGrey,
       child: Row(children: [
-        Container(
-          width: sWidth * 0.66 * 0.03,
+        SizedBox(
+          width: sWidth * 0.05,
         ),
         SizedBox(
-          width: sWidth * 0.66 * 0.30,
+          width: sWidth * 0.45,
+          child: const Text('Doctor',
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 24,
+                  color: Colors.white)),
+        ),
+        SizedBox(
+          width: sWidth * 0.35,
           child: const Text('Token',
               style: TextStyle(
                   fontWeight: FontWeight.w500,
@@ -397,16 +273,8 @@ class DoctorMultipleBody extends StatelessWidget {
                   color: Colors.white)),
         ),
         SizedBox(
-          width: sWidth * 0.66 * 0.42,
-          child: const Text('Patient Name',
-              style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 24,
-                  color: Colors.white)),
-        ),
-        SizedBox(
-          width: sWidth * 0.66 * 0.25,
-          child: const Text('Status',
+          width: sWidth * 0.15,
+          child: const Text('Room',
               style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 24,

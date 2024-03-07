@@ -10,6 +10,7 @@ import 'package:formz/formz.dart';
 import 'package:marquee/marquee.dart';
 
 import '../bloc/doctor_bloc.dart';
+import 'doctor_drop_down.dart';
 
 class DoctorThreeBody extends StatelessWidget {
   const DoctorThreeBody({super.key});
@@ -21,6 +22,7 @@ class DoctorThreeBody extends StatelessWidget {
     print("updatedWidth");
     print(MediaQuery.of(context).size.width * 0.33 * 2);
     var sWidth = MediaQuery.of(context).size.width;
+    List<String> widgetList = ['Geeks', 'for', 'Geeks'];
 
     return BlocConsumer<DoctorBloc, DoctorState>(listener: (context, state) {
       // if (state is SuccessState) {
@@ -50,235 +52,226 @@ class DoctorThreeBody extends StatelessWidget {
             child: _buildHeader(state),
           ),
           Expanded(
-            child: Container(
-                color: Colors.white,
-                child: Row(
-                  children: [
-                    Expanded(
-                        flex: 2,
-                        child: Container(
-                          color: ColorConstants.slateTwo,
-                          child: Column(children: [
-                            Expanded(
-                              flex: 5,
-                              child: Container(
-                                width: double.infinity,
-                                color: ColorConstants.battleshipGrey,
-                                child: state.data.isNotEmpty
-                                    ? ListView(
-                                        children: [
-                                          Column(
-                                            children: [
-                                              const SizedBox(height: 10),
-                                              Image.asset(
-                                                  'assets/images/ic_mhc_logo.png',
-                                                  height: 70,
-                                                  fit: BoxFit.cover),
-                                              const SizedBox(height: 10),
-                                              Text(
-                                                  state.data[0].doctors![0]
-                                                      .firstName!,
-                                                  textAlign: TextAlign.center,
-                                                  style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 24,
-                                                      color: Colors.white)),
-                                              Text(
-                                                  '${state.data[0].doctors![0].specialities?.join(', ')}',
-                                                  textAlign: TextAlign.center,
-                                                  style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontSize: 22,
-                                                      color: Colors.white)),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                      '${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.startTime)} - ${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.endTime)}',
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: const TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 21,
-                                                          color: Colors.white)),
-                                                  const SizedBox(
-                                                    width: 15,
-                                                  ),
-                                                  Container(
-                                                    width: 70,
-                                                    decoration: BoxDecoration(
-                                                        color: Colors.white,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(25)),
-                                                    child: const Center(
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                top: 4.0,
-                                                                bottom: 4.0),
-                                                        child: Text("OUT",
-                                                            style: TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                fontSize: 20,
-                                                                color: Colors
-                                                                    .green)),
-                                                      ),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              const Text("Room 11",
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 25,
-                                                      color: Colors.white)),
-                                            ],
-                                          )
-                                        ],
-                                      )
-                                    : SizedBox(),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 3,
-                              child: ListView(
-                                children: [
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  const Text("In Progress",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 24,
-                                          color: ColorConstants
-                                              .titleHeader)),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text("A 0034",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 26,
-                                          color: Colors.white)),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: Text(
-                                            "Patient Name Patient Name Patient Name",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 23,
-                                                color: Colors.white)),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ]),
-                        )),
-                    Expanded(
-                      flex: 4,
-                      child: Column(
+              child: Container(
+            child: GridView.builder(
+              itemCount: 3,
+              itemBuilder: (context, index) => Container(
+                color: ColorConstants.slateTwo,
+                child: Column(children: [
+                  Expanded(
+                    flex: 3,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: state.data.isNotEmpty
+                          ? ListView(
+                              children: [
+                                Column(
+                                  children: [
+                                    const SizedBox(height: 10),
+                                    Text(state.data[0].doctors![0].firstName!,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 24,
+                                            color: Colors.white)),
+                                    Text(
+                                        '${state.data[0].doctors![0].specialities?.join(', ')}',
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 22,
+                                            color: Colors.white)),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    const Text("Room 11",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 25,
+                                            color: Colors.white)),
+                                  ],
+                                )
+                              ],
+                            )
+                          : const SizedBox(),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      color: Colors.white,
+                      child: ListView(
                         children: [
-                          _buildTokensHeader(sWidth),
-                          state.data.isNotEmpty
-                              ? Expanded(
-                                  child: ListView.separated(
-                                  padding: const EdgeInsets.all(0),
-                                  itemCount: state.data[0].doctors![0].tokens
-                                              ?.length !=
-                                          null
-                                      ? state.data[0].doctors![0].tokens!.length
-                                      : 0,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return SizedBox(
-                                      height: 40,
-                                      child: Row(children: [
-                                        Container(
-                                          width: sWidth * 0.66 * 0.03,
-                                        ),
-                                        SizedBox(
-                                          width: sWidth * 0.66 * 0.30,
-                                          child: Text(
-                                              '${state.data[0].doctors![0].tokens![index].token}',
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 24,
-                                                  color: ColorConstants
-                                                      .brownishGrey2)),
-                                        ),
-                                        SizedBox(
-                                          width: sWidth * 0.66 * 0.42,
-                                          child: Text(
-                                              '${state.data[0].doctors![0].tokens![index].patientName}',
-                                              style: const TextStyle(
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 24,
-                                                  color: ColorConstants
-                                                      .brownishGrey2)),
-                                        ),
-                                        SizedBox(
-                                          width: sWidth * 0.66 * 0.25,
-                                          child: Text(
-                                              state
-                                                          .data[0]
-                                                          .doctors![0]
-                                                          .tokens![index]
-                                                          .calledFlag ==
-                                                      0
-                                                  ? 'InQueue'
-                                                  : 'InProgress',
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 24,
-                                                  color: ColorConstants
-                                                      .brownishGrey2)),
-                                        ),
-                                        // const Expanded(
-                                        //   flex: 2,
-                                        //   child: SizedBox(),
-                                        // ),
-                                      ]),
-                                    );
-                                  },
-                                  separatorBuilder:
-                                      (BuildContext context, int index) =>
-                                          const Divider(),
-                                ))
-                              : const SizedBox()
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text("In Progress",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24,
+                                  color: ColorConstants.bottomHeader)),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text("A 0034",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 26,
+                                  color: Colors.white)),
+                          SizedBox(
+                            height: 10,
+                          ),
                         ],
                       ),
                     ),
-                  ],
-                )),
-          ),
+                  ),
+                  const Text("In Queue",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                          color: Colors.white)),
+                  Expanded(
+                    flex: 5,
+                    child: Container(
+                      color: ColorConstants.battleshipGrey,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          physics: const ScrollPhysics(),
+                          padding: const EdgeInsets.all(0),
+                          itemCount: 5,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Text("A 003$index",
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 26,
+                                    color: Colors.white));
+                          }),
+                    ),
+                  ),
+                ]),
+              ),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisSpacing: 3.0,
+                  crossAxisCount: 3,
+                  childAspectRatio: 1),
+            ),
+          )),
+
+          // Expanded(
+          //   child: ListView(
+          //     scrollDirection: Axis.horizontal,
+          //     children: [
+          //       Expanded(
+          //           child: Container(
+          //         color: ColorConstants.slateTwo,
+          //         child: Column(children: [
+          //           Expanded(
+          //             flex: 3,
+          //             child: SizedBox(
+          //               width: double.infinity,
+          //               child: state.data.isNotEmpty
+          //                   ? ListView(
+          //                       children: [
+          //                         Column(
+          //                           children: [
+          //                             const SizedBox(height: 10),
+          //                             Text(state.data[0].doctors![0].firstName!,
+          //                                 textAlign: TextAlign.center,
+          //                                 style: const TextStyle(
+          //                                     fontWeight: FontWeight.bold,
+          //                                     fontSize: 24,
+          //                                     color: Colors.white)),
+          //                             Text(
+          //                                 '${state.data[0].doctors![0].specialities?.join(', ')}',
+          //                                 textAlign: TextAlign.center,
+          //                                 style: const TextStyle(
+          //                                     fontWeight: FontWeight.w500,
+          //                                     fontSize: 22,
+          //                                     color: Colors.white)),
+          //                             const SizedBox(
+          //                               height: 10,
+          //                             ),
+          //                             const Text("Room 11",
+          //                                 textAlign: TextAlign.center,
+          //                                 style: TextStyle(
+          //                                     fontWeight: FontWeight.bold,
+          //                                     fontSize: 25,
+          //                                     color: Colors.white)),
+          //                           ],
+          //                         )
+          //                       ],
+          //                     )
+          //                   : const SizedBox(),
+          //             ),
+          //           ),
+          //           Expanded(
+          //             flex: 2,
+          //             child: Container(
+          //               color: Colors.white,
+          //               child: ListView(
+          //                 children: [
+          //                   const SizedBox(
+          //                     height: 10,
+          //                   ),
+          //                   const Text("In Progress",
+          //                       textAlign: TextAlign.center,
+          //                       style: TextStyle(
+          //                           fontWeight: FontWeight.bold,
+          //                           fontSize: 24,
+          //                           color: ColorConstants.bottomHeader)),
+          //                   const SizedBox(
+          //                     height: 10,
+          //                   ),
+          //                   Text("A 0034",
+          //                       textAlign: TextAlign.center,
+          //                       style: TextStyle(
+          //                           fontWeight: FontWeight.bold,
+          //                           fontSize: 26,
+          //                           color: Colors.white)),
+          //                   SizedBox(
+          //                     height: 10,
+          //                   ),
+          //                 ],
+          //               ),
+          //             ),
+          //           ),
+          //           const Text("In Queue",
+          //               textAlign: TextAlign.center,
+          //               style: TextStyle(
+          //                   fontWeight: FontWeight.bold,
+          //                   fontSize: 24,
+          //                   color: Colors.white)),
+          //           Expanded(
+          //             flex: 5,
+          //             child: Container(
+          //               color: ColorConstants.battleshipGrey,
+          //               child: ListView.builder(
+          //                   shrinkWrap: true,
+          //                   physics: const ScrollPhysics(),
+          //                   padding: const EdgeInsets.all(0),
+          //                   itemCount: 5,
+          //                   itemBuilder: (BuildContext context, int index) {
+          //                     return Text("A 003$index",
+          //                         textAlign: TextAlign.center,
+          //                         style: const TextStyle(
+          //                             fontWeight: FontWeight.bold,
+          //                             fontSize: 26,
+          //                             color: Colors.white));
+          //                   }),
+          //             ),
+          //           ),
+          //         ]),
+          //       )),
+          //     ],
+          //   ),
+          // ),
+
           Container(child: _buildFooter())
-          // _buildFooter()
         ],
       );
     });
@@ -287,21 +280,28 @@ class DoctorThreeBody extends StatelessWidget {
   _buildHeader(DoctorState state) {
     return Row(
       children: [
-        SizedBox(
-            child: Padding(
+        Padding(
           padding: const EdgeInsets.all(4.0),
           child: Image.asset('assets/images/ic_sps_logo.png',
               height: 40, fit: BoxFit.cover),
-        )),
+        ),
         const Spacer(),
-        const Text("Doctor One",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-                color: ColorConstants.brownishGrey)),
+        const Expanded(
+          child: Text("Doctor Three",
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: ColorConstants.brownishGrey)),
+        ),
         const Spacer(),
+        const DoctorDropDown(),
+        const SizedBox(
+          width: 10,
+        ),
         Text('${AppUtils.getCurrentTime()}',
             style: const TextStyle(
+                overflow: TextOverflow.ellipsis,
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
                 color: ColorConstants.brownishGrey)),

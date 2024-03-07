@@ -33,13 +33,10 @@ class _DoctorDropDownState extends State<DoctorDropDown> {
             return Text('Loading');
           } else {
             return Padding(
-              padding: const EdgeInsets.only(left: 4.0, right: 4.0),
+              padding: const EdgeInsets.only(left: 0.0, right: 0.0),
               child: DropdownButton<String>(
                 value: snapshot.data,
-                underline: Container(
-                  height: 1,
-                  color: Colors.transparent,
-                ),
+                underline: const SizedBox(),
                 icon: const Icon(Icons.arrow_drop_down),
                 elevation: 8,
                 onChanged: (String? value) async {

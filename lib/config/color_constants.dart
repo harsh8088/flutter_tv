@@ -45,4 +45,5 @@ class ColorConstants {
   static const greyishBrown2 = Color(0xFF444444);
 
   static const battleshipGrey = Color(0xFF67717d);
+  static const backgroundColor = Color(0xFFc2c6cb);
 }

@@ -19,7 +19,6 @@ class _DoctorDropDownState extends State<DoctorDropDown> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -30,42 +29,39 @@ class _DoctorDropDownState extends State<DoctorDropDown> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             // Future hasn't finished yet, return a placeholder
-            return Text('Loading');
+            return const Text('Loading');
           } else {
-            return Padding(
-              padding: const EdgeInsets.only(left: 0.0, right: 0.0),
-              child: DropdownButton<String>(
-                value: snapshot.data,
-                underline: const SizedBox(),
-                icon: const Icon(Icons.arrow_drop_down),
-                elevation: 8,
-                onChanged: (String? value) async {
-                  // This is called when the user selects an item.
-                  if (snapshot.data != value) {
-                    SessionManager().setDoctorScreenType(value!);
-                    switch (value) {
-                      case ' Single Doctor':
-                        Navigator.pushNamedAndRemoveUntil(
-                            context, "/doctor", (Route route) => false);
-                        return;
-                      case ' Three Doctors':
-                        Navigator.pushNamedAndRemoveUntil(
-                            context, "/three-doctors", (Route route) => false);
-                        return;
-                      case ' Multiple Doctors':
-                        Navigator.pushNamedAndRemoveUntil(context,
-                            "/multiple-doctors", (Route route) => false);
-                        return;
-                    }
+            return DropdownButton<String>(
+              // value: snapshot.data,
+              underline: const SizedBox(),
+              icon: const Icon(Icons.arrow_drop_down),
+              elevation: 8,
+              onChanged: (String? value) async {
+                // This is called when the user selects an item.
+                if (snapshot.data != value) {
+                  SessionManager().setDoctorScreenType(value!);
+                  switch (value) {
+                    case ' Single Doctor':
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, "/doctor", (Route route) => false);
+                      return;
+                    case ' Three Doctors':
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, "/three-doctors", (Route route) => false);
+                      return;
+                    case ' Multiple Doctors':
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, "/multiple-doctors", (Route route) => false);
+                      return;
                   }
-                },
-                items: list.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              ),
+                }
+              },
+              items: list.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
             );
           }
         });

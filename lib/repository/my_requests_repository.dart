@@ -54,4 +54,24 @@ class MyRequestRepository {
       return e.toString();
     }
   }
+
+  Future<dynamic> getPracticeStatus(
+      {required int hospitalId, required int doctorId}) async {
+    try {
+      var headers = {
+        'Content-Type': 'application/json',
+        'Authorization': Constants.emrAuth,
+      };
+
+      var body = {
+        "hospital_id": hospitalId,
+        "doctor_id": doctorId,
+      };
+      final response =
+          await _provider.post(Constants.practiceStatus, headers, body);
+      return response;
+    } catch (e) {
+      return e.toString();
+    }
+  }
 }

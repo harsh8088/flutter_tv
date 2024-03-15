@@ -47,242 +47,13 @@ class DoctorBody extends StatelessWidget {
     }, builder: (context, state) {
       return Column(
         children: [
-          Container(
-            child: _buildHeader(state),
-          ),
+          _buildHeader(state),
           Expanded(
-            child: Container(
-                color: Colors.white,
-                child: Row(
-                  children: [
-                    Expanded(
-                        flex: 2,
-                        child: Container(
-                          color: ColorConstants.slateTwo,
-                          child: Column(children: [
-                            Expanded(
-                              flex: 5,
-                              child: Container(
-                                width: double.infinity,
-                                color: ColorConstants.battleshipGrey,
-                                child: state.data.isNotEmpty
-                                    ? ListView(
-                                        children: [
-                                          Column(
-                                            children: [
-                                              const SizedBox(height: 10),
-                                              Image.asset(
-                                                  'assets/images/ic_mhc_logo.png',
-                                                  height: 70,
-                                                  fit: BoxFit.cover),
-                                              const SizedBox(height: 10),
-                                              Text(
-                                                  state.data[0].doctors![0]
-                                                      .firstName!,
-                                                  textAlign: TextAlign.center,
-                                                  style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 24,
-                                                      color: Colors.white)),
-                                              Text(
-                                                  '${state.data[0].doctors![0].specialities?.join(', ')}',
-                                                  textAlign: TextAlign.center,
-                                                  style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontSize: 22,
-                                                      color: Colors.white)),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Flexible(
-                                                    child: Text(
-                                                        '${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.startTime)} - ${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.endTime)}',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        style: const TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 21,
-                                                            color:
-                                                                Colors.white)),
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 15,
-                                                  ),
-                                                  Container(
-                                                    width: 70,
-                                                    decoration: BoxDecoration(
-                                                        color: Colors.white,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(25)),
-                                                    child: const Center(
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                top: 4.0,
-                                                                bottom: 4.0),
-                                                        child: Text("OUT",
-                                                            style: TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                fontSize: 20,
-                                                                color: Colors
-                                                                    .green)),
-                                                      ),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              const Text("Room 11",
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 25,
-                                                      color: Colors.white)),
-                                            ],
-                                          )
-                                        ],
-                                      )
-                                    : const SizedBox(),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 3,
-                              child: ListView(
-                                children: const [
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text("In Progress",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 24,
-                                          color: ColorConstants.titleHeader)),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text("A 0034",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 26,
-                                          color: Colors.white)),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: Text(
-                                            "Patient Name Patient Name Patient Name",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 23,
-                                                color: Colors.white)),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ]),
-                        )),
-                    Expanded(
-                      flex: 4,
-                      child: Column(
-                        children: [
-                          _buildTokensHeader(sWidth),
-                          state.data.isNotEmpty
-                              ? Expanded(
-                                  child: ListView.separated(
-                                  padding: const EdgeInsets.all(0),
-                                  itemCount: state.data[0].doctors![0].tokens
-                                              ?.length !=
-                                          null
-                                      ? state.data[0].doctors![0].tokens!.length
-                                      : 0,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return SizedBox(
-                                      height: 40,
-                                      child: Row(children: [
-                                        Container(
-                                          width: sWidth * 0.66 * 0.03,
-                                        ),
-                                        SizedBox(
-                                          width: sWidth * 0.66 * 0.30,
-                                          child: Text(
-                                              '${state.data[0].doctors![0].tokens![index].token}',
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 24,
-                                                  color: ColorConstants
-                                                      .brownishGrey2)),
-                                        ),
-                                        SizedBox(
-                                          width: sWidth * 0.66 * 0.42,
-                                          child: Text(
-                                              '${state.data[0].doctors![0].tokens![index].patientName}',
-                                              style: const TextStyle(
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 24,
-                                                  color: ColorConstants
-                                                      .brownishGrey2)),
-                                        ),
-                                        SizedBox(
-                                          width: sWidth * 0.66 * 0.25,
-                                          child: Text(
-                                              state
-                                                          .data[0]
-                                                          .doctors![0]
-                                                          .tokens![index]
-                                                          .calledFlag ==
-                                                      0
-                                                  ? 'InQueue'
-                                                  : 'InProgress',
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 24,
-                                                  color: ColorConstants
-                                                      .brownishGrey2)),
-                                        ),
-                                        // const Expanded(
-                                        //   flex: 2,
-                                        //   child: SizedBox(),
-                                        // ),
-                                      ]),
-                                    );
-                                  },
-                                  separatorBuilder:
-                                      (BuildContext context, int index) =>
-                                          const Divider(),
-                                ))
-                              : const SizedBox()
-                        ],
-                      ),
-                    ),
-                  ],
-                )),
+            child: Row(
+              children: [_buildDoctor(state), _buildTokens(state, sWidth)],
+            ),
           ),
-          Container(child: _buildFooter())
+          _buildFooter()
           // _buildFooter()
         ],
       );
@@ -389,6 +160,205 @@ class DoctorBody extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  _buildDoctor(DoctorState state) {
+    return Expanded(
+        flex: 2,
+        child: Column(children: [
+          Expanded(
+            flex: 5,
+            child: Container(
+              // width: double.infinity,
+              color: ColorConstants.battleshipGrey,
+              child: state.data.isNotEmpty
+                  ? ListView(
+                      children: [
+                        Column(
+                          children: [
+                            const SizedBox(height: 10),
+                            Image.asset('assets/images/ic_mhc_logo.png',
+                                height: 70, fit: BoxFit.cover),
+                            const SizedBox(height: 10),
+                            Text(state.data[0].doctors![0].firstName!,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 24,
+                                    color: Colors.white)),
+                            Text(
+                                '${state.data[0].doctors![0].specialities?.join(', ')}',
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 22,
+                                    color: Colors.white)),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                      '${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.startTime)} - ${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.endTime)}',
+                                      textAlign: TextAlign.center,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 21,
+                                          color: Colors.white)),
+                                ),
+                                const SizedBox(
+                                  width: 15,
+                                ),
+                                Container(
+                                  width: 70,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(25)),
+                                  child: const Center(
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                          top: 4.0, bottom: 4.0),
+                                      child: Text("OUT",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 20,
+                                              color: Colors.green)),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            const Text("Room 11",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 25,
+                                    color: Colors.white)),
+                          ],
+                        )
+                      ],
+                    )
+                  : const SizedBox(),
+            ),
+          ), //Top Widget
+          Expanded(
+            flex: 3,
+            child: Container(
+              color: ColorConstants.slateTwo,
+              child: ListView(
+                children: const [
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text("In Progress",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                          color: ColorConstants.bottomHeader)),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text("A 0034",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 26,
+                          color: Colors.white)),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text("Patient Name Patient Name Patient Name",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 23,
+                                color: Colors.white)),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ), //Bottom Widget
+        ]));
+  }
+
+  _buildTokens(DoctorState state, double sWidth) {
+    return Expanded(
+      flex: 4,
+      child: Column(
+        children: [
+          _buildTokensHeader(sWidth),
+          state.data2 != null
+              ? Expanded(
+                  child: ListView.separated(
+                  padding: const EdgeInsets.all(0),
+                  itemCount: state.data[0].doctors![0].tokens?.length != null
+                      ? state.data[0].doctors![0].tokens!.length
+                      : 0,
+                  itemBuilder: (BuildContext context, int index) {
+                    return SizedBox(
+                      height: 40,
+                      child: Row(children: [
+                        Container(
+                          width: sWidth * 0.66 * 0.03,
+                        ),
+                        SizedBox(
+                          width: sWidth * 0.66 * 0.30,
+                          child: Text(
+                              '${state.data[0].doctors![0].tokens![index].token}',
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 24,
+                                  color: ColorConstants.brownishGrey2)),
+                        ),
+                        SizedBox(
+                          width: sWidth * 0.66 * 0.42,
+                          child: Text(
+                              '${state.data[0].doctors![0].tokens![index].patientName}',
+                              style: const TextStyle(
+                                  overflow: TextOverflow.ellipsis,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 24,
+                                  color: ColorConstants.brownishGrey2)),
+                        ),
+                        SizedBox(
+                          width: sWidth * 0.66 * 0.25,
+                          child: Text(
+                              state.data[0].doctors![0].tokens![index]
+                                          .calledFlag ==
+                                      0
+                                  ? 'InQueue'
+                                  : 'InProgress',
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 24,
+                                  color: ColorConstants.brownishGrey2)),
+                        ),
+                        // const Expanded(
+                        //   flex: 2,
+                        //   child: SizedBox(),
+                        // ),
+                      ]),
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) =>
+                      const Divider(),
+                ))
+              : const SizedBox()
+        ],
+      ),
     );
   }
 

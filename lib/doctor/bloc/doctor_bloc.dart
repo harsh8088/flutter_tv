@@ -38,7 +38,8 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
       // final otpResponse = DoctorResponse.fromJson(response);
       final otpResponse = await getDoctorsDummyData();
 
-      emit(state.copyWith(status: FormzStatus.pure, data: [otpResponse]));
+      emit(state.copyWith(
+          status: FormzStatus.pure, data: [otpResponse], data2: otpResponse));
     } catch (_) {
       print(_.toString());
     }

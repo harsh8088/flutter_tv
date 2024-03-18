@@ -6,11 +6,13 @@ import 'package:flutter_tv/config/app_utils.dart';
 import 'package:flutter_tv/config/color_constants.dart';
 import 'package:flutter_tv/doctor/bloc/doctor_event.dart';
 import 'package:flutter_tv/doctor/bloc/doctor_state.dart';
+import 'package:flutter_tv/doctor/view/doctor_blink.dart';
 import 'package:flutter_tv/doctor/view/doctor_drop_down.dart';
 import 'package:formz/formz.dart';
 import 'package:marquee/marquee.dart';
 
 import '../bloc/doctor_bloc.dart';
+import 'doctor_status.dart';
 
 class DoctorBody extends StatelessWidget {
   const DoctorBody({super.key});
@@ -23,40 +25,50 @@ class DoctorBody extends StatelessWidget {
     print(MediaQuery.of(context).size.width * 0.33 * 2);
     var sWidth = MediaQuery.of(context).size.width;
 
-    return BlocConsumer<DoctorBloc, DoctorState>(listener: (context, state) {
+    return BlocConsumer<DoctorBloc, DoctorState>(
+        listener: (context, state) async {
       // if (state is SuccessState) {
       //   if (state.isPinAvailable)
       //     Navigator.pushNamed(context, "/login-pin").then((value) => _refreshState());
       //   else
       //     Navigator.pushNamed(context, "/otp");
       // }
-      if (state.data.isNotEmpty && state.data[0].deviceType == 2) {
+      print('listenerCalled:${state.status}');
+      if (state.data.isNotEmpty &&
+          state.data[0].deviceType == 2 &&
+          state.status == FormzStatus.pure) {
         //DoctorTokens
+        Future.delayed(const Duration(seconds: 6), () {
+          BlocProvider.of<DoctorBloc>(context).add(const DoctorFetchEvent());
+        });
+
         return;
       }
       if (state.data.isNotEmpty && state.data[0].deviceType == 4) {
         //NurseTokens
         return;
       }
-      if (state.data.isNotEmpty && state.status == FormzStatus.pure) {
-        Timer(const Duration(seconds: 6), () {
-          BlocProvider.of<DoctorBloc>(context).add(const DoctorFetchEvent());
-        });
-        return;
-      }
     }, builder: (context, state) {
-      return Column(
-        children: [
-          _buildHeader(state),
-          Expanded(
-            child: Row(
-              children: [_buildDoctor(state), _buildTokens(state, sWidth)],
+      var index = state.doctorIndex;
+      if (state.status == FormzStatus.pure) {
+        return Column(
+          children: [
+            _buildHeader(state),
+            Expanded(
+              child: Row(
+                children: [
+                  _buildDoctor(state, index),
+                  _buildTokens(state, sWidth, index)
+                ],
+              ),
             ),
-          ),
-          _buildFooter()
-          // _buildFooter()
-        ],
-      );
+            _buildFooter()
+            // _buildFooter()
+          ],
+        );
+      } else {
+        return Container();
+      }
     });
   }
 
@@ -163,7 +175,10 @@ class DoctorBody extends StatelessWidget {
     );
   }
 
-  _buildDoctor(DoctorState state) {
+  _buildDoctor(DoctorState state, int dIndex) {
+    print(
+        "state.doctorIndex:${state.doctorIndex},${state.blinkToken},${state.tokenBlinkData!.blinkToken!}");
+    var doctor = state.data2!.doctors![dIndex];
     return Expanded(
         flex: 2,
         child: Column(children: [
@@ -181,14 +196,13 @@ class DoctorBody extends StatelessWidget {
                             Image.asset('assets/images/ic_mhc_logo.png',
                                 height: 70, fit: BoxFit.cover),
                             const SizedBox(height: 10),
-                            Text(state.data[0].doctors![0].firstName!,
+                            Text(doctor.firstName!,
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 24,
                                     color: Colors.white)),
-                            Text(
-                                '${state.data[0].doctors![0].specialities?.join(', ')}',
+                            Text('${doctor.specialities?.join(', ')}',
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
                                     fontWeight: FontWeight.w500,
@@ -202,7 +216,7 @@ class DoctorBody extends StatelessWidget {
                               children: [
                                 Flexible(
                                   child: Text(
-                                      '${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.startTime)} - ${AppUtils.getDoctorTimeDate(state.data[0].doctors![0].workingTime?.endTime)}',
+                                      '${AppUtils.getDoctorTimeDate(doctor.workingTime?.startTime)} - ${AppUtils.getDoctorTimeDate(doctor.workingTime?.endTime)}',
                                       textAlign: TextAlign.center,
                                       overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
@@ -213,31 +227,17 @@ class DoctorBody extends StatelessWidget {
                                 const SizedBox(
                                   width: 15,
                                 ),
-                                Container(
-                                  width: 70,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(25)),
-                                  child: const Center(
-                                    child: Padding(
-                                      padding: EdgeInsets.only(
-                                          top: 4.0, bottom: 4.0),
-                                      child: Text("OUT",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 20,
-                                              color: Colors.green)),
-                                    ),
-                                  ),
-                                )
+                                DoctorStatusWidget(
+                                    hospitalId: state.data2!.hospital!.id!,
+                                    doctorId: doctor.id!),
                               ],
                             ),
                             const SizedBox(
                               height: 10,
                             ),
-                            const Text("Room 11",
+                            Text(doctor.room!.name!,
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 25,
                                     color: Colors.white)),
@@ -253,34 +253,37 @@ class DoctorBody extends StatelessWidget {
             child: Container(
               color: ColorConstants.slateTwo,
               child: ListView(
-                children: const [
-                  SizedBox(
+                children: [
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text("In Progress",
+                  const Text("In Progress",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 24,
                           color: ColorConstants.bottomHeader)),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text("A 0034",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 26,
-                          color: Colors.white)),
-                  SizedBox(
+                  state.tokenBlinkData!.blinkToken!
+                      ? DoctorBlinkToken(tokenBlinkData: state.tokenBlinkData!)
+                      : Text("${state.tokenBlinkData?.progressToken}",
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 26,
+                              color: Colors.white)),
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(
                     children: [
                       Expanded(
-                        child: Text("Patient Name Patient Name Patient Name",
+                        child: Text(
+                            "${state.tokenBlinkData?.progressPatientName}",
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 23,
                                 color: Colors.white)),
@@ -294,7 +297,8 @@ class DoctorBody extends StatelessWidget {
         ]));
   }
 
-  _buildTokens(DoctorState state, double sWidth) {
+  _buildTokens(DoctorState state, double sWidth, int dIndex) {
+    var doctor = state.data2!.doctors![dIndex];
     return Expanded(
       flex: 4,
       child: Column(
@@ -304,9 +308,8 @@ class DoctorBody extends StatelessWidget {
               ? Expanded(
                   child: ListView.separated(
                   padding: const EdgeInsets.all(0),
-                  itemCount: state.data[0].doctors![0].tokens?.length != null
-                      ? state.data[0].doctors![0].tokens!.length
-                      : 0,
+                  itemCount:
+                      doctor.tokens?.length != null ? doctor.tokens!.length : 0,
                   itemBuilder: (BuildContext context, int index) {
                     return SizedBox(
                       height: 40,
@@ -316,8 +319,7 @@ class DoctorBody extends StatelessWidget {
                         ),
                         SizedBox(
                           width: sWidth * 0.66 * 0.30,
-                          child: Text(
-                              '${state.data[0].doctors![0].tokens![index].token}',
+                          child: Text('${doctor.tokens![index].token}',
                               style: const TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 24,
@@ -325,8 +327,7 @@ class DoctorBody extends StatelessWidget {
                         ),
                         SizedBox(
                           width: sWidth * 0.66 * 0.42,
-                          child: Text(
-                              '${state.data[0].doctors![0].tokens![index].patientName}',
+                          child: Text('${doctor.tokens![index].patientName}',
                               style: const TextStyle(
                                   overflow: TextOverflow.ellipsis,
                                   fontWeight: FontWeight.w500,
@@ -336,9 +337,7 @@ class DoctorBody extends StatelessWidget {
                         SizedBox(
                           width: sWidth * 0.66 * 0.25,
                           child: Text(
-                              state.data[0].doctors![0].tokens![index]
-                                          .calledFlag ==
-                                      0
+                              doctor.tokens![index].calledFlag == 0
                                   ? 'InQueue'
                                   : 'InProgress',
                               style: const TextStyle(
@@ -346,10 +345,6 @@ class DoctorBody extends StatelessWidget {
                                   fontSize: 24,
                                   color: ColorConstants.brownishGrey2)),
                         ),
-                        // const Expanded(
-                        //   flex: 2,
-                        //   child: SizedBox(),
-                        // ),
                       ]),
                     );
                   },

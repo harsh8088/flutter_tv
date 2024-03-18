@@ -4,8 +4,10 @@ import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tv/doctor/bloc/doctor_state.dart';
+import 'package:flutter_tv/doctor/model/blink_token_data.dart';
 import 'package:flutter_tv/doctor/model/practice_response.dart';
 import 'package:formz/formz.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../config/constants.dart';
 import '../../repository/my_requests_repository.dart';
@@ -32,14 +34,80 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
         status: FormzStatus.submissionInProgress,
       ));
 
-      final response = await repository.getDisplayServices(
-          deviceId: Constants.deviceID, deviceModel: Constants.deviceModel);
-      print(response);
+      // final response = await repository.getDisplayServices(
+      //     deviceId: Constants.deviceID, deviceModel: Constants.deviceModel);
+      // print(response);
       // final otpResponse = DoctorResponse.fromJson(response);
-      final otpResponse = await getDoctorsDummyData();
+      final response = await getDoctorsDummyData();
+      var doctorDisplayIndex = state.doctorIndex.toInt();
+      if (doctorDisplayIndex >= (response.doctors!.length - 1)) {
+        doctorDisplayIndex = 0;
+      } else {
+        doctorDisplayIndex++;
+      }
+
+      //
+      var tokens = response.doctors![doctorDisplayIndex].tokens;
+
+      var isPlay = false;
+      List<int> blinkTokens = List<int>.empty(growable: true);
+      var sharedPref = await SharedPreferences.getInstance();
+
+      var isInProgress = false;
+      var inProgressToken = "";
+      var inProgressPatientName = "";
+
+      tokens?.forEach((it) {
+        if (it.calledFlag == 1) {
+          isInProgress = true;
+          inProgressToken = it.token!;
+          inProgressPatientName = it.patientName!;
+
+          var sharedIdValue = sharedPref.getInt(it.token!) ?? 0;
+          if (sharedIdValue == 0) {
+            sharedPref.setInt(it.token!, it.id!);
+            sharedPref.setInt(
+                '${it.id!}_${it.calledTokenCount!}', it.calledTokenCount!);
+
+            blinkTokens.add(it.id!);
+            isPlay = true;
+          } else {
+            var tokenCalledValue =
+                sharedPref.getInt('${it.id!}_${it.calledTokenCount!}') ??
+                    0;
+            if (tokenCalledValue != it.calledTokenCount) {
+              sharedPref.setInt('${it.id!}_${it.calledTokenCount!}',
+                  it.calledTokenCount!);
+              blinkTokens.add(it.id!);
+              isPlay = true;
+            }
+          }
+        } else {
+          var sharedIdValue = sharedPref.getInt(it.token!) ?? 0;
+          //remove token from local storage
+          if (sharedIdValue > 0) {
+            sharedPref.remove('${it.id!}');
+          }
+        }
+      });
+
+      var json = {
+        "progressToken": inProgressToken,
+        "progressPatientName": inProgressPatientName,
+        "blinkToken": isPlay
+      };
+      print('json');
+      print(json);
 
       emit(state.copyWith(
-          status: FormzStatus.pure, data: [otpResponse], data2: otpResponse));
+          status: FormzStatus.pure,
+          data: [response],
+          data2: response,
+          doctorIndex: doctorDisplayIndex,
+          progressToken: inProgressToken,
+          progressPatientName: inProgressPatientName,
+          tokenBlinkData: TokenBlinkData.fromJson(json),
+          blinkToken: isPlay));
     } catch (_) {
       print(_.toString());
     }

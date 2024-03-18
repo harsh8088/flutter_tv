@@ -10,10 +10,14 @@ class Constants {
   static String headerKey = "";
   static String baseUrl =
       "https://sandboxapiportal.mhea.myhealthcare.co/api/qms/android/v1/";
+  static String baseUrlDoctor =
+      "https://sandboxtestipdapi.mhea.myhealthcare.co/api/opdemr/agent-portal/";
   static String displayTv = '${baseUrl}display-tv';
   static String displayServices = '${baseUrl}display-services';
+  static String practiceStatus = '${baseUrlDoctor}practice-status';
   static String soundUrl =
       "https://dev.appapis.desktop.myhealthcare.co/qms/default_audio.mp3";
+  static String emrAuth="OzxOcSjaMtXpuqEGJhsPDx8UDW8Is0v6oQKqyTobaaouoTYWYgzsExc7h8EzYZva";
 
   /// <----DEV ENV End------
 

@@ -9,11 +9,11 @@ class Constants {
 
   static String headerKey = "";
   static String baseUrl =
-      "https:///api/qms/android/v1/";
+      "https://";
   static String displayTv = '${baseUrl}display-tv';
   static String displayServices = '${baseUrl}display-services';
   static String soundUrl =
-      "https:///qms/default_audio.mp3";
+      "https://";
 
   /// <----DEV ENV End------
 

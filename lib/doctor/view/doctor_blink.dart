@@ -53,10 +53,15 @@ class _DoctorBlinkTokenState extends State<DoctorBlinkToken>
   }
 
   @override
+  void didUpdateWidget(covariant DoctorBlinkToken oldWidget) {
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   void dispose() {
     timer?.cancel();
     animationController.dispose();
-    // audioPlayer.dispose();
+    audioPlayer.dispose();
     super.dispose();
   }
 

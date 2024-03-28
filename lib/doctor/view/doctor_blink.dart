@@ -4,8 +4,6 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tv/doctor/model/blink_token_data.dart';
 
-import '../../config/color_constants.dart';
-
 class DoctorBlinkToken extends StatefulWidget {
   const DoctorBlinkToken({required this.tokenBlinkData, Key? key})
       : super(key: key);
@@ -18,7 +16,10 @@ class DoctorBlinkToken extends StatefulWidget {
 
 class _DoctorBlinkTokenState extends State<DoctorBlinkToken>
     with SingleTickerProviderStateMixin {
-  late final AnimationController animationController;
+  late final AnimationController animationController = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 600),
+  );
   Timer? timer;
   AudioPlayer audioPlayer = AudioPlayer();
   bool isPlaying = false;
@@ -44,17 +45,15 @@ class _DoctorBlinkTokenState extends State<DoctorBlinkToken>
 
   @override
   void initState() {
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 600),
-    );
-    WidgetsBinding.instance!.addPostFrameCallback((_) => startAnimation());
+    WidgetsBinding.instance.addPostFrameCallback((_) => startAnimation());
     super.initState();
   }
 
   @override
   void didUpdateWidget(covariant DoctorBlinkToken oldWidget) {
     super.didUpdateWidget(oldWidget);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => startAnimation());
   }
 
   @override

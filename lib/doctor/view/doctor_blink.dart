@@ -36,8 +36,10 @@ class _DoctorBlinkTokenState extends State<DoctorBlinkToken>
         });
       });
 
-      await audioPlayer.play(AssetSource('token_audio.mp3'),
-          mode: PlayerMode.lowLatency);
+      if (audioPlayer.state != PlayerState.playing) {
+        await audioPlayer.play(AssetSource('token_audio.mp3'),
+            mode: PlayerMode.lowLatency);
+      }
     } catch (_) {
       print(_.toString());
     }

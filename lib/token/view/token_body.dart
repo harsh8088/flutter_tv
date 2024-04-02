@@ -99,7 +99,7 @@ class TokenBody extends StatelessWidget {
                         SizedBox(width: sWidth * 0.05),
                       ]),
                     ),
-                    TokenItem(),
+                    const TokenItem(),
                     const Divider()
                     // Expanded(
                     //     child: ListView.separated(

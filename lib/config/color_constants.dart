@@ -33,7 +33,7 @@ class ColorConstants {
 
   static const pinkishGrey = Color(0xFFc1c1c1);
 
-  static const titleHeaderYellow = Color(0xFFffcd4b);
+  static const titleHeader = Color(0xFF67717d);
   static const brownishGrey2 = Color(0xFF606060);
   static const bottomScroll = Color(0xFF67717d);
   static const bottomHeader = Color(0xFFe47a49);
@@ -45,4 +45,5 @@ class ColorConstants {
   static const greyishBrown2 = Color(0xFF444444);
 
   static const battleshipGrey = Color(0xFF67717d);
+  static const backgroundColor = Color(0xFFc2c6cb);
 }

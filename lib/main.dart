@@ -4,10 +4,14 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tv/token/all_tokens.dart';
 import 'package:flutter_tv/token/token.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'config/constants.dart';
 import 'doctor/doctor.dart';
+import 'doctor/doctor_multiple.dart';
+import 'doctor/doctor_three.dart';
 import 'nurse/nurse.dart';
 import 'otp/otp.dart';
 
@@ -15,6 +19,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   try {
+    //clearing saved tokens
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
     if (kIsWeb) {
       // web-specific setup
       var webInfo = await DeviceInfoPlugin().webBrowserInfo;
@@ -29,6 +36,7 @@ Future<void> main() async {
       Constants.deviceID =
           '${webInfo.vendor}_${webInfo.userAgent}_${webInfo.hardwareConcurrency.toString()}';
       Constants.deviceModel = '${webInfo.vendor}_${webInfo.userAgent}';
+      print('deviceId:${Constants.deviceID}');
     } else if (Platform.isAndroid) {
       // Android-specific setup
       var androidInfo = await DeviceInfoPlugin().androidInfo;
@@ -64,8 +72,11 @@ class MyApp extends StatelessWidget {
       initialRoute: '/otp',
       routes: {
         '/token': (context) => const TokenScreen(),
+        '/all-tokens': (context) => const AllTokenScreen(),
         '/otp': (context) => const OtpScreen(),
         '/doctor': (context) => const DoctorScreen(),
+        '/three-doctors': (context) => const DoctorThree(),
+        '/multiple-doctors': (context) => const DoctorMultiple(),
         '/nurse': (context) => const NurseScreen(),
       },
     );

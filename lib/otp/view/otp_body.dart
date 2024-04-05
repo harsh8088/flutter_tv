@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tv/otp/bloc/otp_event.dart';
 
 import '../../config/color_constants.dart';
+import '../../config/session_manager.dart';
 import '../bloc/otp_bloc.dart';
 import '../bloc/otp_state.dart';
 
@@ -13,15 +14,31 @@ class OtpBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<OtpBloc, OtpState>(listener: (context, state) {
-      if (state.status == OtpStatus.isTrue) {
+    return BlocConsumer<OtpBloc, OtpState>(listener: (context, state) async {
+      if (state.status == OtpStatus.isFalse) {
         // Navigator.pushNamedAndRemoveUntil(context, "/token", (Route route) => false);
-        // Navigator.pushNamedAndRemoveUntil(
-        //     context, "/doctor", (Route route) => false);
         Navigator.pushNamedAndRemoveUntil(
             context, "/doctor", (Route route) => false);
+
+        // final value=await SessionManager().getDoctorScreenType();
+        // switch (value) {
+        //   case ' Single Doctor':
+        //     Navigator.pushNamedAndRemoveUntil(
+        //         context, "/doctor", (Route route) => false);
+        //     return;
+        //   case ' Three Doctors':
+        //     Navigator.pushNamedAndRemoveUntil(
+        //         context, "/three-doctors", (Route route) => false);
+        //     return;
+        //   case ' Multiple Doctors':
+        //     Navigator.pushNamedAndRemoveUntil(
+        //         context, "/multiple-doctors", (Route route) => false);
+        //     return;
+        // }
+        // Navigator.pushNamedAndRemoveUntil(
+        //     context, "/doctor", (Route route) => false);
       }
-      if (state.status == OtpStatus.isFalse) {
+      if (state.status == OtpStatus.isTrue) {
         Timer(const Duration(seconds: 6), () {
           BlocProvider.of<OtpBloc>(context).add(const OtpFetchEvent());
         });

@@ -6,8 +6,8 @@ import 'package:flutter_tv/token/view/token_body.dart';
 import '../repository/my_requests_repository.dart';
 import 'bloc/token_bloc.dart';
 
-class TokenScreen extends StatelessWidget {
-  const TokenScreen({super.key});
+class AllTokenScreen extends StatelessWidget {
+  const AllTokenScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,9 @@ class TokenScreen extends StatelessWidget {
         body: BlocProvider(
             create: (context) => TokenBloc(
                   repository: MyRequestRepository(),
-                )..add(const TokenFetchEvent()),
-            child: const TokenBody(screen: 'token',)));
+                )..add(const AllTokensFetchEvent()),
+            child: const TokenBody(
+              screen: 'all-tokens',
+            )));
   }
 }

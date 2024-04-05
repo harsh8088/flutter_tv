@@ -1,7 +1,11 @@
-abstract class OtpEvent {
-  const OtpEvent();
+abstract class TokenEvent {
+  const TokenEvent();
 }
 
-class TokenFetchEvent extends OtpEvent {
+class TokenFetchEvent extends TokenEvent {
   const TokenFetchEvent();
+}
+
+class AllTokensFetchEvent extends TokenEvent {
+  const AllTokensFetchEvent();
 }

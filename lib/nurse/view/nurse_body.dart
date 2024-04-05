@@ -68,7 +68,7 @@ class NurseBody extends StatelessWidget {
                   children: [
                     Container(
                       height: 40,
-                      color: ColorConstants.titleHeaderYellow,
+                      color: ColorConstants.titleHeader,
                       child: Row(children: const [
                         Expanded(
                           flex: 3,

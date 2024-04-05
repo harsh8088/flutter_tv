@@ -16,6 +16,26 @@ class DoctorResponse {
       this.doctors,
       this.hospital});
 
+  DoctorResponse copyWith({
+    int? deviceType,
+    String? scrollText,
+    String? scrollTextEn,
+    String? missedText,
+    String? missedTextEn,
+    List<Doctors>? doctors,
+    Hospital? hospital,
+  }) {
+    return DoctorResponse(
+      deviceType: deviceType ?? this.deviceType,
+      scrollText: scrollText ?? this.scrollText,
+      scrollTextEn: scrollTextEn ?? this.scrollTextEn,
+      missedText: missedText ?? this.missedText,
+      missedTextEn: missedTextEn ?? this.missedTextEn,
+      doctors: doctors ?? this.doctors,
+      hospital: hospital ?? this.hospital,
+    );
+  }
+
   DoctorResponse.fromJson(Map<String, dynamic> json) {
     deviceType = json['device_type'];
     scrollText = json['scroll_text'];
@@ -79,6 +99,7 @@ class Doctors {
   List<Tokens>? tokens;
   Room? room;
   WorkingTime? workingTime;
+  List<Tokens>? queueTokens;
 
   Doctors(
       {this.id,
@@ -109,7 +130,8 @@ class Doctors {
       this.doctorBriefProfile,
       this.tokens,
       this.room,
-      this.workingTime});
+      this.workingTime,
+      this.queueTokens});
 
   Doctors.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -148,6 +170,76 @@ class Doctors {
     workingTime = json['working_time'] != null
         ? WorkingTime.fromJson(json['working_time'])
         : null;
+    if (json['queueTokens'] != null) {
+      queueTokens = <Tokens>[];
+      json['queueTokens'].forEach((v) {
+        queueTokens!.add(Tokens.fromJson(v));
+      });
+    }
+  }
+
+  Doctors copyWith(
+      {int? id,
+      String? firstName,
+      String? middleName,
+      String? lastName,
+      String? myhealthcareEmail,
+      String? myhealthcareMobile,
+      int? myhealthcareGid,
+      String? alternativeEmailAddress,
+      int? gender,
+      String? dob,
+      String? profilePicture,
+      String? address,
+      String? officeNumber,
+      String? qualification,
+      String? experience,
+      String? startedWorkingFrom,
+      String? certification,
+      List<String>? specialities,
+      String? experianceDetails,
+      String? awards,
+      String? membership,
+      String? researchPublications,
+      String? blog,
+      String? quora,
+      String? testimonials,
+      String? doctorBriefProfile,
+      List<Tokens>? tokens,
+      Room? room,
+      WorkingTime? workingTime,
+      List<Tokens>? queueTokens}) {
+    return Doctors(
+        id: id ?? this.id,
+        firstName: firstName ?? this.firstName,
+        middleName:middleName??this.middleName,
+        lastName:lastName??this.lastName,
+        myhealthcareEmail:myhealthcareEmail??this.myhealthcareEmail,
+        myhealthcareMobile:myhealthcareMobile??this.myhealthcareMobile,
+        myhealthcareGid:myhealthcareGid??this.myhealthcareGid,
+        alternativeEmailAddress:alternativeEmailAddress??this.alternativeEmailAddress,
+        gender:gender??this.gender,
+        dob:dob??this.dob,
+        profilePicture:profilePicture??this.profilePicture,
+        address:address??this.address,
+        officeNumber:officeNumber??this.officeNumber,
+        qualification:qualification??this.qualification,
+        experience:experience??this.experience,
+        startedWorkingFrom:startedWorkingFrom??this.startedWorkingFrom,
+        certification:certification??this.certification,
+        specialities:specialities??this.specialities,
+        experianceDetails:experianceDetails??this.experianceDetails,
+        awards:awards??this.awards,
+        membership:membership??this.membership,
+        researchPublications:researchPublications??this.researchPublications,
+        blog:blog??this.blog,
+        quora:quora??this.quora,
+        testimonials:testimonials??this.testimonials,
+        doctorBriefProfile:doctorBriefProfile??this.doctorBriefProfile,
+        tokens:tokens??this.tokens,
+        room:room??this.room,
+        workingTime:workingTime??this.workingTime,
+        queueTokens: queueTokens ?? this.queueTokens);
   }
 
   Map<String, dynamic> toJson() {
@@ -186,6 +278,9 @@ class Doctors {
     }
     if (workingTime != null) {
       data['working_time'] = workingTime!.toJson();
+    }
+    if (queueTokens != null) {
+      data['queueTokens'] = queueTokens!.map((v) => v.toJson()).toList();
     }
     return data;
   }

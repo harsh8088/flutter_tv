@@ -43,8 +43,8 @@ class ApiProvider {
     }
   }
 
-  Future<dynamic> post(
-      String url, Map<String, String> headers, Map<String, String> body) async {
+  Future<dynamic> post(String url, Map<String, String> headers,
+      Map<String, dynamic> body) async {
     try {
       final uri = Uri.parse(url);
       var mHeaders = {

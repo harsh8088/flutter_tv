@@ -1,6 +1,6 @@
 # flutter_tv
 
-A new Flutter project.
+A Sample Flutter project for Android TV using BLoC state management.
 
 ## Getting Started
 

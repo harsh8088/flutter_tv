@@ -23,61 +23,80 @@ class DoctorThreeBody extends StatelessWidget {
     print("updatedWidth");
     print(MediaQuery.of(context).size.width * 0.33 * 2);
     var sWidth = MediaQuery.of(context).size.width;
-    List<String> widgetList = ['Geeks', 'for', 'Geeks'];
 
-    return BlocConsumer<DoctorBloc, DoctorState>(listener: (context, state) {
-      // if (state is SuccessState) {
-      //   if (state.isPinAvailable)
-      //     Navigator.pushNamed(context, "/login-pin").then((value) => _refreshState());
-      //   else
-      //     Navigator.pushNamed(context, "/otp");
-      // }
-      if (state.data.isNotEmpty && state.data[0].deviceType == 2) {
-        //DoctorTokens
-        return;
-      }
-      if (state.data.isNotEmpty && state.data[0].deviceType == 4) {
-        //NurseTokens
-        return;
-      }
-      if (state.data.isNotEmpty && state.status == FormzStatus.pure) {
-        Timer(const Duration(seconds: 6), () {
-          BlocProvider.of<DoctorBloc>(context).add(const DoctorFetchEvent());
+    return BlocConsumer<DoctorBloc, DoctorState>(
+        listener: (context, state) {
+          // if (state is SuccessState) {
+          //   if (state.isPinAvailable)
+          //     Navigator.pushNamed(context, "/login-pin").then((value) => _refreshState());
+          //   else
+          //     Navigator.pushNamed(context, "/otp");
+          // }
+
+          if (state.data.isNotEmpty && state.data[0].deviceType == 4) {
+            //NurseTokens
+            return;
+          }
+          if (state.data.isNotEmpty &&
+              state.data[0].deviceType == 2 &&
+              state.status == FormzStatus.pure) {
+            //DoctorTokens
+            Timer(const Duration(seconds: 6), () {
+              if (context.mounted) {
+                BlocProvider.of<DoctorBloc>(context)
+                    .add(const DoctorThreeFetchEvent());
+              }
+            });
+            return;
+          }
+        },
+        buildWhen: (previous, current) => previous != current,
+        builder: (context, state) {
+          return Column(
+            children: [
+              _buildHeader(state),
+              _buildThreeDoctors(state),
+              _buildFooter(state)
+            ],
+          );
         });
-        return;
-      }
-    }, builder: (context, state) {
-      return Column(
-        children: [
-          _buildHeader(state),
-          _buildThreeDoctors(state),
-          _buildFooter(state)
-        ],
-      );
-    });
   }
 
   Widget _buildThreeDoctors(DoctorState state) {
-    return Expanded(
-      child: Container(
-        color: ColorConstants.backgroundColor,
-        child: Row(
-          children: [
-            _buildEachDoctor(state, 0),
-            const SizedBox(
-              width: 5,
-            ),
-            _buildEachDoctor(state, 1),
-            // _buildEmptyDoctor(state),
-            const SizedBox(
-              width: 5,
-            ),
-            _buildEachDoctor(state, 2),
-            // _buildEmptyDoctor(state),
-          ],
+    print("fNdatalen: ${state.data.length}");
+    if (state.data.isNotEmpty) {
+      print("fNdata: ${state.data[0].doctors!.length}");
+      print("fNdata2: ${state.data2!.doctors!.length}");
+
+      return Expanded(
+        child: Container(
+          color: ColorConstants.backgroundColor,
+          child: Row(
+            children: [
+              _buildEachDoctor(state, 0),
+              const SizedBox(
+                width: 5,
+              ),
+              state.data2!.doctors!.length > 1
+                  ? _buildEachDoctor(state, 1)
+                  : _buildEmptyDoctor(state),
+              const SizedBox(
+                width: 5,
+              ),
+              state.data2!.doctors!.length > 2
+                  ? _buildEachDoctor(state, 2)
+                  : _buildEmptyDoctor(state),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    } else {
+      return Expanded(
+        child: Container(
+          color: ColorConstants.backgroundColor,
+        ),
+      );
+    }
   }
 
   Widget _buildEachDoctor(DoctorState state, int index) {
@@ -126,25 +145,6 @@ class DoctorThreeBody extends StatelessWidget {
                               DoctorStatusWidget(
                                   hospitalId: state.data[0].hospital!.id!,
                                   doctorId: state.data[0].doctors![index].id!),
-                              // Flexible(
-                              //   child: Container(
-                              //     width: 70,
-                              //     decoration: BoxDecoration(
-                              //         color: Colors.white,
-                              //         borderRadius: BorderRadius.circular(25)),
-                              //     child: const Center(
-                              //       child: Padding(
-                              //         padding: EdgeInsets.only(
-                              //             top: 4.0, bottom: 4.0),
-                              //         child: Text("OUT",
-                              //             style: TextStyle(
-                              //                 fontWeight: FontWeight.bold,
-                              //                 fontSize: 20,
-                              //                 color: Colors.green)),
-                              //       ),
-                              //     ),
-                              //   ),
-                              // )
                             ],
                           ),
                         ],

@@ -73,11 +73,10 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
             isPlay = true;
           } else {
             var tokenCalledValue =
-                sharedPref.getInt('${it.id!}_${it.calledTokenCount!}') ??
-                    0;
+                sharedPref.getInt('${it.id!}_${it.calledTokenCount!}') ?? 0;
             if (tokenCalledValue != it.calledTokenCount) {
-              sharedPref.setInt('${it.id!}_${it.calledTokenCount!}',
-                  it.calledTokenCount!);
+              sharedPref.setInt(
+                  '${it.id!}_${it.calledTokenCount!}', it.calledTokenCount!);
               blinkTokens.add(it.id!);
               isPlay = true;
             }
@@ -113,8 +112,8 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
     }
   }
 
-  void _onDoctorPracticeFetchEvent(
-      DoctorPracticeFetchEvent event, Emitter<DoctorState> emit) async {
+  void _onDoctorPracticeFetchEvent(DoctorPracticeFetchEvent event,
+      Emitter<DoctorState> emit) async {
     try {
       emit(state.copyWith(
         status: FormzStatus.submissionInProgress,
@@ -124,7 +123,7 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
       // event.doctorId
       //TODO Get param values from event
       final response =
-          await repository.getPracticeStatus(hospitalId: 0, doctorId: 0);
+      await repository.getPracticeStatus(hospitalId: 0, doctorId: 0);
       print(response);
       // final otpResponse = DoctorResponse.fromJson(response);
       final otpResponse = await getPracticeDummyData();
@@ -137,27 +136,40 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
     }
   }
 
-  void _onDoctorThreeFetchEvent(
-      DoctorEvent event, Emitter<DoctorState> emit) async {
+  void _onDoctorThreeFetchEvent(DoctorEvent event,
+      Emitter<DoctorState> emit) async {
     try {
-      emit(state.copyWith(
-        status: FormzStatus.submissionInProgress,
-      ));
+      // emit(state.copyWith(
+      //   status: FormzStatus.submissionInProgress,
+      // ));
 
-      final response = await repository.getDisplayServices(
-          deviceId: Constants.deviceID, deviceModel: Constants.deviceModel);
-      print(response);
+      // final response = await repository.getDisplayServices(
+      //     deviceId: Constants.deviceID, deviceModel: Constants.deviceModel);
+      // print(response);
       // final otpResponse = DoctorResponse.fromJson(response);
       final otpResponse = await getDoctorsDummyData();
 
-      emit(state.copyWith(status: FormzStatus.pure, data: [otpResponse]));
+      final doctorInProgress = await getDoctorInProgress(otpResponse);
+
+      final   (doctorResponse, index)  =
+      await getFilteredDoctors(doctorInProgress, state.doctorIndex);
+      print("updatedIndex:$index");
+      print("doctorres:${doctorResponse.doctors!.length}");
+      print("doctorrestoken:${doctorResponse.doctors![0].tokens!.length}");
+
+
+      emit(state.copyWith(
+          status: FormzStatus.pure,
+          data: [doctorResponse],
+          data2: doctorResponse,
+          doctorIndex: index));
     } catch (_) {
       print(_.toString());
     }
   }
 
-  void _onDoctorMultipleFetchEvent(
-      DoctorEvent event, Emitter<DoctorState> emit) async {
+  void _onDoctorMultipleFetchEvent(DoctorEvent event,
+      Emitter<DoctorState> emit) async {
     try {
       emit(state.copyWith(
         status: FormzStatus.submissionInProgress,
@@ -190,5 +202,57 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
       'is_practicing': list.elementAt(Random().nextInt(list.length))
     };
     return PracticeResponse.fromJson(map);
+  }
+
+  //get in progress or queue doctors
+  Future<DoctorResponse> getDoctorInProgress(DoctorResponse doctorRes) async {
+    try {
+      print('getDoctorsInProgress:before:${doctorRes.doctors?.length}');
+      final result = doctorRes.doctors?.map((it) {
+        return it.copyWith(
+          tokens: it.tokens?.where((token) => token.calledFlag == 1).toList(),
+          queueTokens:
+          it.tokens?.where((token) => token.calledFlag == 0).toList(),
+        );
+      }).toList();
+      final resul = result
+          ?.toSet()
+          .toList()
+          .where((it) => it.queueTokens!.isNotEmpty || it.tokens!.isNotEmpty)
+          .toList();
+      final updatedDoctorRes = doctorRes.copyWith(doctors: resul);
+      print('getDoctorsInProgress:after:${updatedDoctorRes.doctors!.length}');
+      print('updatedRes: '+jsonEncode(updatedDoctorRes));
+      return updatedDoctorRes;
+    } catch (e, stackTrace) {
+      print(stackTrace);
+      return doctorRes;
+    }
+  }
+
+  Future<(DoctorResponse, int)> getFilteredDoctors(DoctorResponse doctorRes,
+      int doctorDisplayIndex) async {
+    try {
+      if (doctorDisplayIndex == -1) doctorDisplayIndex = 0;
+      print(
+          'doctorDisplayIndex:$doctorDisplayIndex,doctorSize:${doctorRes
+              .doctors!.length}');
+      if ((doctorDisplayIndex + 3) < doctorRes.doctors!.length) {
+        final filteredDoctors = doctorRes.doctors!
+            .sublist(doctorDisplayIndex, doctorDisplayIndex + 3);
+        final updatedDoctorRes = doctorRes.copyWith(doctors: filteredDoctors);
+        doctorDisplayIndex += 3;
+        return (updatedDoctorRes, doctorDisplayIndex);
+      } else {
+        final filteredDoctors = doctorRes.doctors!.sublist(doctorDisplayIndex);
+        final updatedDoctorRes = doctorRes.copyWith(doctors: filteredDoctors);
+        doctorDisplayIndex = 0;
+        return (updatedDoctorRes, doctorDisplayIndex);
+      }
+    } catch (e, stackTrace) {
+      print(stackTrace);
+      doctorDisplayIndex = 0;
+      return (doctorRes, doctorDisplayIndex);
+    }
   }
 }

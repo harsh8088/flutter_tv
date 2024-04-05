@@ -39,7 +39,9 @@ class DoctorBody extends StatelessWidget {
           state.status == FormzStatus.pure) {
         //DoctorTokens
         Future.delayed(const Duration(seconds: 6), () {
-          BlocProvider.of<DoctorBloc>(context).add(const DoctorFetchEvent());
+          if (context.mounted) {
+            BlocProvider.of<DoctorBloc>(context).add(const DoctorFetchEvent());
+          }
         });
 
         return;

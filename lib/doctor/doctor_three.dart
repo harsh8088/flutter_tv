@@ -16,7 +16,7 @@ class DoctorThree extends StatelessWidget {
         body: BlocProvider(
             create: (context) => DoctorBloc(
                   repository: MyRequestRepository(),
-                )..add(const DoctorFetchEvent()),
+                )..add(const DoctorThreeFetchEvent()),
             child: const DoctorThreeBody()));
   }
 }

@@ -299,8 +299,13 @@ class DoctorBody extends StatelessWidget {
         ]));
   }
 
+//TODO need optimization
   _buildTokens(DoctorState state, double sWidth, int dIndex) {
     var doctor = state.data2!.doctors![dIndex];
+
+    var updatedTokens =
+        doctor.tokens!.where((token) => token.calledFlag == 0).toList();
+
     return Expanded(
       flex: 4,
       child: Column(
@@ -310,8 +315,7 @@ class DoctorBody extends StatelessWidget {
               ? Expanded(
                   child: ListView.separated(
                   padding: const EdgeInsets.all(0),
-                  itemCount:
-                      doctor.tokens?.length != null ? doctor.tokens!.length : 0,
+                  itemCount: updatedTokens.length,
                   itemBuilder: (BuildContext context, int index) {
                     return SizedBox(
                       height: 40,
@@ -321,7 +325,7 @@ class DoctorBody extends StatelessWidget {
                         ),
                         SizedBox(
                           width: sWidth * 0.66 * 0.30,
-                          child: Text('${doctor.tokens![index].token}',
+                          child: Text('${updatedTokens[index].token}',
                               style: const TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 24,
@@ -329,7 +333,7 @@ class DoctorBody extends StatelessWidget {
                         ),
                         SizedBox(
                           width: sWidth * 0.66 * 0.42,
-                          child: Text('${doctor.tokens![index].patientName}',
+                          child: Text('${updatedTokens[index].patientName}',
                               style: const TextStyle(
                                   overflow: TextOverflow.ellipsis,
                                   fontWeight: FontWeight.w500,
@@ -339,9 +343,9 @@ class DoctorBody extends StatelessWidget {
                         SizedBox(
                           width: sWidth * 0.66 * 0.25,
                           child: Text(
-                              doctor.tokens![index].calledFlag == 0
+                              updatedTokens[index].calledFlag == 0
                                   ? 'InQueue'
-                                  : 'InProgress',
+                                  : '',
                               style: const TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 24,

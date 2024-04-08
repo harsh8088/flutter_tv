@@ -22,7 +22,6 @@ class DoctorThreeBody extends StatelessWidget {
     print(MediaQuery.of(context).size.width);
     print("updatedWidth");
     print(MediaQuery.of(context).size.width * 0.33 * 2);
-    var sWidth = MediaQuery.of(context).size.width;
 
     return BlocConsumer<DoctorBloc, DoctorState>(
         listener: (context, state) {
@@ -156,13 +155,38 @@ class DoctorThreeBody extends StatelessWidget {
               flex: 2,
               child: Container(
                 color: Colors.white,
-                child: ListView(
+                child: state.data[0].doctors![index].tokens!.isNotEmpty
+                    ? ListView(
+                        shrinkWrap: true,
+                        children: [
+                          const SizedBox(
+                            height: 6,
+                          ),
+                          const Text("In Progress",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24,
+                                  color: ColorConstants.bottomHeader)),
+                          const SizedBox(
+                            height: 4,
+                          ),
+                          Text(
+                              "${state.data[0].doctors![index].tokens![0].token}",
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 26,
+                                  color: ColorConstants.brownishGrey)),
+                        ],
+                      )
+                    : ListView(
                   shrinkWrap: true,
                   children: const [
                     SizedBox(
                       height: 6,
                     ),
-                    Text("In Progress",
+                    Text("",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -171,7 +195,8 @@ class DoctorThreeBody extends StatelessWidget {
                     SizedBox(
                       height: 4,
                     ),
-                    Text("A 0034",
+                    Text(
+                        "",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -195,9 +220,13 @@ class DoctorThreeBody extends StatelessWidget {
                     shrinkWrap: true,
                     physics: const ScrollPhysics(),
                     padding: const EdgeInsets.all(0),
-                    itemCount: 5,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Text("A 003$index",
+                    itemCount:
+                        state.data2!.doctors![index].queueTokens!.length > 5
+                            ? 5
+                            : state.data2!.doctors![index].queueTokens!.length,
+                    itemBuilder: (BuildContext context, int i) {
+                      return Text(
+                          "${state.data[0].doctors![index].queueTokens![i].token}",
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,

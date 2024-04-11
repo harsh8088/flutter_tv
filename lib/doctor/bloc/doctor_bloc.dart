@@ -9,7 +9,6 @@ import 'package:flutter_tv/doctor/model/practice_response.dart';
 import 'package:formz/formz.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../config/constants.dart';
 import '../../repository/my_requests_repository.dart';
 import '../model/doctor_response.dart';
 import 'doctor_event.dart';
@@ -98,6 +97,14 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
       print('json');
       print(json);
 
+      //removing called tokens
+      var updatedTokens = response.doctors![doctorDisplayIndex].tokens!
+          .where((token) => token.calledFlag == 0)
+          .toList();
+
+      var updateResponse =
+          response.doctors![doctorDisplayIndex].copyWith(tokens: updatedTokens);
+
       emit(state.copyWith(
           status: FormzStatus.pure,
           data: [response],
@@ -112,8 +119,8 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
     }
   }
 
-  void _onDoctorPracticeFetchEvent(DoctorPracticeFetchEvent event,
-      Emitter<DoctorState> emit) async {
+  void _onDoctorPracticeFetchEvent(
+      DoctorPracticeFetchEvent event, Emitter<DoctorState> emit) async {
     try {
       emit(state.copyWith(
         status: FormzStatus.submissionInProgress,
@@ -123,7 +130,7 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
       // event.doctorId
       //TODO Get param values from event
       final response =
-      await repository.getPracticeStatus(hospitalId: 0, doctorId: 0);
+          await repository.getPracticeStatus(hospitalId: 0, doctorId: 0);
       print(response);
       // final otpResponse = DoctorResponse.fromJson(response);
       final otpResponse = await getPracticeDummyData();
@@ -136,8 +143,8 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
     }
   }
 
-  void _onDoctorThreeFetchEvent(DoctorEvent event,
-      Emitter<DoctorState> emit) async {
+  void _onDoctorThreeFetchEvent(
+      DoctorEvent event, Emitter<DoctorState> emit) async {
     try {
       // emit(state.copyWith(
       //   status: FormzStatus.submissionInProgress,
@@ -151,12 +158,11 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
 
       final doctorInProgress = await getDoctorInProgress(otpResponse);
 
-      final   (doctorResponse, index)  =
-      await getFilteredDoctors(doctorInProgress, state.doctorIndex);
+      final (doctorResponse, index) =
+          await getFilteredDoctors(doctorInProgress, state.doctorIndex);
       print("updatedIndex:$index");
       print("doctorres:${doctorResponse.doctors!.length}");
       print("doctorrestoken:${doctorResponse.doctors![0].tokens!.length}");
-
 
       emit(state.copyWith(
           status: FormzStatus.pure,
@@ -168,20 +174,31 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
     }
   }
 
-  void _onDoctorMultipleFetchEvent(DoctorEvent event,
-      Emitter<DoctorState> emit) async {
+  void _onDoctorMultipleFetchEvent(
+      DoctorEvent event, Emitter<DoctorState> emit) async {
     try {
       emit(state.copyWith(
         status: FormzStatus.submissionInProgress,
       ));
 
-      final response = await repository.getDisplayServices(
-          deviceId: Constants.deviceID, deviceModel: Constants.deviceModel);
-      print(response);
+      // final response = await repository.getDisplayServices(
+      //     deviceId: Constants.deviceID, deviceModel: Constants.deviceModel);
+      // print(response);
       // final otpResponse = DoctorResponse.fromJson(response);
-      final otpResponse = await getDoctorsDummyData();
+      final dummyResponse = await getDoctorsDummyData();
+      final doctorInProgress = await getMultipleDoctorInProgress(dummyResponse);
+      List<Doctors>? filteredDoctors;
+      if (doctorInProgress.doctors!.length > 7) {
+        filteredDoctors = doctorInProgress.doctors!.sublist(0, 6);
+      } else {
+        filteredDoctors = doctorInProgress.doctors;
+      }
+      final updatedDoctorRes = dummyResponse.copyWith(doctors: filteredDoctors);
 
-      emit(state.copyWith(status: FormzStatus.pure, data: [otpResponse]));
+      emit(state.copyWith(
+          status: FormzStatus.pure,
+          data: [updatedDoctorRes],
+          data2: updatedDoctorRes));
     } catch (_) {
       print(_.toString());
     }
@@ -212,7 +229,7 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
         return it.copyWith(
           tokens: it.tokens?.where((token) => token.calledFlag == 1).toList(),
           queueTokens:
-          it.tokens?.where((token) => token.calledFlag == 0).toList(),
+              it.tokens?.where((token) => token.calledFlag == 0).toList(),
         );
       }).toList();
       final resul = result
@@ -222,7 +239,7 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
           .toList();
       final updatedDoctorRes = doctorRes.copyWith(doctors: resul);
       print('getDoctorsInProgress:after:${updatedDoctorRes.doctors!.length}');
-      print('updatedRes: '+jsonEncode(updatedDoctorRes));
+      print('updatedRes: ${jsonEncode(updatedDoctorRes)}');
       return updatedDoctorRes;
     } catch (e, stackTrace) {
       print(stackTrace);
@@ -230,13 +247,39 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
     }
   }
 
-  Future<(DoctorResponse, int)> getFilteredDoctors(DoctorResponse doctorRes,
-      int doctorDisplayIndex) async {
+  //get in progress or queue doctors
+  Future<DoctorResponse> getMultipleDoctorInProgress(
+      DoctorResponse doctorRes) async {
+    try {
+      print('getDoctorsInProgress:before:${doctorRes.doctors?.length}');
+      final result = doctorRes.doctors?.map((it) {
+        return it.copyWith(
+          tokens: it.tokens?.where((token) => token.calledFlag == 1).toList(),
+          queueTokens:
+              it.tokens?.where((token) => token.calledFlag == 0).toList(),
+        );
+      }).toList();
+      final resul = result
+          ?.toSet()
+          .toList()
+          .where((it) => it.tokens!.isNotEmpty)
+          .toList();
+      final updatedDoctorRes = doctorRes.copyWith(doctors: resul);
+      print('getDoctorsInProgress:after:${updatedDoctorRes.doctors!.length}');
+      print('updatedRes: ${jsonEncode(updatedDoctorRes)}');
+      return updatedDoctorRes;
+    } catch (e, stackTrace) {
+      print(stackTrace);
+      return doctorRes;
+    }
+  }
+
+  Future<(DoctorResponse, int)> getFilteredDoctors(
+      DoctorResponse doctorRes, int doctorDisplayIndex) async {
     try {
       if (doctorDisplayIndex == -1) doctorDisplayIndex = 0;
       print(
-          'doctorDisplayIndex:$doctorDisplayIndex,doctorSize:${doctorRes
-              .doctors!.length}');
+          'doctorDisplayIndex:$doctorDisplayIndex,doctorSize:${doctorRes.doctors!.length}');
       if ((doctorDisplayIndex + 3) < doctorRes.doctors!.length) {
         final filteredDoctors = doctorRes.doctors!
             .sublist(doctorDisplayIndex, doctorDisplayIndex + 3);

@@ -8,14 +8,17 @@ class Constants {
   /// ----DEV ENV Start---->
 
   static String headerKey = "";
-  static String baseUrl ="https://";
-  static String baseUrlDoctor ="https://";
-      
+  static String baseUrl =
+      "https://";
+  static String baseUrlDoctor =
+      "https:";
   static String displayTv = '${baseUrl}display-tv';
   static String displayServices = '${baseUrl}display-services';
   static String practiceStatus = '${baseUrlDoctor}practice-status';
-  static String soundUrl =  "https://";
-  static String emrAuth="OzxOcSjaMtXpuqEGJhsPDx8UDW8Is0v6oQKqyTobaaouoTYWYgzsExc7h8EzYZva";
+  static String soundUrl =
+      "https:";
+  static String emrAuth="";
+
 
   /// <----DEV ENV End------
 

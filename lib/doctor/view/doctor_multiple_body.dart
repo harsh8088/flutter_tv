@@ -39,9 +39,12 @@ class DoctorMultipleBody extends StatelessWidget {
         return;
       }
       if (state.data.isNotEmpty && state.status == FormzStatus.pure) {
-        Timer(const Duration(seconds: 6), () {
-          BlocProvider.of<DoctorBloc>(context).add(const DoctorFetchEvent());
-        });
+        if (context.mounted) {
+          Timer(const Duration(seconds: 6), () {
+            BlocProvider.of<DoctorBloc>(context)
+                .add(const DoctorMultipleFetchEvent());
+          });
+        }
         return;
       }
     }, builder: (context, state) {
@@ -63,10 +66,8 @@ class DoctorMultipleBody extends StatelessWidget {
                               ? Expanded(
                                   child: ListView.separated(
                                   padding: const EdgeInsets.all(0),
-                                  itemCount: state.data[0].doctors![0].tokens
-                                              ?.length !=
-                                          null
-                                      ? state.data[0].doctors![0].tokens!.length
+                                  itemCount: state.data[0].doctors!.isNotEmpty
+                                      ? state.data[0].doctors!.length
                                       : 0,
                                   itemBuilder:
                                       (BuildContext context, int index) {
@@ -92,7 +93,7 @@ class DoctorMultipleBody extends StatelessWidget {
                                             text: TextSpan(children: [
                                               TextSpan(
                                                   text:
-                                                      '${state.data[0].doctors![index].tokens![0].token} ',
+                                                      '${state.data2!.doctors![index].tokens!.isNotEmpty ? state.data2!.doctors![index].tokens![0].token : ''}',
                                                   style: const TextStyle(
                                                       overflow:
                                                           TextOverflow.ellipsis,
@@ -101,17 +102,29 @@ class DoctorMultipleBody extends StatelessWidget {
                                                       fontSize: 24,
                                                       color: ColorConstants
                                                           .brownishGrey2)),
-                                              TextSpan(
-                                                  text:
-                                                      ' ${state.data[0].doctors![0].tokens![index].calledFlag == 0 ? 'InQueue' : 'InProgress'}',
-                                                  style: const TextStyle(
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize: 24,
-                                                      color: ColorConstants
-                                                          .brownishGrey2))
+                                              state.data2!.doctors![index]
+                                                      .tokens!.isNotEmpty
+                                                  ? TextSpan(
+                                                      text:
+                                                          ' ${state.data2!.doctors![index].tokens![0].calledFlag == 0 ? 'InQueue' : 'InProgress'}',
+                                                      style: const TextStyle(
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontSize: 24,
+                                                          color: ColorConstants
+                                                              .brownishGrey2))
+                                                  : const TextSpan(
+                                                      text: ' ',
+                                                      style: TextStyle(
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontSize: 24,
+                                                          color: ColorConstants
+                                                              .brownishGrey2))
                                             ]),
                                           ),
                                         ),

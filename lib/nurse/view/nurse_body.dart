@@ -69,29 +69,29 @@ class NurseBody extends StatelessWidget {
                     Container(
                       height: 40,
                       color: ColorConstants.titleHeader,
-                      child: Row(children: const [
+                      child: const Row(children: [
                         Expanded(
                           flex: 3,
                           child: SizedBox(),
                         ),
                         Expanded(
                             flex: 4,
-                            child: Text('Counter No',
+                            child: Text('Token',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 24,
-                                    color: ColorConstants.greyishBrown2))),
+                                    color: Colors.white))),
                         Expanded(
                           flex: 3,
                           child: SizedBox(),
                         ),
                         Expanded(
                           flex: 4,
-                          child: Text('Calling Token',
+                          child: Text('Status',
                               style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 24,
-                                  color: ColorConstants.greyishBrown2)),
+                                  color: Colors.white)),
                         ),
                         Expanded(
                           flex: 2,
@@ -113,7 +113,7 @@ class NurseBody extends StatelessWidget {
                             ),
                             Expanded(
                               flex: 4,
-                              child: Text('Counter $index',
+                              child: Text('Token $index',
                                   style: const TextStyle(
                                       fontWeight: FontWeight.w500,
                                       fontSize: 24,
@@ -125,11 +125,7 @@ class NurseBody extends StatelessWidget {
                             ),
                             Expanded(
                               flex: 4,
-                              child: Text('Token $index',
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 24,
-                                      color: ColorConstants.brownishGrey2)),
+                              child: getStatus(index%2==0?0:1),
                             ),
                             const Expanded(
                               flex: 2,
@@ -245,5 +241,27 @@ class NurseBody extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Widget getStatus(int status) {
+    if (status == 1) {
+      return const Text('Nurse Assessment',
+          style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 24,
+              color: ColorConstants.bottomHeader));
+    } else if (status == 0) {
+      return const Text('In Queue',
+          style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 24,
+              color: ColorConstants.brownishGrey2));
+    } else {
+      return const Text('',
+          style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 24,
+              color: ColorConstants.brownishGrey2));
+    }
   }
 }

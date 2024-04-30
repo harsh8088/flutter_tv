@@ -17,8 +17,10 @@ class OtpBody extends StatelessWidget {
     return BlocConsumer<OtpBloc, OtpState>(listener: (context, state) async {
       if (state.status == OtpStatus.isFalse) {
         // Navigator.pushNamedAndRemoveUntil(context, "/token", (Route route) => false);
+        // Navigator.pushNamedAndRemoveUntil(
+        //     context, "/doctor", (Route route) => false);
         Navigator.pushNamedAndRemoveUntil(
-            context, "/doctor", (Route route) => false);
+            context, "/nurse", (Route route) => false);
 
         // final value=await SessionManager().getDoctorScreenType();
         // switch (value) {

@@ -76,6 +76,7 @@ flutter:
     - assets/audios/
     - assets/doctor_list_new.json
     - assets/counter_list.json
+    - assets/nurse_tokens.json
     - assets/token_audio.mp3
 
 

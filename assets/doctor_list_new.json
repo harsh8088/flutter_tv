@@ -1,0 +1,764 @@
+{
+  "device_type": 2,
+  "scroll_text": "Please expect some delay if doctor is busy",
+  "scroll_text_en": "Please expect some delay if doctor is busy, you will be called shortly",
+  "missed_text": "Missed",
+  "missed_text_en": "Missed Token",
+  "doctors": [
+    {
+      "id": 4579,
+      "first_name": "Rama One",
+      "middle_name": null,
+      "last_name": "Kumar",
+      "myhealthcare_email": "sritest91@gmail.com",
+      "myhealthcare_mobile": "1088888888",
+      "myhealthcare_gid": null,
+      "alternative_email_address": null,
+      "gender": 0,
+      "dob": "1994-06-21",
+      "profile_picture": "https:\/\/\/uploads\/doctors\/2022\/2\/1645434277profile.png",
+      "address": null,
+      "office_number": null,
+      "qualification": "<p>MBBS, MD<\/p>",
+      "experience": "20.00",
+      "started_working_from": null,
+      "certification": null,
+      "specialities": [
+        "Interventional Cardiology"
+      ],
+      "experiance_details": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "awards": null,
+      "membership": null,
+      "research_publications": null,
+      "blog": null,
+      "quora": null,
+      "testimonials": null,
+      "doctor_brief_profile": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "tokens": [
+        {
+          "id": 21,
+          "token": "A 004",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Irish Test Test Test Bggshhskf",
+          "uhid": "SW01.0000497315"
+        },
+        {
+          "id": 22,
+          "token": "A 005",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 1,
+          "called_token_count": 0,
+          "patient_name": "Harish Test",
+          "uhid": "SW01.0000497316"
+        },
+        {
+          "id": 23,
+          "token": "A 006",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Garish Test",
+          "uhid": "SW01.0000497317"
+        },
+        {
+          "id": 24,
+          "token": "A 007",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Farish Test",
+          "uhid": "SW01.0000497318"
+        },
+        {
+          "id": 25,
+          "token": "A 008",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Farish Test",
+          "uhid": "SW01.0000497318"
+        },
+        {
+          "id": 26,
+          "token": "A 009",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Farish Test",
+          "uhid": "SW01.0000497318"
+        },
+        {
+          "id": 27,
+          "token": "A 010",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Farish Test",
+          "uhid": "SW01.0000497318"
+        }
+      ],
+      "room": {
+        "id": 5,
+        "name": "Room 1"
+      },
+      "working_time": {
+        "start_time": "09:00:00",
+        "end_time": "18:00:00"
+      }
+    },
+    {
+      "id": 4580,
+      "first_name": "Rama Two",
+      "middle_name": null,
+      "last_name": "Kumar",
+      "myhealthcare_email": "sritest91@gmail.com",
+      "myhealthcare_mobile": "1088888888",
+      "myhealthcare_gid": null,
+      "alternative_email_address": null,
+      "gender": 0,
+      "dob": "1994-06-21",
+      "profile_picture": "https:\/\/\/uploads\/doctors\/2022\/2\/1645434277profile.png",
+      "address": null,
+      "office_number": null,
+      "qualification": "<p>MBBS, MD<\/p>",
+      "experience": "20.00",
+      "started_working_from": null,
+      "certification": null,
+      "specialities": [
+        "Interventional Cardiology"
+      ],
+      "experiance_details": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "awards": null,
+      "membership": null,
+      "research_publications": null,
+      "blog": null,
+      "quora": null,
+      "testimonials": null,
+      "doctor_brief_profile": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "tokens": [
+        {
+          "id": 25,
+          "token": "B 004",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Irish Test",
+          "uhid": "SW01.0000497315"
+        },
+        {
+          "id": 26,
+          "token": "B 005",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 1,
+          "called_token_count": 0,
+          "patient_name": "Harish Test",
+          "uhid": "SW01.0000497316"
+        },
+        {
+          "id": 27,
+          "token": "B 006",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Garish Test",
+          "uhid": "SW01.0000497317"
+        },
+        {
+          "id": 28,
+          "token": "B 007",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Farish Test",
+          "uhid": "SW01.0000497318"
+        }
+      ],
+      "room": {
+        "id": 5,
+        "name": "Room 2"
+      },
+      "working_time": {
+        "start_time": "09:30:00",
+        "end_time": "18:30:00"
+      }
+    },
+    {
+      "id": 4581,
+      "first_name": "Rama Three",
+      "middle_name": null,
+      "last_name": "Kumar",
+      "myhealthcare_email": "sritest91@gmail.com",
+      "myhealthcare_mobile": "1088888888",
+      "myhealthcare_gid": null,
+      "alternative_email_address": null,
+      "gender": 0,
+      "dob": "1994-06-21",
+      "profile_picture": "https:\/\/\/uploads\/doctors\/2022\/2\/1645434277profile.png",
+      "address": null,
+      "office_number": null,
+      "qualification": "<p>MBBS, MD<\/p>",
+      "experience": "20.00",
+      "started_working_from": null,
+      "certification": null,
+      "specialities": [
+        "Interventional Cardiology"
+      ],
+      "experiance_details": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "awards": null,
+      "membership": null,
+      "research_publications": null,
+      "blog": null,
+      "quora": null,
+      "testimonials": null,
+      "doctor_brief_profile": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "tokens": [
+        {
+          "id": 29,
+          "token": "C 004",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Irish Test",
+          "uhid": "SW01.0000497315"
+        },
+        {
+          "id": 30,
+          "token": "C 005",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Harish Test",
+          "uhid": "SW01.0000497316"
+        },
+        {
+          "id": 31,
+          "token": "C 006",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Garish Test",
+          "uhid": "SW01.0000497317"
+        },
+        {
+          "id": 32,
+          "token": "C 007",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Farish Test",
+          "uhid": "SW01.0000497318"
+        }
+      ],
+      "room": {
+        "id": 5,
+        "name": "Room 3"
+      },
+      "working_time": {
+        "start_time": "06:00:00",
+        "end_time": "15:00:00"
+      }
+    },
+    {
+      "id": 4582,
+      "first_name": "Rama Four",
+      "middle_name": null,
+      "last_name": "Kumar",
+      "myhealthcare_email": "sritest91@gmail.com",
+      "myhealthcare_mobile": "1088888888",
+      "myhealthcare_gid": null,
+      "alternative_email_address": null,
+      "gender": 0,
+      "dob": "1994-06-21",
+      "profile_picture": "https:\/\/\/uploads\/doctors\/2022\/2\/1645434277profile.png",
+      "address": null,
+      "office_number": null,
+      "qualification": "<p>MBBS, MD<\/p>",
+      "experience": "20.00",
+      "started_working_from": null,
+      "certification": null,
+      "specialities": [
+        "Interventional Cardiology"
+      ],
+      "experiance_details": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "awards": null,
+      "membership": null,
+      "research_publications": null,
+      "blog": null,
+      "quora": null,
+      "testimonials": null,
+      "doctor_brief_profile": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "tokens": [
+        {
+          "id": 33,
+          "token": "D 004",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 1,
+          "called_token_count": 0,
+          "patient_name": "Irish Test",
+          "uhid": "SW01.0000497315"
+        },
+        {
+          "id": 34,
+          "token": "D 005",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Harish Test",
+          "uhid": "SW01.0000497316"
+        },
+        {
+          "id": 35,
+          "token": "D 006",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Garish Test",
+          "uhid": "SW01.0000497317"
+        },
+        {
+          "id": 36,
+          "token": "D 007",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Farish Test",
+          "uhid": "SW01.0000497318"
+        }
+      ],
+      "room": {
+        "id": 5,
+        "name": "Room 4"
+      },
+      "working_time": {
+        "start_time": "07:30:00",
+        "end_time": "16:30:00"
+      }
+    },
+    {
+      "id": 4582,
+      "first_name": "Rama Five",
+      "middle_name": null,
+      "last_name": "Kumar",
+      "myhealthcare_email": "sritest91@gmail.com",
+      "myhealthcare_mobile": "1088888888",
+      "myhealthcare_gid": null,
+      "alternative_email_address": null,
+      "gender": 0,
+      "dob": "1994-06-21",
+      "profile_picture": "https:\/\/\/uploads\/doctors\/2022\/2\/1645434277profile.png",
+      "address": null,
+      "office_number": null,
+      "qualification": "<p>MBBS, MD<\/p>",
+      "experience": "20.00",
+      "started_working_from": null,
+      "certification": null,
+      "specialities": [
+        "Interventional Cardiology"
+      ],
+      "experiance_details": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "awards": null,
+      "membership": null,
+      "research_publications": null,
+      "blog": null,
+      "quora": null,
+      "testimonials": null,
+      "doctor_brief_profile": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "tokens": [
+        {
+          "id": 37,
+          "token": "E 004",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 1,
+          "called_token_count": 0,
+          "patient_name": "Irish Test",
+          "uhid": "SW01.0000497315"
+        },
+        {
+          "id": 38,
+          "token": "E 005",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Harish Test",
+          "uhid": "SW01.0000497316"
+        },
+        {
+          "id": 39,
+          "token": "E 006",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Garish Test",
+          "uhid": "SW01.0000497317"
+        },
+        {
+          "id": 40,
+          "token": "E 007",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Farish Test",
+          "uhid": "SW01.0000497318"
+        }
+      ],
+      "room": {
+        "id": 5,
+        "name": "Room 5"
+      },
+      "working_time": {
+        "start_time": "07:00:00",
+        "end_time": "16:00:00"
+      }
+    },
+    {
+      "id": 4583,
+      "first_name": "Rama Six",
+      "middle_name": null,
+      "last_name": "Kumar",
+      "myhealthcare_email": "sritest91@gmail.com",
+      "myhealthcare_mobile": "1088888888",
+      "myhealthcare_gid": null,
+      "alternative_email_address": null,
+      "gender": 0,
+      "dob": "1994-06-21",
+      "profile_picture": "https:\/\/\/uploads\/doctors\/2022\/2\/1645434277profile.png",
+      "address": null,
+      "office_number": null,
+      "qualification": "<p>MBBS, MD<\/p>",
+      "experience": "20.00",
+      "started_working_from": null,
+      "certification": null,
+      "specialities": [
+        "Interventional Cardiology"
+      ],
+      "experiance_details": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "awards": null,
+      "membership": null,
+      "research_publications": null,
+      "blog": null,
+      "quora": null,
+      "testimonials": null,
+      "doctor_brief_profile": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "tokens": [
+        {
+          "id": 41,
+          "token": "F 004",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 1,
+          "called_token_count": 0,
+          "patient_name": "Irish Test",
+          "uhid": "SW01.0000497315"
+        },
+        {
+          "id": 42,
+          "token": "F 005",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Harish Test",
+          "uhid": "SW01.0000497316"
+        },
+        {
+          "id": 43,
+          "token": "F 006",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Garish Test",
+          "uhid": "SW01.0000497317"
+        },
+        {
+          "id": 44,
+          "token": "F 007",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Farish Test",
+          "uhid": "SW01.0000497318"
+        }
+      ],
+      "room": {
+        "id": 5,
+        "name": "Room 6"
+      },
+      "working_time": {
+        "start_time": "12:00:00",
+        "end_time": "21:00:00"
+      }
+    },
+    {
+      "id": 4584,
+      "first_name": "Rama Seven",
+      "middle_name": null,
+      "last_name": "Kumar",
+      "myhealthcare_email": "sritest91@gmail.com",
+      "myhealthcare_mobile": "1088888888",
+      "myhealthcare_gid": null,
+      "alternative_email_address": null,
+      "gender": 0,
+      "dob": "1994-06-21",
+      "profile_picture": "https:\/\/\/uploads\/doctors\/2022\/2\/1645434277profile.png",
+      "address": null,
+      "office_number": null,
+      "qualification": "<p>MBBS, MD<\/p>",
+      "experience": "20.00",
+      "started_working_from": null,
+      "certification": null,
+      "specialities": [
+        "Interventional Cardiology"
+      ],
+      "experiance_details": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "awards": null,
+      "membership": null,
+      "research_publications": null,
+      "blog": null,
+      "quora": null,
+      "testimonials": null,
+      "doctor_brief_profile": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "tokens": [
+        {
+          "id": 45,
+          "token": "G 004",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 1,
+          "called_token_count": 0,
+          "patient_name": "Irish Test",
+          "uhid": "SW01.0000497315"
+        },
+        {
+          "id": 46,
+          "token": "G 005",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Harish Test",
+          "uhid": "SW01.0000497316"
+        },
+        {
+          "id": 47,
+          "token": "G 006",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Garish Test",
+          "uhid": "SW01.0000497317"
+        },
+        {
+          "id": 48,
+          "token": "G 007",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Farish Test",
+          "uhid": "SW01.0000497318"
+        }
+      ],
+      "room": {
+        "id": 5,
+        "name": "Room 7"
+      },
+      "working_time": {
+        "start_time": "09:30:00",
+        "end_time": "18:30:00"
+      }
+    },
+    {
+      "id": 4585,
+      "first_name": "Rama Eight",
+      "middle_name": null,
+      "last_name": "Kumar",
+      "myhealthcare_email": "sritest91@gmail.com",
+      "myhealthcare_mobile": "1088888888",
+      "myhealthcare_gid": null,
+      "alternative_email_address": null,
+      "gender": 0,
+      "dob": "1994-06-21",
+      "profile_picture": "https:\/\/\/uploads\/doctors\/2022\/2\/1645434277profile.png",
+      "address": null,
+      "office_number": null,
+      "qualification": "<p>MBBS, MD<\/p>",
+      "experience": "20.00",
+      "started_working_from": null,
+      "certification": null,
+      "specialities": [
+        "Interventional Cardiology"
+      ],
+      "experiance_details": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "awards": null,
+      "membership": null,
+      "research_publications": null,
+      "blog": null,
+      "quora": null,
+      "testimonials": null,
+      "doctor_brief_profile": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "tokens": [
+        {
+          "id": 49,
+          "token": "H 004",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Irish Test",
+          "uhid": "SW01.0000497315"
+        },
+        {
+          "id": 50,
+          "token": "H 008",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Harish Test",
+          "uhid": "SW01.0000497316"
+        },
+        {
+          "id": 51,
+          "token": "H 006",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Garish Test",
+          "uhid": "SW01.0000497317"
+        },
+        {
+          "id": 52,
+          "token": "H 007",
+          "service_name": "323",
+          "counter": "Aditya Name",
+          "called": "\\/qms\\/default_audio.mp3",
+          "called_flag": 0,
+          "called_token_count": 0,
+          "patient_name": "Farish Test",
+          "uhid": "SW01.0000497318"
+        }
+      ],
+      "room": {
+        "id": 5,
+        "name": "Room 8"
+      },
+      "working_time": {
+        "start_time": "08:00:00",
+        "end_time": "17:00:00"
+      }
+    },
+    {
+      "id": 4586,
+      "first_name": "Rama Nine",
+      "middle_name": null,
+      "last_name": "Kumar",
+      "myhealthcare_email": "sritest91@gmail.com",
+      "myhealthcare_mobile": "1088888888",
+      "myhealthcare_gid": null,
+      "alternative_email_address": null,
+      "gender": 0,
+      "dob": "1994-06-21",
+      "profile_picture": "https:\/\/\/uploads\/doctors\/2022\/2\/1645434277profile.png",
+      "address": null,
+      "office_number": null,
+      "qualification": "<p>MBBS, MD<\/p>",
+      "experience": "20.00",
+      "started_working_from": null,
+      "certification": null,
+      "specialities": [
+        "Interventional Cardiology"
+      ],
+      "experiance_details": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "awards": null,
+      "membership": null,
+      "research_publications": null,
+      "blog": null,
+      "quora": null,
+      "testimonials": null,
+      "doctor_brief_profile": "<p>&nbsp; &nbsp; &nbsp; &nbsp; Adept medical doctor with eight solid years of practice experience. Dedicated to exemplary patient outcomes and following all necessary medical procedures with the use of the latest industry equipment and technology. Strong focus on listening to and addressing patient concerns and answering all questions in terms patients can easily understand. Willingness to work with all members of the medical team and listen to their suggestions and input to improve results and maximize patient satisfaction. Specialized as a general internist during residency, providing me with knowledge of a range of health issues that impact internal organs.<\/p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; Proven and effective communication skills with patients, families, and other medical professionals. -Leadership abilities to lead and manage practice staff in providing patients with quality care. -Highly organized, which allows me to keep appointments, records, and patient details in order. -Able to quickly and properly diagnose patient conditions in emergency situations to ensure they receive the treatment they need as soon as possible under controlled conditions. -Detailed oriented, which reduces mistakes made in patient treatment, diagnosis, and medication administration.<\/p>\r\n\r\n<ul>\r\n<\/ul>",
+      "tokens": [
+      ],
+      "room": {
+        "id": 5,
+        "name": "Room 9"
+      },
+      "working_time": {
+        "start_time": "10:00:00",
+        "end_time": "19:00:00"
+      }
+    }
+  ],
+  "hospital": {
+    "name": "ILS Hospital",
+    "id": 51,
+    "address": "52\/2 & 52\/3, Deverabeesanahalli, Opposite INTEL, Outer Ring Road",
+    "hospital_logo": "https:\/\/\/uploads\/hospitals\/2022\/2\/164537127116452714971639740554SakraLogo.png",
+    "floor": {
+      "name": "First Floor",
+      "id": 1
+    }
+  }
+}

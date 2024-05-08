@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tv/config/session_manager.dart';
-import 'package:formz/formz.dart';
 
+import '../../networking/response.dart';
 import '../../repository/my_requests_repository.dart';
 import '../model/nurse_response.dart';
 import 'nurse_event.dart';
@@ -23,7 +23,7 @@ class NurseBloc extends Bloc<NurseEvent, NurseState> {
   void _onNurseFetchEvent(NurseEvent event, Emitter<NurseState> emit) async {
     try {
       emit(state.copyWith(
-        status: FormzStatus.submissionInProgress,
+        status: EventStatus.inProgress,
       ));
 
       // final response = await repository.getDisplayServices(
@@ -78,14 +78,14 @@ class NurseBloc extends Bloc<NurseEvent, NurseState> {
       print("BlinkMap${blinkMap.length}");
 
       emit(state.copyWith(
-          status: FormzStatus.pure,
+          status: EventStatus.pure,
           data: nurseResponse,
           tokens: tokens,
           blinkTokens: blinkMap,
           isPlay: play));
     } catch (_) {
       print("Error$_");
-      emit(state.copyWith(status: FormzStatus.pure));
+      emit(state.copyWith(status: EventStatus.pure));
     }
   }
 
@@ -98,7 +98,7 @@ class NurseBloc extends Bloc<NurseEvent, NurseState> {
     var jsonList = <Map<String, dynamic>>[];
 
     List<String> statusValues = ["Nurse Assessment", ""];
-    List<int> statusKeys = [1, 0,0,0,0];
+    List<int> statusKeys = [1, 0, 0, 0, 0];
 
     for (int i = 0; i < 14; i++) {
       var id = 20 + i; // Incrementing ID

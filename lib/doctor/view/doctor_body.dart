@@ -8,9 +8,9 @@ import 'package:flutter_tv/doctor/bloc/doctor_event.dart';
 import 'package:flutter_tv/doctor/bloc/doctor_state.dart';
 import 'package:flutter_tv/doctor/view/doctor_blink.dart';
 import 'package:flutter_tv/doctor/view/doctor_drop_down.dart';
-import 'package:formz/formz.dart';
 import 'package:marquee/marquee.dart';
 
+import '../../networking/response.dart';
 import '../bloc/doctor_bloc.dart';
 import 'doctor_status.dart';
 
@@ -36,7 +36,7 @@ class DoctorBody extends StatelessWidget {
       print('listenerCalled:${state.status}');
       if (state.data.isNotEmpty &&
           state.data[0].deviceType == 2 &&
-          state.status == FormzStatus.pure) {
+          state.status == EventStatus.pure) {
         //DoctorTokens
         Future.delayed(const Duration(seconds: 6), () {
           if (context.mounted) {
@@ -52,7 +52,7 @@ class DoctorBody extends StatelessWidget {
       }
     }, builder: (context, state) {
       var index = state.doctorIndex;
-      if (state.status == FormzStatus.pure) {
+      if (state.status == EventStatus.pure) {
         return Column(
           children: [
             _buildHeader(state),

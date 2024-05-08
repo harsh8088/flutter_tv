@@ -1,11 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_tv/doctor/model/blink_token_data.dart';
 import 'package:flutter_tv/doctor/model/doctor_response.dart';
-import 'package:formz/formz.dart';
+
+import '../../networking/response.dart';
 
 class DoctorState extends Equatable {
   const DoctorState({
-    this.status = FormzStatus.valid,
+    this.status = EventStatus.pure,
     this.message = "",
     this.data = const [],
     this.data2,
@@ -16,7 +17,7 @@ class DoctorState extends Equatable {
     this.doctorIndex = -1,
   });
 
-  final FormzStatus status;
+  final EventStatus status;
   final String message;
   final List<DoctorResponse> data;
   final DoctorResponse? data2;
@@ -27,7 +28,7 @@ class DoctorState extends Equatable {
   final TokenBlinkData? tokenBlinkData;
 
   DoctorState copyWith(
-      {FormzStatus? status,
+      {EventStatus? status,
       String? message,
       List<DoctorResponse>? data,
       DoctorResponse? data2,

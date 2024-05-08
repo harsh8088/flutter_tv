@@ -7,9 +7,9 @@ import 'package:flutter_tv/config/app_utils.dart';
 import 'package:flutter_tv/config/color_constants.dart';
 import 'package:flutter_tv/token/view/token_drop_down.dart';
 import 'package:flutter_tv/token/view/token_item.dart';
-import 'package:formz/formz.dart';
 import 'package:marquee/marquee.dart';
 
+import '../../networking/response.dart';
 import '../bloc/token_bloc.dart';
 import '../bloc/token_event.dart';
 import '../bloc/token_state.dart';
@@ -50,7 +50,7 @@ class TokenBody extends StatelessWidget {
         // audioPlayer.dispose();
         print("isPlayAudio");
       }
-      if (state.data.isNotEmpty && state.status == FormzStatus.pure) {
+      if (state.data.isNotEmpty && state.status == EventStatus.pure) {
         Timer(const Duration(seconds: 6), () {
           if (screen == 'token') {
             BlocProvider.of<TokenBloc>(context).add(const TokenFetchEvent());

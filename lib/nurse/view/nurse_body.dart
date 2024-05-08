@@ -6,9 +6,9 @@ import 'package:flutter_tv/config/app_utils.dart';
 import 'package:flutter_tv/config/color_constants.dart';
 import 'package:flutter_tv/nurse/model/nurse_response.dart';
 import 'package:flutter_tv/nurse/view/nurse_item.dart';
-import 'package:formz/formz.dart';
 import 'package:marquee/marquee.dart';
 
+import '../../networking/response.dart';
 import '../bloc/nurse_bloc.dart';
 import '../bloc/nurse_event.dart';
 import '../bloc/nurse_state.dart';
@@ -34,7 +34,7 @@ class NurseBody extends StatelessWidget {
         //NurseTokens
         return;
       }
-      if (state.data?.deviceType == 4 && state.status == FormzStatus.pure) {
+      if (state.data?.deviceType == 4 && state.status == EventStatus.pure) {
         print("fetchData");
         Timer(const Duration(seconds: 8), () {
           BlocProvider.of<NurseBloc>(context).add(const NurseFetchEvent());

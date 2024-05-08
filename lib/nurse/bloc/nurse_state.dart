@@ -1,18 +1,18 @@
 import 'package:equatable/equatable.dart';
-import 'package:formz/formz.dart';
 
+import '../../networking/response.dart';
 import '../model/nurse_response.dart';
 
 class NurseState extends Equatable {
   const NurseState(
-      {this.status = FormzStatus.valid,
+      {this.status = EventStatus.pure,
       this.message = "",
       this.data,
       this.tokens = const [],
       this.blinkTokens = const {},
       this.isPlay = true});
 
-  final FormzStatus status;
+  final EventStatus status;
   final String message;
   final NurseResponse? data;
   final List<Tokens> tokens;
@@ -20,7 +20,7 @@ class NurseState extends Equatable {
   final bool isPlay;
 
   NurseState copyWith(
-      {FormzStatus? status,
+      {EventStatus? status,
       String? message,
       NurseResponse? data,
       List<Tokens>? tokens,

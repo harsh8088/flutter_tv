@@ -16,3 +16,8 @@ class Response<T> {
 }
 
 enum Status { LOADING, COMPLETED, ERROR }
+
+enum EventStatus {
+  pure,
+  inProgress
+}

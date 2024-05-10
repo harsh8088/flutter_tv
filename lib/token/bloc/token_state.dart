@@ -1,18 +1,18 @@
 import 'package:equatable/equatable.dart';
-import 'package:formz/formz.dart';
 
+import '../../networking/response.dart';
 import '../model/token_response.dart';
 
 class TokenState extends Equatable {
   const TokenState(
-      {this.status = FormzStatus.valid,
+      {this.status = EventStatus.completed,
       this.message = "",
       this.data = const [],
       this.tokens = const [],
       this.blinkTokens = const [],
       this.isPlay = false});
 
-  final FormzStatus status;
+  final EventStatus status;
   final String message;
   final List<TokenResponse> data;
   final List<Tokens> tokens;
@@ -20,7 +20,7 @@ class TokenState extends Equatable {
   final bool isPlay;
 
   TokenState copyWith(
-      {FormzStatus? status,
+      {EventStatus? status,
       String? message,
       List<TokenResponse>? data,
       List<Tokens>? tokens,

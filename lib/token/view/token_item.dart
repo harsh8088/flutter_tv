@@ -70,48 +70,60 @@ class _TokenItemState extends State<TokenItem>
     var sWidth = MediaQuery.of(context).size.width;
     return BlocBuilder<TokenBloc, TokenState>(
         builder: (context, state) => Expanded(
-          child: ListView.separated(
-                shrinkWrap: true,
-                controller: scrollController,
-                padding: const EdgeInsets.all(0),
-                itemCount: state.tokens.length,
-                itemBuilder: (BuildContext context, int index) {
-                  if (state.blinkTokens.contains(state.tokens[index].id)) {
-                    return SizedBox(
-                        height: 40,
-                        child: BlinkToken(
-                            index: index,
-                            counter: '${state.tokens[index].counter}',
-                            token: '${state.tokens[index].token}'));
-                  } else {
-                    return SizedBox(
-                      height: 40,
-                      child: Row(children: [
-                        SizedBox(width: sWidth * 0.20),
-                        SizedBox(
-                          width: sWidth * .35,
-                          child: Text('${state.tokens[index].counter}',
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 24,
-                                  color: ColorConstants.brownishGrey2)),
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  controller: scrollController,
+                  padding: const EdgeInsets.all(0),
+                  itemCount: state.tokens.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    if (state.blinkTokens.contains(state.tokens[index].id)) {
+                      return SizedBox(
+                          height: 50,
+                          child: BlinkToken(
+                              index: index,
+                              counter: '${state.tokens[index].counter}',
+                              token: '${state.tokens[index].token}'));
+                    } else {
+                      return SizedBox(
+                        height: 50,
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(children: [
+                              SizedBox(width: sWidth * 0.20),
+                              SizedBox(
+                                width: sWidth * .35,
+                                child: Text('${state.tokens[index].counter}',
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 24,
+                                        color: ColorConstants.brownishGrey2)),
+                              ),
+                              SizedBox(width: sWidth * 0.05),
+                              SizedBox(
+                                  width: sWidth * .35,
+                                  child: Text('${state.tokens[index].token}',
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 24,
+                                          color:
+                                              ColorConstants.brownishGrey2))),
+                              SizedBox(width: sWidth * 0.05),
+                            ]),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            const Divider(
+                              color: Colors.black38,
+                              height: 1,
+                            ),
+                          ],
                         ),
-                        SizedBox(width: sWidth * 0.05),
-                        SizedBox(
-                            width: sWidth * .35,
-                            child: Text('${state.tokens[index].token}',
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 24,
-                                    color: ColorConstants.brownishGrey2))),
-                        SizedBox(width: sWidth * 0.05),
-                      ]),
-                    );
-                  }
-                },
-                separatorBuilder: (BuildContext context, int index) =>
-                    const Divider(),
-              ),
-        ));
+                      );
+                    }
+                  }),
+            ));
   }
 }

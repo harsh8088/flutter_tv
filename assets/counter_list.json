@@ -1,0 +1,60 @@
+{
+  "device_type": 3,
+  "tokens": [
+    {
+      "id": 5260,
+      "token": "RA 007",
+      "service_name": "Radiology",
+      "counter": "Counter 2",
+      "called": "",
+      "called_flag": 1,
+      "called_flag_status": "In-Progress",
+      "called_token_count": 1
+    },
+    {
+      "id": 5262,
+      "token": "RA 009",
+      "service_name": "Radiology",
+      "counter": "Counter 1",
+      "called": "",
+      "called_flag": 1,
+      "called_flag_status": "In-Progress",
+      "called_token_count": 1
+    },
+    {
+      "id": 5263,
+      "token": "",
+      "service_name": "Radiology",
+      "counter": "---",
+      "called": "",
+      "called_flag": 0,
+      "called_flag_status": "In-Queue",
+      "called_token_count": 0
+    },
+    {
+      "id": 5264,
+      "token": "",
+      "service_name": "Radiology",
+      "counter": "---",
+      "called": "",
+      "called_flag": 0,
+      "called_flag_status": "In-Queue",
+      "called_token_count": 0
+    }
+  ],
+  "scroll_text": " - RA 008",
+  "missed_text": "No-Show Tokens",
+  "missed_text_en": "No-Show Tokens",
+  "hospital": {
+    "name": "Sakra World Hospital",
+    "id": 51,
+    "address": "52\/2 & 52\/3, Deverabeesanahalli, Opposite INTEL, Outer Ring Road",
+    "hospital_logo": "https:\/\/\/uploads\/hospitals\/2022\/7\/1657001525164537127116452714971639740554SakraLogo.png",
+    "floor": {
+      "name": "Radiology Procedure billing",
+      "id": 11
+    }
+  },
+  "scroll_text_en": " - RA 008",
+  "skiped_tokens": "RA 008"
+}

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tv/config/constants.dart';
 import 'package:flutter_tv/otp/bloc/otp_state.dart';
@@ -45,10 +43,5 @@ class OtpBloc extends Bloc<OtpEvent, OtpState> {
         status: OtpStatus.pure,
       ));
     }
-  }
-
-  @override
-  Future<void> close() {
-    return super.close();
   }
 }

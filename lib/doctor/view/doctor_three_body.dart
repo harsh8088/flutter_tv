@@ -6,9 +6,9 @@ import 'package:flutter_tv/config/app_utils.dart';
 import 'package:flutter_tv/config/color_constants.dart';
 import 'package:flutter_tv/doctor/bloc/doctor_event.dart';
 import 'package:flutter_tv/doctor/bloc/doctor_state.dart';
-import 'package:formz/formz.dart';
 import 'package:marquee/marquee.dart';
 
+import '../../networking/response.dart';
 import '../bloc/doctor_bloc.dart';
 import 'doctor_drop_down.dart';
 import 'doctor_status.dart';
@@ -38,7 +38,7 @@ class DoctorThreeBody extends StatelessWidget {
           }
           if (state.data.isNotEmpty &&
               state.data[0].deviceType == 2 &&
-              state.status == FormzStatus.pure) {
+              state.status == EventStatus.completed) {
             //DoctorTokens
             Timer(const Duration(seconds: 6), () {
               if (context.mounted) {

@@ -8,9 +8,9 @@ import 'package:flutter_tv/doctor/bloc/doctor_event.dart';
 import 'package:flutter_tv/doctor/bloc/doctor_state.dart';
 import 'package:flutter_tv/doctor/view/doctor_blink.dart';
 import 'package:flutter_tv/doctor/view/doctor_drop_down.dart';
-import 'package:formz/formz.dart';
 import 'package:marquee/marquee.dart';
 
+import '../../networking/response.dart';
 import '../bloc/doctor_bloc.dart';
 import 'doctor_status.dart';
 
@@ -36,7 +36,7 @@ class DoctorBody extends StatelessWidget {
       print('listenerCalled:${state.status}');
       if (state.data.isNotEmpty &&
           state.data[0].deviceType == 2 &&
-          state.status == FormzStatus.pure) {
+          state.status == EventStatus.completed) {
         //DoctorTokens
         Future.delayed(const Duration(seconds: 6), () {
           if (context.mounted) {
@@ -52,7 +52,7 @@ class DoctorBody extends StatelessWidget {
       }
     }, builder: (context, state) {
       var index = state.doctorIndex;
-      if (state.status == FormzStatus.pure) {
+      if (state.status == EventStatus.completed) {
         return Column(
           children: [
             _buildHeader(state),
@@ -178,8 +178,8 @@ class DoctorBody extends StatelessWidget {
   }
 
   _buildDoctor(DoctorState state, int dIndex) {
-    print(
-        "state.doctorIndex:${state.doctorIndex},${state.blinkToken},${state.tokenBlinkData!.blinkToken!}");
+    // print(
+    //     "state.doctorIndex:${state.doctorIndex},${state.blinkToken},${state.tokenBlinkData!.blinkToken!}");
     var doctor = state.data2!.doctors![dIndex];
     return Expanded(
         flex: 2,

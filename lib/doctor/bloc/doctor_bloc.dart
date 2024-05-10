@@ -6,9 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tv/doctor/bloc/doctor_state.dart';
 import 'package:flutter_tv/doctor/model/blink_token_data.dart';
 import 'package:flutter_tv/doctor/model/practice_response.dart';
-import 'package:formz/formz.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../networking/response.dart';
 import '../../repository/my_requests_repository.dart';
 import '../model/doctor_response.dart';
 import 'doctor_event.dart';
@@ -30,7 +30,7 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
   void _onDoctorFetchEvent(DoctorEvent event, Emitter<DoctorState> emit) async {
     try {
       emit(state.copyWith(
-        status: FormzStatus.submissionInProgress,
+        status: EventStatus.inProgress,
       ));
 
       // final response = await repository.getDisplayServices(
@@ -106,7 +106,7 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
           response.doctors![doctorDisplayIndex].copyWith(tokens: updatedTokens);
 
       emit(state.copyWith(
-          status: FormzStatus.pure,
+          status: EventStatus.completed,
           data: [response],
           data2: response,
           doctorIndex: doctorDisplayIndex,
@@ -123,7 +123,7 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
       DoctorPracticeFetchEvent event, Emitter<DoctorState> emit) async {
     try {
       emit(state.copyWith(
-        status: FormzStatus.submissionInProgress,
+        status: EventStatus.inProgress,
       ));
 
       // event.hospitalId;
@@ -136,7 +136,7 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
       final otpResponse = await getPracticeDummyData();
 
       emit(state.copyWith(
-        status: FormzStatus.pure,
+        status: EventStatus.completed,
       ));
     } catch (_) {
       print(_.toString());
@@ -165,7 +165,7 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
       print("doctorrestoken:${doctorResponse.doctors![0].tokens!.length}");
 
       emit(state.copyWith(
-          status: FormzStatus.pure,
+          status: EventStatus.completed,
           data: [doctorResponse],
           data2: doctorResponse,
           doctorIndex: index));
@@ -178,7 +178,7 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
       DoctorEvent event, Emitter<DoctorState> emit) async {
     try {
       emit(state.copyWith(
-        status: FormzStatus.submissionInProgress,
+        status: EventStatus.inProgress,
       ));
 
       // final response = await repository.getDisplayServices(
@@ -196,7 +196,7 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
       final updatedDoctorRes = dummyResponse.copyWith(doctors: filteredDoctors);
 
       emit(state.copyWith(
-          status: FormzStatus.pure,
+          status: EventStatus.completed,
           data: [updatedDoctorRes],
           data2: updatedDoctorRes));
     } catch (_) {

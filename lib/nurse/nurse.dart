@@ -16,6 +16,6 @@ class NurseScreen extends StatelessWidget {
             create: (context) => NurseBloc(
                   repository: MyRequestRepository(),
                 )..add(const NurseFetchEvent()),
-            child: NurseBody()));
+            child: const NurseBody()));
   }
 }

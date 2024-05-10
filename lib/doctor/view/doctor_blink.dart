@@ -69,7 +69,7 @@ class _DoctorBlinkTokenState extends State<DoctorBlinkToken>
   @override
   Widget build(BuildContext context) {
     print("DoctorBlink");
-    var sWidth = MediaQuery.of(context).size.width;
+    // var sWidth = MediaQuery.of(context).size.width;
     return FadeTransition(
         opacity: Tween<double>(
           begin: 0.3,

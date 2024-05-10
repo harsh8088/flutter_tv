@@ -1,22 +1,20 @@
 import 'dart:async';
 
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tv/config/app_utils.dart';
 import 'package:flutter_tv/config/color_constants.dart';
-import 'package:formz/formz.dart';
+import 'package:flutter_tv/nurse/model/nurse_response.dart';
+import 'package:flutter_tv/nurse/view/nurse_item.dart';
 import 'package:marquee/marquee.dart';
 
-import '../../config/constants.dart';
+import '../../networking/response.dart';
 import '../bloc/nurse_bloc.dart';
 import '../bloc/nurse_event.dart';
 import '../bloc/nurse_state.dart';
 
 class NurseBody extends StatelessWidget {
-  NurseBody({super.key});
-
-  final audioPlayer = AudioPlayer();
+  const NurseBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,25 +26,19 @@ class NurseBody extends StatelessWidget {
       //   else
       //     Navigator.pushNamed(context, "/otp");
       // }
-      if (state.data.isNotEmpty && state.data[0].deviceType == 2) {
+      if (state.data?.deviceType == 2) {
         //DoctorTokens
         return;
       }
-      if (state.data.isNotEmpty && state.data[0].deviceType == 4) {
+      if (state.data?.deviceType == 40) {
         //NurseTokens
         return;
       }
-      if (state.data.isNotEmpty && state.status == FormzStatus.pure) {
-        Timer(const Duration(seconds: 6), () {
+      if (state.data?.deviceType == 4 && state.status == EventStatus.completed) {
+        print("fetchData");
+        Timer(const Duration(seconds: 8), () {
           BlocProvider.of<NurseBloc>(context).add(const NurseFetchEvent());
         });
-        return;
-      }
-      if (state.isPlay) {
-        // audioPlayer.play(UrlSource(Constants.soundUrl));
-        print('audioPlayStart');
-        await audioPlayer.play(UrlSource(Constants.soundUrl));
-        print('audioPlayStart');
         return;
       }
     }, builder: (context, state) {
@@ -55,7 +47,7 @@ class NurseBody extends StatelessWidget {
       //     color: ColorConstants.appRed,
       //   );
       // }
-      // audioPlayer.play(UrlSource(Constants.soundUrl));
+
       return Column(
         children: [
           Container(
@@ -69,29 +61,29 @@ class NurseBody extends StatelessWidget {
                     Container(
                       height: 40,
                       color: ColorConstants.titleHeader,
-                      child: Row(children: const [
+                      child: const Row(children: [
                         Expanded(
                           flex: 3,
                           child: SizedBox(),
                         ),
                         Expanded(
                             flex: 4,
-                            child: Text('Counter No',
+                            child: Text('Token',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 24,
-                                    color: ColorConstants.greyishBrown2))),
+                                    color: Colors.white))),
                         Expanded(
                           flex: 3,
                           child: SizedBox(),
                         ),
                         Expanded(
                           flex: 4,
-                          child: Text('Calling Token',
+                          child: Text('Status',
                               style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 24,
-                                  color: ColorConstants.greyishBrown2)),
+                                  color: Colors.white)),
                         ),
                         Expanded(
                           flex: 2,
@@ -99,48 +91,51 @@ class NurseBody extends StatelessWidget {
                         ),
                       ]),
                     ),
-                    Expanded(
-                        child: ListView.separated(
-                      padding: const EdgeInsets.all(0),
-                      itemCount: 7,
-                      itemBuilder: (BuildContext context, int index) {
-                        return SizedBox(
-                          height: 40,
-                          child: Row(children: [
-                            const Expanded(
-                              flex: 3,
-                              child: SizedBox(),
-                            ),
-                            Expanded(
-                              flex: 4,
-                              child: Text('Counter $index',
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 24,
-                                      color: ColorConstants.brownishGrey2)),
-                            ),
-                            const Expanded(
-                              flex: 3,
-                              child: SizedBox(),
-                            ),
-                            Expanded(
-                              flex: 4,
-                              child: Text('Token $index',
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 24,
-                                      color: ColorConstants.brownishGrey2)),
-                            ),
-                            const Expanded(
-                              flex: 2,
-                              child: SizedBox(),
-                            ),
-                          ]),
-                        );
-                      },
-                      separatorBuilder: (BuildContext context, int index) =>
-                          const Divider(),
-                    ))
+                    const NurseItem(),
+                    // Expanded(
+                    //     child: ListView.separated(
+                    //   padding: const EdgeInsets.all(0),
+                    //   itemCount: state.tokens.length,
+                    //   itemBuilder: (BuildContext context, int index) {
+                    //     if (state.data!.tokens![index].calledFlag == 1) {
+                    //       return NurseBlinkToken(
+                    //           tokens: state.data!.tokens![index]);
+                    //     } else {
+                    //       return SizedBox(
+                    //         height: 40,
+                    //         child: Row(children: [
+                    //           const Expanded(
+                    //             flex: 3,
+                    //             child: SizedBox(),
+                    //           ),
+                    //           Expanded(
+                    //             flex: 4,
+                    //             child: Text(
+                    //                 '${state.data!.tokens![index].token}',
+                    //                 style: const TextStyle(
+                    //                     fontWeight: FontWeight.w500,
+                    //                     fontSize: 24,
+                    //                     color: ColorConstants.brownishGrey2)),
+                    //           ),
+                    //           const Expanded(
+                    //             flex: 3,
+                    //             child: SizedBox(),
+                    //           ),
+                    //           Expanded(
+                    //             flex: 4,
+                    //             child: getStatus(state.data!.tokens![index]),
+                    //           ),
+                    //           const Expanded(
+                    //             flex: 2,
+                    //             child: SizedBox(),
+                    //           ),
+                    //         ]),
+                    //       );
+                    //     }
+                    //   },
+                    //   separatorBuilder: (BuildContext context, int index) =>
+                    //       const Divider(),
+                    // ))
                   ],
                 )),
           ),
@@ -245,5 +240,28 @@ class NurseBody extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Widget getStatus(Tokens tokens) {
+    var status = tokens.calledFlag;
+    if (status == 1) {
+      return Text('${tokens.called}',
+          style: const TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 24,
+              color: ColorConstants.bottomHeader));
+    } else if (status == 0) {
+      return const Text('In Queue',
+          style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 24,
+              color: ColorConstants.brownishGrey2));
+    } else {
+      return const Text('',
+          style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 24,
+              color: ColorConstants.brownishGrey2));
+    }
   }
 }

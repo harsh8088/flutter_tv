@@ -1,0 +1,206 @@
+{
+  "device_type": 4,
+  "scroll_text": "Please expect some delay if doctor is busy",
+  "scroll_text_en": "Please expect some delay if doctor is busy, you will be called shortly",
+  "missed_text": "Missed",
+  "missed_text_en": "Missed Token",
+  "tokens": [
+    {
+      "id": 21,
+      "token": "A 004",
+      "service_name": "323",
+      "counter": "Aditya Name",
+      "called": "",
+      "called_flag": 0,
+      "called_token_count": 0,
+      "patient_name": "Irish Test Test Test Bggshhskf",
+      "uhid": "SW01.0000497315"
+    },
+    {
+      "id": 22,
+      "token": "A 005",
+      "service_name": "323",
+      "counter": "Aditya Name",
+      "called": "Nurse Assessment",
+      "called_flag": 1,
+      "called_token_count": 0,
+      "patient_name": "Harish Test",
+      "uhid": "SW01.0000497316"
+    },
+    {
+      "id": 23,
+      "token": "A 006",
+      "service_name": "323",
+      "counter": "Aditya Name",
+      "called": "",
+      "called_flag": 0,
+      "called_token_count": 0,
+      "patient_name": "Garish Test",
+      "uhid": "SW01.0000497317"
+    },
+    {
+      "id": 24,
+      "token": "A 007",
+      "service_name": "323",
+      "counter": "Aditya Name",
+      "called": "",
+      "called_flag": 0,
+      "called_token_count": 0,
+      "patient_name": "Farish Test",
+      "uhid": "SW01.0000497318"
+    },
+    {
+      "id": 25,
+      "token": "A 008",
+      "service_name": "323",
+      "counter": "Aditya Name",
+      "called": "",
+      "called_flag": 0,
+      "called_token_count": 0,
+      "patient_name": "Farish Test",
+      "uhid": "SW01.0000497318"
+    },
+    {
+      "id": 26,
+      "token": "A 009",
+      "service_name": "323",
+      "counter": "Aditya Name",
+      "called": "",
+      "called_flag": 0,
+      "called_token_count": 0,
+      "patient_name": "Farish Test",
+      "uhid": "SW01.0000497318"
+    },
+    {
+      "id": 27,
+      "token": "A 010",
+      "service_name": "323",
+      "counter": "Aditya Name",
+      "called": "Nurse Assessment",
+      "called_flag": 1,
+      "called_token_count": 0,
+      "patient_name": "Farish Test",
+      "uhid": "SW01.0000497318"
+    },
+    {
+      "id": 28,
+      "token": "A 019",
+      "service_name": "323",
+      "counter": "Aditya Name",
+      "called": "Nurse Assessment",
+      "called_flag": 1,
+      "called_token_count": 0,
+      "patient_name": "Farish Test",
+      "uhid": "SW01.0000497318"
+    },
+    {
+      "id": 29,
+      "token": "A 020",
+      "service_name": "323",
+      "counter": "Aditya Name",
+      "called": "Nurse Assessment",
+      "called_flag": 1,
+      "called_token_count": 0,
+      "patient_name": "Farish Test",
+      "uhid": "SW01.0000497318"
+    },
+    {
+      "id": 30,
+      "token": "A 021",
+      "service_name": "323",
+      "counter": "Aditya Name",
+      "called": "Nurse Assessment",
+      "called_flag": 1,
+      "called_token_count": 0,
+      "patient_name": "Farish Test",
+      "uhid": "SW01.0000497318"
+    },
+    {
+      "id": 31,
+      "token": "A 022",
+      "service_name": "323",
+      "counter": "Aditya Name",
+      "called": "Nurse Assessment",
+      "called_flag": 1,
+      "called_token_count": 0,
+      "patient_name": "Farish Test",
+      "uhid": "SW01.0000497318"
+    },
+    {
+      "id": 32,
+      "token": "A 023",
+      "service_name": "323",
+      "counter": "Aditya Name",
+      "called": "Nurse Assessment",
+      "called_flag": 1,
+      "called_token_count": 0,
+      "patient_name": "Farish Test",
+      "uhid": "SW01.0000497318"
+    },
+    {
+      "id": 33,
+      "token": "A 024",
+      "service_name": "323",
+      "counter": "Aditya Name",
+      "called": "Nurse Assessment",
+      "called_flag": 1,
+      "called_token_count": 0,
+      "patient_name": "Farish Test",
+      "uhid": "SW01.0000497318"
+    },
+    {
+      "id": 34,
+      "token": "A 025",
+      "service_name": "323",
+      "counter": "Aditya Name",
+      "called": "Nurse Assessment",
+      "called_flag": 1,
+      "called_token_count": 0,
+      "patient_name": "Farish Test",
+      "uhid": "SW01.0000497318"
+    },
+    {
+      "id": 35,
+      "token": "A 026",
+      "service_name": "323",
+      "counter": "Aditya Name",
+      "called": "Nurse Assessment",
+      "called_flag": 1,
+      "called_token_count": 0,
+      "patient_name": "Farish Test",
+      "uhid": "SW01.0000497318"
+    },
+    {
+      "id": 36,
+      "token": "A 027",
+      "service_name": "323",
+      "counter": "Aditya Name",
+      "called": "Nurse Assessment",
+      "called_flag": 1,
+      "called_token_count": 0,
+      "patient_name": "Farish Test",
+      "uhid": "SW01.0000497318"
+    },
+    {
+      "id": 37,
+      "token": "A 028",
+      "service_name": "323",
+      "counter": "Aditya Name",
+      "called": "Nurse Assessment",
+      "called_flag": 1,
+      "called_token_count": 0,
+      "patient_name": "Farish Test",
+      "uhid": "SW01.0000497318"
+    }
+  ],
+  "hospital": {
+    "name": "ILS Hospital",
+    "id": 51,
+    "address": "52\/2 & 52\/3, Deverabeesanahalli, Opposite INTEL, Outer Ring Road",
+    "hospital_logo": "https:\/\/\/uploads\/hospitals\/2022\/2\/164537127116452714971639740554SakraLogo.png",
+    "floor": {
+      "name": "First Floor",
+      "id": 1
+    }
+  }
+}

@@ -106,7 +106,7 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
           response.doctors![doctorDisplayIndex].copyWith(tokens: updatedTokens);
 
       emit(state.copyWith(
-          status: EventStatus.pure,
+          status: EventStatus.completed,
           data: [response],
           data2: response,
           doctorIndex: doctorDisplayIndex,
@@ -136,7 +136,7 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
       final otpResponse = await getPracticeDummyData();
 
       emit(state.copyWith(
-        status: EventStatus.pure,
+        status: EventStatus.completed,
       ));
     } catch (_) {
       print(_.toString());
@@ -165,7 +165,7 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
       print("doctorrestoken:${doctorResponse.doctors![0].tokens!.length}");
 
       emit(state.copyWith(
-          status: EventStatus.pure,
+          status: EventStatus.completed,
           data: [doctorResponse],
           data2: doctorResponse,
           doctorIndex: index));
@@ -196,7 +196,7 @@ class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
       final updatedDoctorRes = dummyResponse.copyWith(doctors: filteredDoctors);
 
       emit(state.copyWith(
-          status: EventStatus.pure,
+          status: EventStatus.completed,
           data: [updatedDoctorRes],
           data2: updatedDoctorRes));
     } catch (_) {

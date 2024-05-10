@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tv/otp/bloc/otp_event.dart';
 
 import '../../config/color_constants.dart';
-import '../../config/session_manager.dart';
 import '../bloc/otp_bloc.dart';
 import '../bloc/otp_state.dart';
 
@@ -16,11 +15,12 @@ class OtpBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<OtpBloc, OtpState>(listener: (context, state) async {
       if (state.status == OtpStatus.isFalse) {
-        // Navigator.pushNamedAndRemoveUntil(context, "/token", (Route route) => false);
+        Navigator.pushNamedAndRemoveUntil(context, "/token", (Route route) => false);
         // Navigator.pushNamedAndRemoveUntil(
         //     context, "/doctor", (Route route) => false);
-        Navigator.pushNamedAndRemoveUntil(
-            context, "/nurse", (Route route) => false);
+        // Navigator.pushNamedAndRemoveUntil(
+        //     context, "/nurse", (Route route) => false);
+
 
         // final value=await SessionManager().getDoctorScreenType();
         // switch (value) {

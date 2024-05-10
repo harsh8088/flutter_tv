@@ -53,7 +53,7 @@ class _BlinkTokenState extends State<BlinkToken>
       vsync: this,
       duration: const Duration(milliseconds: 600),
     );
-    WidgetsBinding.instance!.addPostFrameCallback((_) => startAnimation());
+    WidgetsBinding.instance.addPostFrameCallback((_) => startAnimation());
     super.initState();
   }
 
@@ -68,35 +68,46 @@ class _BlinkTokenState extends State<BlinkToken>
   @override
   Widget build(BuildContext context) {
     var sWidth = MediaQuery.of(context).size.width;
-    return FittedBox(
-        child: FadeTransition(
-      opacity: Tween<double>(
-        begin: 0.3,
-        end: 1.0,
-      ).animate(animationController),
-      child: Container(
-        color: Colors.black12,
-        child: Row(children: [
-          SizedBox(width: sWidth * 0.20),
-          SizedBox(
-            width: sWidth * .35,
-            child: Text(widget.counter,
-                style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 24,
-                    color: ColorConstants.brownishGrey2)),
-          ),
-          SizedBox(width: sWidth * 0.05),
-          SizedBox(
+    return Column(
+      children: [
+        const SizedBox(
+          height: 5,
+        ),
+        FittedBox(
+            child: FadeTransition(
+          opacity: Tween<double>(
+            begin: 0.3,
+            end: 1.0,
+          ).animate(animationController),
+          child: Row(children: [
+            SizedBox(width: sWidth * 0.20),
+            SizedBox(
               width: sWidth * .35,
-              child: Text(widget.token,
+              child: Text(widget.counter,
                   style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 24,
-                      color: ColorConstants.brownishGrey2))),
-          SizedBox(width: sWidth * 0.05),
-        ]),
-      ),
-    ));
+                      color: ColorConstants.brownishGrey2)),
+            ),
+            SizedBox(width: sWidth * 0.05),
+            SizedBox(
+                width: sWidth * .35,
+                child: Text(widget.token,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 24,
+                        color: ColorConstants.brownishGrey2))),
+            SizedBox(width: sWidth * 0.05),
+          ]),
+        )),
+        const SizedBox(
+          height: 5,
+        ),
+        const Divider(
+          color: Colors.black38,
+          height: 1,
+        ),
+      ],
+    );
   }
 }

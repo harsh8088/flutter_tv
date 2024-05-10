@@ -38,7 +38,7 @@ class DoctorThreeBody extends StatelessWidget {
           }
           if (state.data.isNotEmpty &&
               state.data[0].deviceType == 2 &&
-              state.status == EventStatus.pure) {
+              state.status == EventStatus.completed) {
             //DoctorTokens
             Timer(const Duration(seconds: 6), () {
               if (context.mounted) {

@@ -6,7 +6,7 @@ import '../../networking/response.dart';
 
 class DoctorState extends Equatable {
   const DoctorState({
-    this.status = EventStatus.pure,
+    this.status = EventStatus.initial,
     this.message = "",
     this.data = const [],
     this.data2,

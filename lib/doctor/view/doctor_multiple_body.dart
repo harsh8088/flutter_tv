@@ -38,7 +38,7 @@ class DoctorMultipleBody extends StatelessWidget {
         //NurseTokens
         return;
       }
-      if (state.data.isNotEmpty && state.status == EventStatus.pure) {
+      if (state.data.isNotEmpty && state.status == EventStatus.completed) {
         if (context.mounted) {
           Timer(const Duration(seconds: 6), () {
             BlocProvider.of<DoctorBloc>(context)

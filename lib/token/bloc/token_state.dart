@@ -5,7 +5,7 @@ import '../model/token_response.dart';
 
 class TokenState extends Equatable {
   const TokenState(
-      {this.status = EventStatus.pure,
+      {this.status = EventStatus.completed,
       this.message = "",
       this.data = const [],
       this.tokens = const [],

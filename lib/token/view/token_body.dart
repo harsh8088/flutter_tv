@@ -50,7 +50,7 @@ class TokenBody extends StatelessWidget {
         // audioPlayer.dispose();
         print("isPlayAudio");
       }
-      if (state.data.isNotEmpty && state.status == EventStatus.pure) {
+      if (state.data.isNotEmpty && state.status == EventStatus.completed) {
         Timer(const Duration(seconds: 6), () {
           if (screen == 'token') {
             BlocProvider.of<TokenBloc>(context).add(const TokenFetchEvent());
@@ -100,7 +100,6 @@ class TokenBody extends StatelessWidget {
                       ]),
                     ),
                     const TokenItem(),
-                    const Divider()
                     // Expanded(
                     //     child: ListView.separated(
                     //   padding: const EdgeInsets.all(0),

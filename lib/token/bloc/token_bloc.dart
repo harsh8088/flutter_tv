@@ -54,21 +54,19 @@ class TokenBloc extends Bloc<TokenEvent, TokenState> {
 
       var copyCounter = savedCounter.toList(growable: true);
       print("copyCounter:$copyCounter");
-      if (finalServices!.isNotEmpty) {
-        finalServices.forEach((element) {
-          if (savedCounter.contains(element.counter)) {
-            copyCounter.remove(element.counter);
-          } else {
-            savedCounter.add(element.counter!);
-          }
-        });
+      for (var element in finalServices) {
+        if (savedCounter.contains(element.counter)) {
+          copyCounter.remove(element.counter);
+        } else {
+          savedCounter.add(element.counter!);
+        }
       }
       await SessionManager().setSavedCounterList(savedCounter);
 
       var isPlay = false;
       List<int> blinkTokens = List<int>.empty(growable: true);
 
-      finalServices.forEach((it) {
+      for (var it in finalServices) {
         var key = it.counter! + it.token!;
         var sharedIdValue = sharedPref.getInt(it.counter! + it.token!) ?? 0;
         if (it.calledFlag == 1) {
@@ -82,24 +80,24 @@ class TokenBloc extends Bloc<TokenEvent, TokenState> {
             sharedPref.remove(it.counter! + it.token!);
           }
         }
-      });
+      }
 
-      copyCounter.forEach((element) {
+      for (var element in copyCounter) {
         finalServices.add(Tokens(
           counter: element,
           token: '',
           id: 0,
         ));
-      });
+      }
       finalServices
           .sort((item1, item2) => item1.counter!.compareTo(item2.counter!));
 
-      print('finalServices:${finalServices}');
-      print('copyCounter:${copyCounter}');
-      print('blinkTokens:${blinkTokens}');
+      print('finalServices:$finalServices');
+      print('copyCounter:$copyCounter');
+      print('blinkTokens:$blinkTokens');
 
       emit(state.copyWith(
-          status: EventStatus.pure,
+          status: EventStatus.completed,
           data: [tokenResponse],
           tokens: finalServices.toList(),
           blinkTokens: blinkTokens,
@@ -164,12 +162,12 @@ class TokenBloc extends Bloc<TokenEvent, TokenState> {
       // finalServices
       //     .sort((item1, item2) => item1.counter!.compareTo(item2.counter!));
 
-      print('finalServices:${finalServices}');
+      print('finalServices:$finalServices');
       // print('copyCounter:${copyCounter}');
-      print('blinkTokens:${blinkTokens}');
+      print('blinkTokens:$blinkTokens');
 
       emit(state.copyWith(
-          status: EventStatus.pure,
+          status: EventStatus.completed,
           data: [otpResponse],
           tokens: finalServices?.toList(),
           blinkTokens: blinkTokens,

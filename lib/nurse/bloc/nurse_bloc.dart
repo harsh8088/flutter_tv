@@ -78,14 +78,14 @@ class NurseBloc extends Bloc<NurseEvent, NurseState> {
       print("BlinkMap${blinkMap.length}");
 
       emit(state.copyWith(
-          status: EventStatus.pure,
+          status: EventStatus.completed,
           data: nurseResponse,
           tokens: tokens,
           blinkTokens: blinkMap,
           isPlay: play));
     } catch (_) {
       print("Error$_");
-      emit(state.copyWith(status: EventStatus.pure));
+      emit(state.copyWith(status: EventStatus.completed));
     }
   }
 

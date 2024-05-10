@@ -28,7 +28,7 @@ class _TokenDropDownState extends State<TokenDropDown> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             // Future hasn't finished yet, return a placeholder
-            return Text('Loading');
+            return const Text('Loading');
           } else {
             return Padding(
               padding: const EdgeInsets.only(left: 4.0, right: 4.0),

@@ -34,7 +34,7 @@ class NurseBody extends StatelessWidget {
         //NurseTokens
         return;
       }
-      if (state.data?.deviceType == 4 && state.status == EventStatus.pure) {
+      if (state.data?.deviceType == 4 && state.status == EventStatus.completed) {
         print("fetchData");
         Timer(const Duration(seconds: 8), () {
           BlocProvider.of<NurseBloc>(context).add(const NurseFetchEvent());

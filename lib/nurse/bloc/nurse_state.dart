@@ -5,7 +5,7 @@ import '../model/nurse_response.dart';
 
 class NurseState extends Equatable {
   const NurseState(
-      {this.status = EventStatus.pure,
+      {this.status = EventStatus.completed,
       this.message = "",
       this.data,
       this.tokens = const [],

@@ -97,7 +97,7 @@ class _NurseBlinkTokenState extends State<NurseBlinkToken>
             ),
             Expanded(
               flex: 4,
-              child: getStatus(widget.tokens!),
+              child: getStatus(widget.tokens),
             ),
             const Expanded(
               flex: 2,
